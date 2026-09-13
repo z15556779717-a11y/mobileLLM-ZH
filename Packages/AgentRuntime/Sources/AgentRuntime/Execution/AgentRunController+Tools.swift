@@ -188,8 +188,8 @@ extension AgentRunController {
             let repair = try AgentFailure(
                 code: "execution.repeated-tool-call",
                 classification: .transient,
-                safeMessage: "Your last tool call already executed in this turn. Do not call any tool "
-                    + "again — answer the user directly.",
+                safeMessage: String(localized: "Your last tool call already executed in this turn. Do not call any tool "
+                    + "again — answer the user directly.", bundle: .main),
                 retryAdvice: .never,
                 externalEffect: .confirmedNone,
                 requiredUserAction: .none,
@@ -669,7 +669,7 @@ extension AgentRunController {
                 let stopped = try AgentFailure(
                     code: "execution.tool-interrupted-confirmed-none",
                     classification: .cancelled,
-                    safeMessage: "The tool stopped before applying an external effect.",
+                    safeMessage: String(localized: "The tool stopped before applying an external effect.", bundle: .main),
                     retryAdvice: .never,
                     externalEffect: .confirmedNone,
                     requiredUserAction: .none,
@@ -963,7 +963,7 @@ extension AgentRunController {
             ? try AgentFailure(
                 code: "execution.tool-attempt-interrupted-uncertain",
                 classification: .potentiallySideEffecting,
-                safeMessage: "The cancelled external operation has no stable outcome.",
+                safeMessage: String(localized: "The cancelled external operation has no stable outcome.", bundle: .main),
                 retryAdvice: .never,
                 externalEffect: .uncertain,
                 requiredUserAction: .reconcile,
@@ -976,7 +976,7 @@ extension AgentRunController {
             : try AgentFailure(
                 code: "execution.tool-attempt-interrupted",
                 classification: .cancelled,
-                safeMessage: "The tool attempt stopped at a cancellation boundary.",
+                safeMessage: String(localized: "The tool attempt stopped at a cancellation boundary.", bundle: .main),
                 retryAdvice: .never,
                 externalEffect: .confirmedNone,
                 requiredUserAction: .none,
@@ -1139,7 +1139,7 @@ extension AgentRunController {
         let diagnostic = try AgentFailure(
             code: "execution.tool-attempt-started",
             classification: .transient,
-            safeMessage: "A bounded tool attempt started.",
+            safeMessage: String(localized: "A bounded tool attempt started.", bundle: .main),
             retryAdvice: .never,
             externalEffect: .confirmedNone,
             requiredUserAction: .none,
@@ -1381,7 +1381,7 @@ extension AgentRunController {
                 return try AgentFailure(
                     code: "execution.tool-budget-exceeded",
                     classification: .budgetRelated,
-                    safeMessage: "The tool exceeded its fixed byte or resource budget.",
+                    safeMessage: String(localized: "The tool exceeded its fixed byte or resource budget.", bundle: .main),
                     retryAdvice: .never,
                     externalEffect: .confirmedNone,
                     requiredUserAction: .none,
@@ -1391,7 +1391,7 @@ extension AgentRunController {
                 return try AgentFailure(
                     code: "execution.tool-authorization-failed",
                     classification: .permissionRelated,
-                    safeMessage: "The tool authorization was denied, expired, or changed.",
+                    safeMessage: String(localized: "The tool authorization was denied, expired, or changed.", bundle: .main),
                     retryAdvice: .never,
                     externalEffect: .confirmedNone,
                     requiredUserAction: .approve,
@@ -1422,8 +1422,8 @@ extension AgentRunController {
             code: transient ? "execution.tool-transient" : "execution.tool-contract-failed",
             classification: transient ? .transient : .permanent,
             safeMessage: transient
-                ? "The tool stopped before producing a stable result."
-                : "The tool violated its execution contract.",
+                ? String(localized: "The tool stopped before producing a stable result.", bundle: .main)
+                : String(localized: "The tool violated its execution contract.", bundle: .main),
             retryAdvice: retry,
             externalEffect: .confirmedNone,
             requiredUserAction: .none,

@@ -27,7 +27,7 @@ struct ChatThreadView: View {
     /// A model is loading (cold start / switch) — shown as its own state, never as "no model".
     var isLoadingModel: Bool = false
     /// Best-effort name of the model being loaded (for the loading state).
-    var loadingModelName: String = "your model"
+    var loadingModelName: String = String(localized: "your model", bundle: .main)
     var onOpenModels: () -> Void
     /// Open the quick model switcher (the empty state's title is the picker).
     var onSwitchModel: () -> Void = {}
@@ -59,7 +59,7 @@ struct ChatThreadView: View {
             } else {
                 centeredOrScrolling {
                     EmptyChatState(modelName: chat.onlineModelID.map(OnlineModelIdentity.displayLabel)
-                                   ?? chat.activeModel?.model.displayName ?? "your model",
+                                   ?? chat.activeModel?.model.displayName ?? String(localized: "your model", bundle: .main),
                                    onExample: { prompt in
                                        chat.draft = prompt
                                        chat.send()
@@ -80,7 +80,8 @@ struct ChatThreadView: View {
                isPresented: Binding(get: { regenTarget != nil }, set: { if !$0 { regenTarget = nil } }),
                presenting: regenTarget) { message in
             let n = chat.discardedTurnCount(regeneratingFrom: message.id)
-            Button("Discard \(n) later turn\(n == 1 ? "" : "s")", role: .destructive) {
+            Button(n == 1 ? "Discard \(n) later turn" : "Discard \(n) later turns",
+                   role: .destructive) {
                 chat.regenerate(assistantMessageID: message.id)
                 regenTarget = nil
             }
@@ -190,7 +191,7 @@ struct ChatThreadView: View {
         } else if message.id == chat.streamingMessageID {
             StreamingRow(chat: chat, displayMode: displayMode,
                          modelName: chat.streaming?.generatedBy?.displayName
-                            ?? chat.activeModel?.model.displayName ?? "Model")
+                            ?? chat.activeModel?.model.displayName ?? String(localized: "Model", bundle: .main))
         } else {
             AssistantView(
                 reasoning: message.reasoning ?? "",
@@ -199,7 +200,7 @@ struct ChatThreadView: View {
                 displayMode: displayMode,
                 isStreaming: false,
                 stats: message.stats,
-                modelName: message.generatedBy?.displayName ?? "Model",
+                modelName: message.generatedBy?.displayName ?? String(localized: "Model", bundle: .main),
                 toolRuns: message.toolRuns ?? [],
                 emptyOutcome: message.emptyOutcome,
                 onCopy: { Clipboard.copy(message.answer); chat.showToast(Toast("Copied")) },

@@ -425,7 +425,7 @@ public final class AgentRunStore {
             )
             steps.append(step(
                 kind: .approval,
-                title: "Approval needed: \(displayName)",
+                title: String(localized: "Approval needed: \(displayName)", bundle: .main),
                 detail: plan.userPreview,
                 status: .waiting,
                 sequence: record.sequence
@@ -437,8 +437,8 @@ public final class AgentRunStore {
             )
             steps.append(step(
                 kind: .approval,
-                title: receipt.decision == .approved ? "Approved" : "Denied",
-                detail: receipt.decision == .approved ? "Operation authorized." : "Operation declined.",
+                title: receipt.decision == .approved ? String(localized: "Approved", bundle: .main) : String(localized: "Denied", bundle: .main),
+                detail: receipt.decision == .approved ? String(localized: "Operation authorized.", bundle: .main) : String(localized: "Operation declined.", bundle: .main),
                 status: receipt.decision == .approved ? .succeeded : .failed,
                 sequence: record.sequence
             ))
@@ -449,7 +449,7 @@ public final class AgentRunStore {
             )
             steps.append(step(
                 kind: .userInput,
-                title: "Question for you",
+                title: String(localized: "Question for you", bundle: .main),
                 detail: request.prompt,
                 status: .waiting,
                 sequence: record.sequence
@@ -463,7 +463,7 @@ public final class AgentRunStore {
             }
             steps.append(step(
                 kind: .userInput,
-                title: "Answered",
+                title: String(localized: "Answered", bundle: .main),
                 status: .succeeded,
                 sequence: record.sequence
             ))
@@ -518,8 +518,8 @@ public final class AgentRunStore {
                 kind: .finalization,
                 title: result.status.state == .completed
                     ? (result.status.terminalReason == .completedWithFailures
-                        ? "Completed with issues" : "Completed")
-                    : "Terminated",
+                        ? String(localized: "Completed with issues", bundle: .main) : String(localized: "Completed", bundle: .main))
+                    : String(localized: "Terminated", bundle: .main),
                 status: result.status.state == .completed
                     && result.status.terminalReason != .completedWithFailures
                     ? .succeeded : .failed,
@@ -536,7 +536,7 @@ public final class AgentRunStore {
             } else if let assistantMessageID = assistantMessageIDs[conversationID] {
                 let reason = result.status.terminalReason ?? .internalFailure
                 let message = result.status.failure?.safeMessage
-                    ?? "The run ended without a committed answer."
+                    ?? String(localized: "The run ended without a committed answer.", bundle: .main)
                 onRunTerminated?(conversationID, assistantMessageID, reason, message)
             }
         case .diagnostic(let failure):
@@ -700,35 +700,35 @@ public final class AgentRunStore {
         case .waitingForApproval:
             step = AgentRunStep(
                 kind: .approval,
-                title: "Waiting for approval",
+                title: String(localized: "Waiting for approval", bundle: .main),
                 status: .waiting,
                 sequence: sequence
             )
         case .waitingForUser:
             step = AgentRunStep(
                 kind: .userInput,
-                title: "Waiting for your answer",
+                title: String(localized: "Waiting for your answer", bundle: .main),
                 status: .waiting,
                 sequence: sequence
             )
         case .waitingForReconciliation:
             step = AgentRunStep(
                 kind: .reconciliation,
-                title: "External result uncertain",
+                title: String(localized: "External result uncertain", bundle: .main),
                 status: .waiting,
                 sequence: sequence
             )
         case .paused:
             step = AgentRunStep(
                 kind: .waiting,
-                title: "Paused",
+                title: String(localized: "Paused", bundle: .main),
                 status: .waiting,
                 sequence: sequence
             )
         case .waitingForForeground:
             step = AgentRunStep(
                 kind: .waiting,
-                title: "Backgrounded — resume to continue",
+                title: String(localized: "Backgrounded — resume to continue", bundle: .main),
                 status: .waiting,
                 sequence: sequence
             )
@@ -736,15 +736,15 @@ public final class AgentRunStore {
             let clean = status.terminalReason != .completedWithFailures
             step = AgentRunStep(
                 kind: .finalization,
-                title: clean ? "Completed" : "Completed with issues",
-                detail: clean ? "" : "At least one tool reported an error or an uncertain result.",
+                title: clean ? String(localized: "Completed", bundle: .main) : String(localized: "Completed with issues", bundle: .main),
+                detail: clean ? "" : String(localized: "At least one tool reported an error or an uncertain result.", bundle: .main),
                 status: clean ? .succeeded : .failed,
                 sequence: sequence
             )
         case .failed:
             step = AgentRunStep(
                 kind: .finalization,
-                title: "Failed",
+                title: String(localized: "Failed", bundle: .main),
                 detail: status.failure?.safeMessage ?? "",
                 status: .failed,
                 sequence: sequence
@@ -752,7 +752,7 @@ public final class AgentRunStore {
         case .cancelled:
             step = AgentRunStep(
                 kind: .finalization,
-                title: "Stopped",
+                title: String(localized: "Stopped", bundle: .main),
                 status: .failed,
                 sequence: sequence
             )
@@ -804,7 +804,7 @@ public final class AgentRunStore {
     private static func describe(_ failure: AgentFailure?) -> String? {
         guard let failure else { return nil }
         if let reason = failure.details["reason"] {
-            return "\(failure.safeMessage) (\(reason))"
+            return String(localized: "\(failure.safeMessage) (\(reason))", bundle: .main)
         }
         return failure.safeMessage
     }
@@ -862,7 +862,7 @@ extension AgentRunStore {
         case "create_reminder":
             return value(["title"]).map { "Remind: \($0)" } ?? fallback
         case "list_calendar_events":
-            return value(["daysAhead"]).map { "List events: next \($0) day(s)" } ?? "List upcoming events"
+            return value(["daysAhead"]).map { "List events: next \($0) day(s)" } ?? String(localized: "List upcoming events", bundle: .main)
         case "current_datetime", "current_location":
             return ""
         default:
@@ -879,7 +879,7 @@ extension AgentRunStore {
             {
                 return String(model)
             }
-            return "online model"
+            return String(localized: "online model", bundle: .main)
         }
         let raw = plan.subjectID.split(separator: ":").last.map(String.init) ?? plan.subjectID
         return readableToolName(raw)

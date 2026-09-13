@@ -75,7 +75,7 @@ enum AppToolV2Support {
         try AgentFailure(
             code: "tool.cancelled",
             classification: .cancelled,
-            safeMessage: "The tool stopped before producing a result.",
+            safeMessage: String(localized: "The tool stopped before producing a result.", bundle: .main),
             retryAdvice: .never,
             externalEffect: .confirmedNone,
             requiredUserAction: .none,
@@ -193,7 +193,7 @@ public final class AppWebSearchToolAdapter: ToolV2, @unchecked Sendable {
             timeoutMilliseconds: timeoutMilliseconds,
             retryPolicy: descriptor.retryPolicy,
             idempotency: descriptor.idempotency,
-            userPreview: query.isEmpty ? "Search the web" : "Search the web for: \(query)",
+            userPreview: query.isEmpty ? String(localized: "Search the web", bundle: .main) : String(localized: "Search the web for: \(query)", bundle: .main),
             descriptorID: descriptor.id.description,
             schemaDigest: descriptor.id.schemaDigest,
             trustRevision: descriptor.id.trustRevision
@@ -217,7 +217,7 @@ public final class AppWebSearchToolAdapter: ToolV2, @unchecked Sendable {
                         continuation.yield(.failed(
                             try AppToolV2Support.toolFailure(
                                 code: "tool.web-search.missing-query",
-                                message: "Web search requires a non-empty query."
+                                message: String(localized: "Web search requires a non-empty query.", bundle: .main)
                             )
                         ))
                         continuation.finish()
@@ -304,7 +304,7 @@ public final class AppWebSearchToolAdapter: ToolV2, @unchecked Sendable {
                     continuation.yield(.failed(
                         try AppToolV2Support.toolFailure(
                             code: "tool.web-search.unreachable",
-                            message: "Web search failed: all search engines returned no results or were unreachable."
+                            message: String(localized: "Web search failed: all search engines returned no results or were unreachable.", bundle: .main)
                         )
                     ))
                     continuation.finish()
@@ -431,7 +431,7 @@ public final class AppWikipediaToolAdapter: ToolV2, @unchecked Sendable {
             timeoutMilliseconds: timeoutMilliseconds,
             retryPolicy: .never,
             idempotency: .pureRead,
-            userPreview: "Look up \"\(query)\" on Wikipedia",
+            userPreview: String(localized: "Look up \"\(query)\" on Wikipedia", bundle: .main),
             descriptorID: descriptor.id.description,
             schemaDigest: descriptor.id.schemaDigest,
             trustRevision: descriptor.id.trustRevision
@@ -479,8 +479,8 @@ public final class AppWikipediaToolAdapter: ToolV2, @unchecked Sendable {
                             try await control.consumeResponseBytes(UInt64(summaryData.count))
                             let summary = WikipediaTool.parseSummary(summaryData)
                             let text = summary.isEmpty
-                                ? "No Wikipedia article found for \"\(query)\"."
-                                : "\(title): \(summary)"
+                                ? String(localized: "No Wikipedia article found for \"\(query)\".", bundle: .main)
+                                : String(localized: "\(title): \(summary)", bundle: .main)
                             return try AppToolV2Support.canonicalText(text)
                         }
                     )
@@ -510,7 +510,7 @@ public final class AppWikipediaToolAdapter: ToolV2, @unchecked Sendable {
                     do {
                         continuation.yield(.failed(try AppToolV2Support.toolFailure(
                             code: "tool.wikipedia.failed",
-                            message: "Wikipedia lookup failed or returned no article."
+                            message: String(localized: "Wikipedia lookup failed or returned no article.", bundle: .main)
                         )))
                         continuation.finish()
                     } catch {
@@ -673,7 +673,7 @@ public final class AppWebScraperToolAdapter: ToolV2, @unchecked Sendable {
                     do {
                         continuation.yield(.failed(try AppToolV2Support.toolFailure(
                             code: "tool.webpage.failed",
-                            message: "Couldn't read that web page."
+                            message: String(localized: "Couldn't read that web page.", bundle: .main)
                         )))
                         continuation.finish()
                     } catch {
@@ -938,8 +938,8 @@ public final class AppMemoryToolAdapter: ToolV2, @unchecked Sendable {
             retryPolicy: descriptor.retryPolicy,
             idempotency: descriptor.idempotency,
             userPreview: descriptor.id.logicalID.name == "remember"
-                ? "Save a lasting fact to the user's on-device memory"
-                : "Search the user's on-device memory",
+                ? String(localized: "Save a lasting fact to the user's on-device memory", bundle: .main)
+                : String(localized: "Search the user's on-device memory", bundle: .main),
             descriptorID: descriptor.id.description,
             schemaDigest: descriptor.id.schemaDigest,
             trustRevision: descriptor.id.trustRevision

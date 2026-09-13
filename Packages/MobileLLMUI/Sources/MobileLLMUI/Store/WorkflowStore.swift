@@ -77,7 +77,7 @@ public final class WorkflowStore: WorkflowRecording {
             try await resumeHandler(workflowID)
         } catch {
             executingWorkflowIDs.remove(workflowID)
-            lastError = "Workflow could not resume: \(error.localizedDescription)"
+            lastError = String(localized: "Workflow could not resume: \(error.localizedDescription)", bundle: .main)
         }
     }
 
@@ -157,7 +157,7 @@ public final class WorkflowStore: WorkflowRecording {
             workflows = Dictionary(uniqueKeysWithValues: decoded.map { ($0.id, $0) })
             executingWorkflowIDs.removeAll()
         } catch {
-            lastError = "Workflow snapshot could not be read: \(error.localizedDescription)"
+            lastError = String(localized: "Workflow snapshot could not be read: \(error.localizedDescription)", bundle: .main)
         }
     }
 
@@ -202,7 +202,7 @@ public final class WorkflowStore: WorkflowRecording {
         do {
             try await operation()
         } catch {
-            lastError = "Workflow action failed: \(error.localizedDescription)"
+            lastError = String(localized: "Workflow action failed: \(error.localizedDescription)", bundle: .main)
         }
     }
 

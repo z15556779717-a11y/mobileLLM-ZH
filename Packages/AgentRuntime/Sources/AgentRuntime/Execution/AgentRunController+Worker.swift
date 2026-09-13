@@ -1233,7 +1233,7 @@ extension AgentRunController {
         let malformed = try AgentFailure(
             code: "execution.malformed-model-action",
             classification: .permanent,
-            safeMessage: "The model returned an invalid structured action.",
+            safeMessage: String(localized: "The model returned an invalid structured action.", bundle: .main),
             retryAdvice: .never,
             externalEffect: .confirmedNone,
             requiredUserAction: .none,
@@ -1284,7 +1284,7 @@ extension AgentRunController {
                 let repair = try AgentFailure(
                     code: "execution.structured-repair",
                     classification: .transient,
-                    safeMessage: "Retrying once with constrained structured output.",
+                    safeMessage: String(localized: "Retrying once with constrained structured output.", bundle: .main),
                     retryAdvice: .never,
                     externalEffect: .confirmedNone,
                     requiredUserAction: .none,

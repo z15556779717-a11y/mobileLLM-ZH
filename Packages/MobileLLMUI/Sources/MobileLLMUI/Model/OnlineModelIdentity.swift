@@ -40,6 +40,6 @@ public enum OnlineModelIdentity {
 
     /// Human-facing label shown in the header, switcher, and stats footer.
     public static func displayLabel(_ serviceModel: String) -> String {
-        "Online · \(serviceModel)"
+        String(localized: "Online · \(serviceModel)", bundle: .main)
     }
 }

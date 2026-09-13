@@ -108,9 +108,9 @@ struct ToolsView: View {
 
     private var searchFootnote: String {
         webSearchOn
-            ? "Web search reads these engines' public results pages directly (no API key), tries them in "
-              + "order, and hands the model the top links. Keep at least one on."
-            : "Turn on the Web search tool below to use these engines."
+            ? String(localized: "Web search reads these engines' public results pages directly (no API key), tries them in "
+              + "order, and hands the model the top links. Keep at least one on.", bundle: .main)
+            : String(localized: "Turn on the Web search tool below to use these engines.", bundle: .main)
     }
 
     /// Add/remove an engine while preserving the canonical priority order, and never removing the last one
@@ -223,9 +223,9 @@ struct ToolsView: View {
 
     private var mcpSummary: String {
         let all = settings.mcpServers
-        guard !all.isEmpty else { return "Connect a remote server for more tools" }
+        guard !all.isEmpty else { return String(localized: "Connect a remote server for more tools", bundle: .main) }
         let on = all.count(where: \.isEnabled)
-        return "\(all.count) configured" + (on < all.count ? " · \(all.count - on) off" : "")
+        return String(localized: "\(all.count) configured", bundle: .main) + (on < all.count ? String(localized: " · \(all.count - on) off", bundle: .main) : "")
     }
 
     // MARK: Builders
@@ -249,10 +249,14 @@ extension ToolsView {
     @MainActor static func summary(for settings: AppSettings) -> String {
         let total = BuiltInToolRow.all.count
         let on = BuiltInToolRow.all.count(where: { $0.isOn(in: settings) })
-        var text = "\(on) of \(total) built-in tools selected"
+        var text = String(localized: "\(on) of \(total) built-in tools selected", bundle: .main)
         let servers = settings.mcpServers.count(where: \.isEnabled)
-        if servers > 0 { text += " · \(servers) MCP server\(servers == 1 ? "" : "s") selected" }
-        return settings.toolsEnabled ? text : "Off · \(text)"
+        if servers > 0 {
+            text += servers == 1
+                ? String(localized: " · \(servers) MCP server selected", bundle: .main)
+                : String(localized: " · \(servers) MCP servers selected", bundle: .main)
+        }
+        return settings.toolsEnabled ? text : String(localized: "Off · \(text)", bundle: .main)
     }
 }
 
@@ -286,36 +290,36 @@ struct BuiltInToolRow: Identifiable {
 
     /// The rows, in display order. The privacy-sensitive three come last, grouped and marked.
     static let all: [BuiltInToolRow] = [
-        .init(id: "web_search", title: "Web search",
-              subtitle: "Search the live web. Uses the network and adds another model pass.",
+        .init(id: "web_search", title: String(localized: "Web search", bundle: .main),
+              subtitle: String(localized: "Search the live web. Uses the network and adds another model pass.", bundle: .main),
               icon: "magnifyingglass", toolIDs: [.webSearch]),
-        .init(id: "fetch_webpage", title: "Webpage reader",
-              subtitle: "Open a link and read its main text over the network.",
+        .init(id: "fetch_webpage", title: String(localized: "Webpage reader", bundle: .main),
+              subtitle: String(localized: "Open a link and read its main text over the network.", bundle: .main),
               icon: "doc.text.magnifyingglass", toolIDs: [.fetchWebpage]),
         .init(id: "wikipedia", title: "Wikipedia",
-              subtitle: "Look up a topic on Wikipedia over the network.",
+              subtitle: String(localized: "Look up a topic on Wikipedia over the network.", bundle: .main),
               icon: "character.book.closed", toolIDs: [.wikipedia]),
-        .init(id: "calculator", title: "Calculator",
-              subtitle: "Do arithmetic on-device.",
+        .init(id: "calculator", title: String(localized: "Calculator", bundle: .main),
+              subtitle: String(localized: "Do arithmetic on-device.", bundle: .main),
               icon: "function", toolIDs: [.calculator]),
-        .init(id: "clock", title: "Clock",
-              subtitle: "Check the current date and time.",
+        .init(id: "clock", title: String(localized: "Clock", bundle: .main),
+              subtitle: String(localized: "Check the current date and time.", bundle: .main),
               icon: "clock", toolIDs: [.currentDatetime]),
         // The switch, and only the switch: what's actually remembered is reviewed, corrected, and added to
         // in Settings → Behavior → Memory. This row points there rather than implying a toggle is the
         // whole feature — which is exactly how memory used to stay invisible.
-        .init(id: "memory", title: "Memory",
-              subtitle: "Remember details you share and use them later. See and edit what's saved in "
-                      + "Settings → Memory.",
+        .init(id: "memory", title: String(localized: "Memory", bundle: .main),
+              subtitle: String(localized: "Remember details you share and use them later. See and edit what's saved in "
+                      + "Settings → Memory.", bundle: .main),
               icon: "bookmark", toolIDs: [.remember, .recall]),
-        .init(id: "calendar", title: "Calendar",
-              subtitle: "Add events and read what's on your calendar.",
+        .init(id: "calendar", title: String(localized: "Calendar", bundle: .main),
+              subtitle: String(localized: "Add events and read what's on your calendar.", bundle: .main),
               icon: "calendar", toolIDs: [.createCalendarEvent, .listCalendarEvents], privacy: true),
-        .init(id: "reminders", title: "Reminders",
-              subtitle: "Create reminders in the Reminders app.",
+        .init(id: "reminders", title: String(localized: "Reminders", bundle: .main),
+              subtitle: String(localized: "Create reminders in the Reminders app.", bundle: .main),
               icon: "checklist", toolIDs: [.createReminder], privacy: true),
-        .init(id: "location", title: "Location",
-              subtitle: "Use your approximate (city-level) location.",
+        .init(id: "location", title: String(localized: "Location", bundle: .main),
+              subtitle: String(localized: "Use your approximate (city-level) location.", bundle: .main),
               icon: "location", toolIDs: [.currentLocation], privacy: true),
     ]
 }

@@ -291,7 +291,7 @@ final class WorkflowLauncher {
                 summary.endTime = Date()
                 summary.dynamic?.state = .failed
                 summary.dynamic?.failure =
-                    "Candidate generation was interrupted. Send the /workflow command again."
+                    String(localized: "Candidate generation was interrupted. Send the /workflow command again.", bundle: .main)
                 try await container.workflowStore.save(summary)
             }
             return
@@ -427,7 +427,7 @@ final class WorkflowLauncher {
         }
         guard result.status.state == .completed, let rawSource = result.answer?.text else {
             throw WorkflowLaunchError.planGenerationFailed(
-                result.status.failure?.safeMessage ?? "dynamic workflow generator did not return source"
+                result.status.failure?.safeMessage ?? String(localized: "dynamic workflow generator did not return source", bundle: .main)
             )
         }
         return try Self.exactJavaScriptSource(from: rawSource)
@@ -555,7 +555,7 @@ public struct AppDynamicWorkflowProjection: Hashable, Sendable {
             let detail: String?
             if projection.reconciliationCallID == call.callID {
                 status = .uncertain
-                detail = "Outcome requires reconciliation"
+                detail = String(localized: "Outcome requires reconciliation", bundle: .main)
             } else if let outcome {
                 switch outcome {
                 case .completed:
@@ -889,9 +889,9 @@ enum WorkflowLaunchError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .snapshotUnavailable(let reason):
-            "Workflow snapshot unavailable: \(reason)"
+            String(localized: "Workflow snapshot unavailable: \(reason)", bundle: .main)
         case .planGenerationFailed(let reason):
-            "Workflow plan generation failed: \(reason)"
+            String(localized: "Workflow plan generation failed: \(reason)", bundle: .main)
         }
     }
 }

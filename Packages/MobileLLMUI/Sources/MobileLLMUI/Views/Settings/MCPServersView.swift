@@ -66,11 +66,11 @@ final class MCPProbe {
             case .http(404): return "No MCP endpoint at that path (HTTP 404)."
             case .http(let code): return "Server returned HTTP \(code)."
             case .rpc(let msg): return msg
-            case .timedOut: return "Timed out waiting for the MCP server."
-            case .repeatedCursor: return "Server repeated a tools-page cursor."
-            case .pageLimit(let limit): return "Server returned more than \(limit) tool pages."
-            case .responseTooLarge: return "Server response was too large."
-            case .invalidResponse(let reason): return "Invalid server response: \(reason)"
+            case .timedOut: return String(localized: "Timed out waiting for the MCP server.", bundle: .main)
+            case .repeatedCursor: return String(localized: "Server repeated a tools-page cursor.", bundle: .main)
+            case .pageLimit(let limit): return String(localized: "Server returned more than \(limit) tool pages.", bundle: .main)
+            case .responseTooLarge: return String(localized: "Server response was too large.", bundle: .main)
+            case .invalidResponse(let reason): return String(localized: "Invalid server response: \(reason)", bundle: .main)
             }
         }
         if let url = error as? URLError {
@@ -114,7 +114,9 @@ struct MCPServersView: View {
                         Button { editing = server } label: { row(server) }
                             .buttonStyle(.plain)
                     }
-                    Text("\(activeToolCount) tool\(activeToolCount == 1 ? "" : "s") available to the model.")
+                    Text(activeToolCount == 1
+                         ? "\(activeToolCount) tool available to the model."
+                         : "\(activeToolCount) tools available to the model.")
                         .font(.caption).foregroundStyle(Theme.textTertiary).padding(.horizontal, 2)
                 }
 
@@ -204,8 +206,12 @@ struct MCPServersView: View {
                 Text("Connecting…").font(.caption2).foregroundStyle(Theme.textTertiary)
             case .ok(let tools):
                 let muted = server.disabledTools.count
-                Text("\(tools.count) tool\(tools.count == 1 ? "" : "s")"
-                     + (muted > 0 ? " · \(muted) muted" : ""))
+                let countLabel = tools.count == 1
+                    ? String(localized: "\(tools.count) tool", bundle: .main)
+                    : String(localized: "\(tools.count) tools", bundle: .main)
+                let mutedLabel = muted > 0
+                    ? String(localized: " · \(muted) muted", bundle: .main) : ""
+                Text(countLabel + mutedLabel)
                     .font(.caption2).foregroundStyle(Theme.fitGreen)
             case .failed(let why):
                 Text(why).font(.caption2).foregroundStyle(Theme.danger).lineLimit(1)
@@ -350,12 +356,15 @@ struct MCPServerDetailView: View {
     }
 
     private func headline(_ server: MCPServer) -> String {
-        guard server.isEnabled else { return "Disabled" }
+        guard server.isEnabled else { return String(localized: "Disabled", bundle: .main) }
         switch probe.status(for: server) {
-        case .idle: return "Not tested yet"
-        case .checking: return "Connecting…"
-        case .ok(let tools): return "Connected · \(tools.count) tool\(tools.count == 1 ? "" : "s")"
-        case .failed: return "Couldn't connect"
+        case .idle: return String(localized: "Not tested yet", bundle: .main)
+        case .checking: return String(localized: "Connecting…", bundle: .main)
+        case .ok(let tools):
+            return tools.count == 1
+                ? String(localized: "Connected · \(tools.count) tool", bundle: .main)
+                : String(localized: "Connected · \(tools.count) tools", bundle: .main)
+        case .failed: return String(localized: "Couldn't connect", bundle: .main)
         }
     }
 
@@ -496,7 +505,9 @@ struct MCPEditorView: View {
                 }
             case .ok(let tools):
                 VStack(alignment: .leading, spacing: 3) {
-                    Label("Connected · \(tools.count) tool\(tools.count == 1 ? "" : "s")",
+                    Label(tools.count == 1
+                          ? "Connected · \(tools.count) tool"
+                          : "Connected · \(tools.count) tools",
                           systemImage: "checkmark.circle.fill")
                         .font(.caption.weight(.medium)).foregroundStyle(Theme.fitGreen)
                     Text(tools.map(\.name).joined(separator: ", "))

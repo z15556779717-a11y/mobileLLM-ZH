@@ -61,9 +61,9 @@ extension AgentRunStep {
     public var statusText: String? {
         switch status {
         case .succeeded: nil
-        case .failed: "Failed"
-        case .uncertain: "Uncertain"
-        case .running, .waiting, .pending: "Running…"
+        case .failed: String(localized: "Failed", bundle: .main)
+        case .uncertain: String(localized: "Uncertain", bundle: .main)
+        case .running, .waiting, .pending: String(localized: "Running…", bundle: .main)
         }
     }
 }

@@ -14,6 +14,19 @@ enum Format {
         case thisWeek = "Previous 7 Days"
         case thisMonth = "Previous 30 Days"
         case older = "Older"
+
+        /// Section header. The raw values are stable identifiers in their own right (grouping and
+        /// persistence compare against them), so the localized text lives here instead.
+        var label: String {
+            switch self {
+            case .pinned: String(localized: "Pinned", bundle: .main)
+            case .today: String(localized: "Today", bundle: .main)
+            case .yesterday: String(localized: "Yesterday", bundle: .main)
+            case .thisWeek: String(localized: "Previous 7 Days", bundle: .main)
+            case .thisMonth: String(localized: "Previous 30 Days", bundle: .main)
+            case .older: String(localized: "Older", bundle: .main)
+            }
+        }
     }
 
     static func group(for entry: ConversationIndexEntry, now: Date = Date(),
@@ -36,7 +49,7 @@ enum Format {
         if calendar.isDateInToday(date) {
             let f = DateFormatter(); f.dateFormat = "HH:mm"; return f.string(from: date)
         }
-        if calendar.isDateInYesterday(date) { return "Yesterday" }
+        if calendar.isDateInYesterday(date) { return String(localized: "Yesterday", bundle: .main) }
         let days = calendar.dateComponents([.day], from: date, to: now).day ?? 0
         let f = DateFormatter()
         f.dateFormat = days < 7 ? "EEE" : "d MMM"
@@ -73,7 +86,7 @@ enum Format {
 
     /// Compact context count ("1,240 / 8K").
     static func context(_ used: Int, _ cap: Int) -> String {
-        "\(used.formatted()) / \(shortCount(cap))"
+        String(localized: "\(used.formatted()) / \(shortCount(cap))", bundle: .main)
     }
 
     static func shortCount(_ n: Int) -> String {
@@ -93,6 +106,6 @@ enum Format {
         let secs = total % 60
         if hours > 0 { return String(format: "%dh %02dm", hours, minutes) }
         if minutes > 0 { return String(format: "%dm %02ds", minutes, secs) }
-        return "\(secs)s"
+        return String(localized: "\(secs)s", bundle: .main)
     }
 }

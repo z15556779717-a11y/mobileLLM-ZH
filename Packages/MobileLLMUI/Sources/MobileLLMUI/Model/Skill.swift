@@ -36,6 +36,23 @@ public struct Skill: Identifiable, Codable, Sendable, Equatable {
 }
 
 public extension Skill {
+    /// The text the UI shows for `name` / `summary`.
+    ///
+    /// Neither field is translated in place: `ChatStore.systemPrompt(base:skill:)` injects
+    /// `## Active skill: <name>` into the system prompt, and both fields are persisted, so the stored
+    /// value has to stay the canonical English the model was written against. The display layer looks
+    /// the stored value up as a localization key instead, and falls back to the stored value itself —
+    /// which is what a user-created skill gets, since its name is the user's own words.
+    var displayName: String {
+        Bundle.main.localizedString(forKey: name, value: name, table: nil)
+    }
+
+    var displaySummary: String {
+        Bundle.main.localizedString(forKey: summary, value: summary, table: nil)
+    }
+}
+
+public extension Skill {
     /// The five starter skills seeded on first load. Instructions are written for **small on-device
     /// models**: short, imperative, one behavior per line — the same craft as the stock system prompt
     /// (a long, soft prompt makes a small model recite rules instead of following them).
@@ -69,8 +86,8 @@ public extension Skill {
             isBuiltIn: true),
         Skill(
             id: UUID(uuidString: "5C1A0003-0000-4000-A000-000000000003")!,
-            name: "Code Explainer", emoji: "💡",
-            summary: "Explain code by purpose first, then call out pitfalls.",
+            name: String(localized: "Code Explainer", bundle: .main), emoji: "💡",
+            summary: String(localized: "Explain code by purpose first, then call out pitfalls.", bundle: .main),
             instructions: """
             Explain the code the user shares.
             - Start with one sentence on what it does overall.
@@ -96,8 +113,8 @@ public extension Skill {
             isBuiltIn: true),
         Skill(
             id: UUID(uuidString: "5C1A0005-0000-4000-A000-000000000005")!,
-            name: "Concise Mode", emoji: "⚡",
-            summary: "Answer in three sentences or fewer.",
+            name: String(localized: "Concise Mode", bundle: .main), emoji: "⚡",
+            summary: String(localized: "Answer in three sentences or fewer.", bundle: .main),
             instructions: """
             Answer in at most three sentences.
             - Lead with the direct answer, then cut every optional word.

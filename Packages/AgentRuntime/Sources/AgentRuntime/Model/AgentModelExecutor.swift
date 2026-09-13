@@ -330,7 +330,7 @@ public struct AgentModelExecutor: Sendable {
         try AgentFailure(
             code: "model.provider-runtime",
             classification: .transient,
-            safeMessage: "The local model provider stopped before completing this attempt.",
+            safeMessage: String(localized: "The local model provider stopped before completing this attempt.", bundle: .main),
             retryAdvice: AgentRetryAdvice(
                 automaticallyRetryable: true,
                 maximumAdditionalAttempts: 1

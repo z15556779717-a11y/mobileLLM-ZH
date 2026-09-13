@@ -135,7 +135,7 @@ public final class ContinuedProcessingCoordinator {
         guard let scheduler, scheduler.isAvailable else {
             reject(
                 conversationID: conversationID,
-                reason: "Continued processing is not available on this device or OS."
+                reason: String(localized: "Continued processing is not available on this device or OS.", bundle: .main)
             )
             return
         }
@@ -145,15 +145,15 @@ public final class ContinuedProcessingCoordinator {
 
         let request = ContinuedProcessingRequest(
             identifier: identifier(for: conversationID),
-            title: "mobileLLM agent run",
-            subtitle: "Finishing your request in the background",
+            title: String(localized: "mobileLLM agent run", bundle: .main),
+            subtitle: String(localized: "Finishing your request in the background", bundle: .main),
             requiresGPU: requiresGPUForRun(conversationID)
         )
 
         if request.requiresGPU, !scheduler.supportedResources.contains(.gpu) {
             reject(
                 conversationID: conversationID,
-                reason: "Background GPU processing is not supported on this device."
+                reason: String(localized: "Background GPU processing is not supported on this device.", bundle: .main)
             )
             return
         }
@@ -170,7 +170,7 @@ public final class ContinuedProcessingCoordinator {
                 lastDiagnostic = nil
                 phase = .submitted
             } else {
-                let reason = "The system could not start continued processing immediately."
+                let reason = String(localized: "The system could not start continued processing immediately.", bundle: .main)
                 reject(conversationID: conversationID, reason: reason)
             }
         } catch {
@@ -226,7 +226,7 @@ public final class ContinuedProcessingCoordinator {
         let id = conversationID ?? activeConversationID
         guard phase == .running || phase == .submitted, let id else { return }
         phase = .expired
-        lastDiagnostic = "The system ended continued processing before the run finished."
+        lastDiagnostic = String(localized: "The system ended continued processing before the run finished.", bundle: .main)
         journal("continued-processing: expired \(id.uuidString)")
         task?.setTaskCompleted(success: false)
         task = nil
@@ -245,7 +245,7 @@ public final class ContinuedProcessingCoordinator {
     public func handleUserCancellation() {
         guard let id = activeConversationID, phase != .idle, phase != .finished else { return }
         phase = .cancelled
-        lastDiagnostic = "Continued processing was cancelled by the user."
+        lastDiagnostic = String(localized: "Continued processing was cancelled by the user.", bundle: .main)
         journal("continued-processing: user-cancelled \(id.uuidString)")
         if let scheduler, let identifier = activeIdentifier {
             scheduler.cancelPending(identifier: identifier)

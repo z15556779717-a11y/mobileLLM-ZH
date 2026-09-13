@@ -40,10 +40,10 @@ struct AgentRunBadge: View {
         case .failed: "failed"
         case .cancelled: "stopped"
         case .waitingForApproval: "approval"
-        case .waitingForUser: "asks you"
+        case .waitingForUser: String(localized: "asks you", bundle: .main)
         case .paused: "paused"
         case .waitingForForeground: "backgrounded"
-        case .waitingForReconciliation: "needs review"
+        case .waitingForReconciliation: String(localized: "needs review", bundle: .main)
         default: "working"
         }
     }
@@ -140,21 +140,21 @@ struct AgentRunPanel: View {
             return failure
         }
         switch run.state {
-        case .waitingForApproval: return "Approval needed"
-        case .waitingForUser: return "Waiting for your answer"
-        case .waitingForReconciliation: return "External result uncertain"
-        case .paused: return "Run paused"
-        case .waitingForForeground: return "Run backgrounded"
-        case .completed where run.terminalReason == .completedWithFailures: return "Completed with issues"
-        case .completed: return "Completed"
-        case .failed: return "Failed"
-        case .cancelled: return "Stopped"
+        case .waitingForApproval: return String(localized: "Approval needed", bundle: .main)
+        case .waitingForUser: return String(localized: "Waiting for your answer", bundle: .main)
+        case .waitingForReconciliation: return String(localized: "External result uncertain", bundle: .main)
+        case .paused: return String(localized: "Run paused", bundle: .main)
+        case .waitingForForeground: return String(localized: "Run backgrounded", bundle: .main)
+        case .completed where run.terminalReason == .completedWithFailures: return String(localized: "Completed with issues", bundle: .main)
+        case .completed: return String(localized: "Completed", bundle: .main)
+        case .failed: return String(localized: "Failed", bundle: .main)
+        case .cancelled: return String(localized: "Stopped", bundle: .main)
         default:
             if let tool = runningToolStep(run) {
-                return "Using \(AgentRunStore.readableToolName(tool.title))"
+                return String(localized: "Using \(AgentRunStore.readableToolName(tool.title))", bundle: .main)
             }
-            if !run.provisionalText.isEmpty { return "Typing…" }
-            return "Working…"
+            if !run.provisionalText.isEmpty { return String(localized: "Typing…", bundle: .main) }
+            return String(localized: "Working…", bundle: .main)
         }
     }
 
@@ -166,17 +166,19 @@ struct AgentRunPanel: View {
             )
             if !preview.isEmpty { return preview }
         }
-        if !run.isTerminal, !run.provisionalText.isEmpty { return "Typing…" }
+        if !run.isTerminal, !run.provisionalText.isEmpty { return String(localized: "Typing…", bundle: .main) }
         switch run.blockingReason {
-        case .approval: return "Approve or deny below"
-        case .userInput: return "Reply below"
-        case .reconciliation: return "Confirm below"
-        case .paused: return "Resume to continue"
-        case .foreground: return "Return to the app to resume"
-        case .modelResource: return "Waiting for the model"
+        case .approval: return String(localized: "Approve or deny below", bundle: .main)
+        case .userInput: return String(localized: "Reply below", bundle: .main)
+        case .reconciliation: return String(localized: "Confirm below", bundle: .main)
+        case .paused: return String(localized: "Resume to continue", bundle: .main)
+        case .foreground: return String(localized: "Return to the app to resume", bundle: .main)
+        case .modelResource: return String(localized: "Waiting for the model", bundle: .main)
         case nil:
             if run.isTerminal, !run.steps.isEmpty {
-                return "\(run.steps.count) action\(run.steps.count == 1 ? "" : "s")"
+                return run.steps.count == 1
+                    ? String(localized: "\(run.steps.count) action", bundle: .main)
+                    : String(localized: "\(run.steps.count) actions", bundle: .main)
             }
             return ""
         }
@@ -243,7 +245,7 @@ private struct AgentRunStepRow: View {
     private var title: String {
         guard isTool else { return step.title }
         let name = AgentRunStore.readableToolName(step.title)
-        return (step.status == .running || step.status == .pending) ? "Using \(name)" : name
+        return (step.status == .running || step.status == .pending) ? String(localized: "Using \(name)", bundle: .main) : name
     }
 
     private var preview: String {
@@ -293,7 +295,7 @@ private struct AgentRunStepRow: View {
             if expanded {
                 VStack(alignment: .leading, spacing: 4) {
                     if !step.detail.isEmpty {
-                        detailBlock(isTool ? "Arguments" : "Details", step.detail)
+                        detailBlock(isTool ? String(localized: "Arguments", bundle: .main) : String(localized: "Details", bundle: .main), step.detail)
                     }
                     if let resultText = step.resultText, !resultText.isEmpty {
                         detailBlock("Result", resultText)

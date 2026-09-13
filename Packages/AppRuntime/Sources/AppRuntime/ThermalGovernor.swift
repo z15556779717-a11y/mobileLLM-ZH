@@ -7,7 +7,7 @@ import Foundation
 public enum ThermalError: Error, CustomStringConvertible {
     case pausedForHeat
     public var description: String {
-        switch self { case .pausedForHeat: "Paused to let the device cool." }
+        switch self { case .pausedForHeat: String(localized: "Paused to let the device cool.", bundle: .main) }
     }
 }
 

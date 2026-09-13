@@ -5,9 +5,9 @@ import Foundation
 /// Compact "~3m left" / "~12s left" / "~1h 05m left" for a download ETA.
 private func formatETA(_ seconds: Double) -> String {
     let s = Int(seconds.rounded())
-    if s < 60 { return "\(max(1, s))s left" }
-    if s < 3600 { return "\(s / 60)m \(String(format: "%02d", s % 60))s left" }
-    return "\(s / 3600)h \(String(format: "%02d", (s % 3600) / 60))m left"
+    if s < 60 { return String(localized: "\(max(1, s))s left", bundle: .main) }
+    if s < 3600 { return String(localized: "\(s / 60)m \(String(format: "%02d", s % 60))s left", bundle: .main) }
+    return String(localized: "\(s / 3600)h \(String(format: "%02d", (s % 3600) / 60))m left", bundle: .main)
 }
 
 /// Tracks a download's bytes / throughput / ETA from the fraction reported by the downloader plus the

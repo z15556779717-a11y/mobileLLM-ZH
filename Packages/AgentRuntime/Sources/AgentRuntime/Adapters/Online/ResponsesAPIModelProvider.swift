@@ -1311,7 +1311,7 @@ public final class ResponsesAPIModelProvider: AgentModelProvider, @unchecked Sen
         try AgentFailure(
             code: "model.online.configuration-missing",
             classification: .permanent,
-            safeMessage: "The online model service is not configured. Add an API key and model in Settings.",
+            safeMessage: String(localized: "The online model service is not configured. Add an API key and model in Settings.", bundle: .main),
             retryAdvice: .never,
             externalEffect: .confirmedNone,
             requiredUserAction: .none,
@@ -1335,8 +1335,8 @@ public final class ResponsesAPIModelProvider: AgentModelProvider, @unchecked Sen
         try AgentFailure(
             code: "model.online.empty",
             classification: .permanent,
-            safeMessage: "The online model returned no answer text. It may have spent its output "
-                + "budget on service-side reasoning; turn thinking off or raise Max tokens and retry.",
+            safeMessage: String(localized: "The online model returned no answer text. It may have spent its output "
+                + "budget on service-side reasoning; turn thinking off or raise Max tokens and retry.", bundle: .main),
             retryAdvice: .never,
             externalEffect: .confirmedNone,
             requiredUserAction: .none,
@@ -1348,7 +1348,7 @@ public final class ResponsesAPIModelProvider: AgentModelProvider, @unchecked Sen
         try AgentFailure(
             code: "model.online.structured-output-invalid",
             classification: .permanent,
-            safeMessage: "The online model returned invalid structured output.",
+            safeMessage: String(localized: "The online model returned invalid structured output.", bundle: .main),
             retryAdvice: .never,
             externalEffect: .confirmedNone,
             requiredUserAction: .none,

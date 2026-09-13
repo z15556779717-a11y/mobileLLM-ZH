@@ -79,7 +79,7 @@ struct AgentApprovalDecisionBar: View {
                 VStack(alignment: .leading, spacing: Theme.Space.xs) {
                     if !approval.preview.isEmpty {
                         approvalDetail(
-                            label: "Action",
+                            label: String(localized: "Action", bundle: .main),
                             value: approval.preview,
                             identifier: "approval.preview",
                             priority: 6
@@ -87,7 +87,7 @@ struct AgentApprovalDecisionBar: View {
                     }
                     if let destination = approval.destination {
                         approvalDetail(
-                            label: "Destination",
+                            label: String(localized: "Destination", bundle: .main),
                             value: destination,
                             identifier: "approval.destination",
                             priority: 5
@@ -95,7 +95,7 @@ struct AgentApprovalDecisionBar: View {
                     }
                     if !approval.dataCategories.isEmpty {
                         approvalDetail(
-                            label: "Data",
+                            label: String(localized: "Data", bundle: .main),
                             value: approval.dataCategories.joined(separator: ", "),
                             identifier: "approval.data",
                             priority: 4
@@ -103,7 +103,7 @@ struct AgentApprovalDecisionBar: View {
                     }
                     if !approval.effects.isEmpty {
                         approvalDetail(
-                            label: "Effects",
+                            label: String(localized: "Effects", bundle: .main),
                             value: approval.effects.joined(separator: ", "),
                             identifier: "approval.effects",
                             priority: 3
@@ -186,8 +186,8 @@ struct AgentApprovalDecisionBar: View {
     }
 
     private func buttonTitle(approved: Bool) -> String {
-        guard approved else { return "Deny" }
-        return approval.isExternalWrite || approval.isConversationScoped ? "Approve once" : "Approve"
+        guard approved else { return String(localized: "Deny", bundle: .main) }
+        return approval.isExternalWrite || approval.isConversationScoped ? String(localized: "Approve once", bundle: .main) : String(localized: "Approve", bundle: .main)
     }
 }
 

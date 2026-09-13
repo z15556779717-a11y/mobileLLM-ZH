@@ -146,15 +146,15 @@ public enum CanonicalMemoryValidationError: LocalizedError, Hashable, Sendable {
     public var errorDescription: String? {
         switch self {
         case .empty:
-            "Memory cannot be empty."
+            String(localized: "Memory cannot be empty.", bundle: .main)
         case .multiline:
-            "Memory must be one concise sentence."
+            String(localized: "Memory must be one concise sentence.", bundle: .main)
         case .missingCanonicalPrefix:
-            "Write the memory in English, beginning with \"The user \"."
+            String(localized: "Write the memory in English, beginning with \"The user \".", bundle: .main)
         case .emptyBody, .invalidEnglishScaffold:
-            "Add an English fact after \"The user \"."
+            String(localized: "Add an English fact after \"The user \".", bundle: .main)
         case .nonEnglishProse:
-            "Translate the full fact into English. Proper names may stay unchanged."
+            String(localized: "Translate the full fact into English. Proper names may stay unchanged.", bundle: .main)
         }
     }
 }

@@ -637,7 +637,7 @@ private enum LocalModelGeneration {
         return try! AgentFailure(
             code: "model.local.malformed-action",
             classification: .incompatible,
-            safeMessage: "The local model produced a tool action that could not be validated.",
+            safeMessage: String(localized: "The local model produced a tool action that could not be validated.", bundle: .main),
             retryAdvice: .never,
             externalEffect: .confirmedNone,
             requiredUserAction: .none,
@@ -662,7 +662,7 @@ private enum LocalModelGeneration {
         try! AgentFailure(
             code: "model.local.protocol-violation",
             classification: .incompatible,
-            safeMessage: "The local model engine returned an invalid generation stream.",
+            safeMessage: String(localized: "The local model engine returned an invalid generation stream.", bundle: .main),
             retryAdvice: .never,
             externalEffect: .confirmedNone,
             requiredUserAction: .restoreDependency,
@@ -675,7 +675,7 @@ private enum LocalModelGeneration {
         try! AgentFailure(
             code: "model.local.engine-failure",
             classification: .transient,
-            safeMessage: "The local model engine stopped before completing this attempt.",
+            safeMessage: String(localized: "The local model engine stopped before completing this attempt.", bundle: .main),
             retryAdvice: try! AgentRetryAdvice(
                 automaticallyRetryable: true,
                 maximumAdditionalAttempts: 1
@@ -690,7 +690,7 @@ private enum LocalModelGeneration {
         try! AgentFailure(
             code: "model.local.artifact-unavailable",
             classification: .incompatible,
-            safeMessage: "An authorized image could not be verified for local model input.",
+            safeMessage: String(localized: "An authorized image could not be verified for local model input.", bundle: .main),
             retryAdvice: .never,
             externalEffect: .confirmedNone,
             requiredUserAction: .restoreDependency,
@@ -703,7 +703,7 @@ private enum LocalModelGeneration {
         try! AgentFailure(
             code: "model.local.structured-output-invalid",
             classification: .incompatible,
-            safeMessage: "The local model response did not match the required structured output schema.",
+            safeMessage: String(localized: "The local model response did not match the required structured output schema.", bundle: .main),
             retryAdvice: .never,
             externalEffect: .confirmedNone,
             requiredUserAction: .none,
@@ -715,7 +715,7 @@ private enum LocalModelGeneration {
         try! AgentFailure(
             code: "model.local.artifact-output-unsupported",
             classification: .incompatible,
-            safeMessage: "This local model adapter cannot create durable artifact output directly.",
+            safeMessage: String(localized: "This local model adapter cannot create durable artifact output directly.", bundle: .main),
             retryAdvice: .never,
             externalEffect: .confirmedNone,
             requiredUserAction: .restoreDependency,

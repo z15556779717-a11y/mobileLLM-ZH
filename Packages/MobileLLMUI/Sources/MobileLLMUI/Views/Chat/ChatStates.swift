@@ -44,10 +44,10 @@ struct NoModelState: View {
     var body: some View {
         ChatPlaceholder(
             icon: "cpu",
-            title: "No model loaded",
-            message: "mobileLLM runs entirely on your device — pick a model to download once, then chat "
-                   + "offline with nothing leaving your phone.",
-            actionTitle: "Choose a model", action: onOpenModels)
+            title: String(localized: "No model loaded", bundle: .main),
+            message: String(localized: "mobileLLM runs entirely on your device — pick a model to download once, then chat "
+                   + "offline with nothing leaving your phone.", bundle: .main),
+            actionTitle: String(localized: "Choose a model", bundle: .main), action: onOpenModels)
     }
 }
 
@@ -110,11 +110,11 @@ struct EmptyChatState: View {
                 .accessibilityLabel("Chat with \(modelName)")
                 .accessibilityHint("Choose a different model")
                 if let activeSkill {
-                    Text("\(activeSkill.emoji) \(activeSkill.name) · skill active")
+                    Text("\(activeSkill.emoji) \(activeSkill.displayName) · skill active")
                         .font(.caption.weight(.medium))
                         .foregroundStyle(Theme.accent)
                         .multilineTextAlignment(.center)
-                        .accessibilityLabel("Active skill: \(activeSkill.name)")
+                        .accessibilityLabel("Active skill: \(activeSkill.displayName)")
                 }
                 Text("Private, on-device, no account. Ask anything to get started.")
                     .font(.subheadline)

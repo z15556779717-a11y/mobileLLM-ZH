@@ -51,9 +51,9 @@ struct ConversationModeBar: View {
 
     private var approvalLabel: String {
         switch chat.effectiveApprovalMode {
-        case .ask: "Approval: Ask"
-        case .safePreset: "Approval: Safe preset"
-        case .fullAccess: "Approval: Full access"
+        case .ask: String(localized: "Approval: Ask", bundle: .main)
+        case .safePreset: String(localized: "Approval: Safe preset", bundle: .main)
+        case .fullAccess: String(localized: "Approval: Full access", bundle: .main)
         }
     }
 

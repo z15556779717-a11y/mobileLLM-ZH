@@ -1149,7 +1149,7 @@ private actor DynamicWorkflowSession {
         try AgentFailure(
             code: "workflow.child-cancelled",
             classification: .cancelled,
-            safeMessage: "A child agent was cancelled before producing a result.",
+            safeMessage: String(localized: "A child agent was cancelled before producing a result.", bundle: .main),
             retryAdvice: .never,
             externalEffect: .confirmedNone,
             requiredUserAction: .none,

@@ -94,14 +94,14 @@ struct WorkflowMessageRow: View {
             }
             return parts.joined(separator: " · ")
         case .completed:
-            return "Completed · \(record.completedPhaseCount)/\(record.totalPhaseCount) phases · "
-                + "\(record.completedSubagentCount)/\(record.totalSubagentCount) subagents · "
+            return String(localized: "Completed · \(record.completedPhaseCount)/\(record.totalPhaseCount) phases · "
+                + "\(record.completedSubagentCount)/\(record.totalSubagentCount) subagents · ", bundle: .main)
                 + Format.shortCount(record.aggregated.inputTokens + record.aggregated.outputTokens)
                 + " tokens · \(Format.shortCount(record.aggregated.toolInvocationCount)) tool calls"
         case .failed:
-            return "Failed"
+            return String(localized: "Failed", bundle: .main)
         case .cancelled:
-            return "Cancelled"
+            return String(localized: "Cancelled", bundle: .main)
         }
     }
 }
@@ -124,10 +124,10 @@ struct WorkflowSummaryPage: View {
             if workflows.isEmpty {
                 CapabilityEmptyState(
                     icon: "point.3.connected.trianglepath.dotted",
-                    title: "No workflow is running",
-                    message: "Workflow candidates and running workflows appear here with their "
+                    title: String(localized: "No workflow is running", bundle: .main),
+                    message: String(localized: "Workflow candidates and running workflows appear here with their "
                         + "source, status, activity, and controls. The Workflow menu entry enables "
-                        + "itself only while a workflow is active in this conversation."
+                        + "itself only while a workflow is active in this conversation.", bundle: .main)
                 )
             } else {
                 List {
@@ -310,12 +310,15 @@ struct WorkflowSummaryPage: View {
                 }
             }
             .accessibilityValue(
-                (["\(childCalls.count) calls"] + childCalls.map { call in
-                    let name = call.label ?? "Agent \(call.ordinal)"
+                ([String(localized: "\(childCalls.count) calls", bundle: .main)]
+                    + childCalls.map { call in
+                    let name = call.label
+                        ?? String(localized: "Agent \(call.ordinal)", bundle: .main)
                     let phase = call.phase.map { " · \($0)" } ?? ""
                     let detail = call.detail.map { " · \($0)" } ?? ""
-                    return "\(call.ordinal). \(name) · attempt \(call.attempt) · "
-                        + "\(call.status.label)\(phase)\(detail)"
+                    return String(
+                        localized: "\(call.ordinal). \(name) · attempt \(call.attempt) · \(call.status.label)\(phase)\(detail)",
+                        bundle: .main)
                 }).joined(separator: "\n")
             )
             .accessibilityIdentifier("workflow.agent.calls")
@@ -463,9 +466,8 @@ struct WorkflowPhaseRow: View {
                         .foregroundStyle(Theme.textTertiary)
                 }
             }
-            Text("\(phase.status.label) · \(phase.completedChildCount)/\(totalChildren) subagents · "
-                 + Format.shortCount(phase.stats.inputTokens + phase.stats.outputTokens)
-                 + " tokens · \(phase.stats.toolInvocationCount) tool calls")
+            let tokenText = Format.shortCount(phase.stats.inputTokens + phase.stats.outputTokens)
+            Text("\(phase.status.label) · \(phase.completedChildCount)/\(totalChildren) subagents · \(tokenText) tokens · \(phase.stats.toolInvocationCount) tool calls")
                 .font(.caption)
                 .foregroundStyle(Theme.textSecondary)
             if !phase.acceptanceCriteria.isEmpty {
@@ -510,10 +512,10 @@ struct WorkflowPhaseRow: View {
 private extension WorkflowStatus {
     var label: String {
         switch self {
-        case .running: "Running"
-        case .completed: "Completed"
-        case .failed: "Failed"
-        case .cancelled: "Cancelled"
+        case .running: String(localized: "Running", bundle: .main)
+        case .completed: String(localized: "Completed", bundle: .main)
+        case .failed: String(localized: "Failed", bundle: .main)
+        case .cancelled: String(localized: "Cancelled", bundle: .main)
         }
     }
 }
@@ -521,12 +523,12 @@ private extension WorkflowStatus {
 private extension WorkflowPhaseStatus {
     var label: String {
         switch self {
-        case .pending: "Pending"
-        case .running: "Running"
-        case .waiting: "Waiting"
-        case .completed: "Completed"
-        case .failed: "Failed"
-        case .cancelled: "Cancelled"
+        case .pending: String(localized: "Pending", bundle: .main)
+        case .running: String(localized: "Running", bundle: .main)
+        case .waiting: String(localized: "Waiting", bundle: .main)
+        case .completed: String(localized: "Completed", bundle: .main)
+        case .failed: String(localized: "Failed", bundle: .main)
+        case .cancelled: String(localized: "Cancelled", bundle: .main)
         }
     }
 
@@ -558,17 +560,17 @@ private extension DynamicWorkflowPresentationState {
 
     func displayLabel(attached: Bool) -> String {
         switch self {
-        case .generatingCandidate: "Generating candidate"
-        case .waitingForLaunchApproval: "Ready to run"
-        case .queued: "Approved — ready to start"
-        case .running: attached ? "Running" : "Interrupted — Resume to continue"
-        case .pausing: "Pausing"
-        case .paused: "Paused"
-        case .waitingForForeground: "Waiting for foreground"
-        case .waitingForReconciliation: "Needs reconciliation"
-        case .completed: "Completed"
-        case .failed: "Failed"
-        case .cancelled: "Denied or stopped"
+        case .generatingCandidate: String(localized: "Generating candidate", bundle: .main)
+        case .waitingForLaunchApproval: String(localized: "Ready to run", bundle: .main)
+        case .queued: String(localized: "Approved — ready to start", bundle: .main)
+        case .running: attached ? String(localized: "Running", bundle: .main) : String(localized: "Interrupted — Resume to continue", bundle: .main)
+        case .pausing: String(localized: "Pausing", bundle: .main)
+        case .paused: String(localized: "Paused", bundle: .main)
+        case .waitingForForeground: String(localized: "Waiting for foreground", bundle: .main)
+        case .waitingForReconciliation: String(localized: "Needs reconciliation", bundle: .main)
+        case .completed: String(localized: "Completed", bundle: .main)
+        case .failed: String(localized: "Failed", bundle: .main)
+        case .cancelled: String(localized: "Denied or stopped", bundle: .main)
         }
     }
 }
@@ -576,13 +578,13 @@ private extension DynamicWorkflowPresentationState {
 private extension DynamicWorkflowChildStatus {
     var label: String {
         switch self {
-        case .prepared: "Prepared"
-        case .submitted: "Running"
-        case .completed: "Completed"
-        case .failed: "Failed"
-        case .unavailable: "Unavailable"
-        case .stopped: "Stopped"
-        case .uncertain: "Needs reconciliation"
+        case .prepared: String(localized: "Prepared", bundle: .main)
+        case .submitted: String(localized: "Running", bundle: .main)
+        case .completed: String(localized: "Completed", bundle: .main)
+        case .failed: String(localized: "Failed", bundle: .main)
+        case .unavailable: String(localized: "Unavailable", bundle: .main)
+        case .stopped: String(localized: "Stopped", bundle: .main)
+        case .uncertain: String(localized: "Needs reconciliation", bundle: .main)
         }
     }
 

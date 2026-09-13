@@ -36,9 +36,9 @@ struct FilesPage: View {
     var body: some View {
         CapabilityEmptyState(
             icon: "folder",
-            title: "Files",
-            message: "File access is not enabled yet. When the sandbox runtime lands, this page will "
-                + "browse the conversation's workspace and artifacts."
+            title: String(localized: "Files", bundle: .main),
+            message: String(localized: "File access is not enabled yet. When the sandbox runtime lands, this page will "
+                + "browse the conversation's workspace and artifacts.", bundle: .main)
         )
         .navigationTitle("Files")
     }
@@ -49,9 +49,9 @@ struct TerminalPage: View {
     var body: some View {
         CapabilityEmptyState(
             icon: "terminal",
-            title: "Terminal",
-            message: "The shell terminal is not enabled yet. When the sandbox runtime lands, this page "
-                + "will run commands inside the conversation's sandbox."
+            title: String(localized: "Terminal", bundle: .main),
+            message: String(localized: "The shell terminal is not enabled yet. When the sandbox runtime lands, this page "
+                + "will run commands inside the conversation's sandbox.", bundle: .main)
         )
         .navigationTitle("Terminal")
     }
@@ -82,8 +82,8 @@ struct BackgroundTasksPage: View {
             if liveRuns.isEmpty, resumableRuns.isEmpty, store?.recoverableRuns.isEmpty ?? true {
                 CapabilityEmptyState(
                     icon: "timer",
-                    title: "No background tasks",
-                    message: "Active, waiting, paused, and recoverable agent runs appear here."
+                    title: String(localized: "No background tasks", bundle: .main),
+                    message: String(localized: "Active, waiting, paused, and recoverable agent runs appear here.", bundle: .main)
                 )
             } else {
                 List {
@@ -166,7 +166,7 @@ struct BackgroundTasksPage: View {
     }
 
     private func title(for conversationID: UUID) -> String {
-        chat.conversations.first(where: { $0.id == conversationID })?.title ?? "Conversation"
+        chat.conversations.first(where: { $0.id == conversationID })?.title ?? String(localized: "Conversation", bundle: .main)
     }
 }
 
@@ -293,7 +293,9 @@ struct ProjectTagsSheet: View {
                 VStack(alignment: .leading, spacing: 1) {
                     Text(tag)
                         .foregroundStyle(Theme.textPrimary)
-                    Text("\(chat.projectTagCount(tag)) chat\(chat.projectTagCount(tag) == 1 ? "" : "s")")
+                    Text(chat.projectTagCount(tag) == 1
+                        ? "\(chat.projectTagCount(tag)) chat"
+                        : "\(chat.projectTagCount(tag)) chats")
                         .font(.caption2)
                         .foregroundStyle(Theme.textTertiary)
                 }
@@ -327,23 +329,23 @@ struct ProjectTagsSheet: View {
 
 private extension AgentRunPresentation {
     var stateLabel: String {
-        state?.stateLabel ?? "In progress"
+        state?.stateLabel ?? String(localized: "In progress", bundle: .main)
     }
 }
 
 private extension AgentRunState {
     var stateLabel: String {
         switch self {
-        case .waitingForApproval: "Waiting for approval"
-        case .waitingForUser: "Waiting for your answer"
-        case .waitingForReconciliation: "Needs review"
-        case .paused: "Paused"
-        case .waitingForForeground: "Backgrounded"
-        case .generating, .synthesizing, .executingTools: "Working…"
-        case .completed: "Completed"
-        case .failed: "Failed"
-        case .cancelled: "Stopped"
-        default: "In progress"
+        case .waitingForApproval: String(localized: "Waiting for approval", bundle: .main)
+        case .waitingForUser: String(localized: "Waiting for your answer", bundle: .main)
+        case .waitingForReconciliation: String(localized: "Needs review", bundle: .main)
+        case .paused: String(localized: "Paused", bundle: .main)
+        case .waitingForForeground: String(localized: "Backgrounded", bundle: .main)
+        case .generating, .synthesizing, .executingTools: String(localized: "Working…", bundle: .main)
+        case .completed: String(localized: "Completed", bundle: .main)
+        case .failed: String(localized: "Failed", bundle: .main)
+        case .cancelled: String(localized: "Stopped", bundle: .main)
+        default: String(localized: "In progress", bundle: .main)
         }
     }
 }

@@ -39,9 +39,9 @@ struct ModelSwitcherSheet: View {
             Group {
                 if onlineServices.isEmpty && installed.isEmpty {
                     ChatPlaceholder(icon: "square.and.arrow.down",
-                                    title: "No models installed",
-                                    message: "Download a model to start chatting on-device.",
-                                    actionTitle: "Open Models", action: { dismiss(); onOpenModels() })
+                                    title: String(localized: "No models installed", bundle: .main),
+                                    message: String(localized: "Download a model to start chatting on-device.", bundle: .main),
+                                    actionTitle: String(localized: "Open Models", bundle: .main), action: { dismiss(); onOpenModels() })
                 } else {
                     List {
                         if !onlineServices.isEmpty {

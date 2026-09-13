@@ -139,7 +139,7 @@ struct SkillImportView: View {
         if let parsed = await SkillIO.fetchFirstParseable(from: urlText) {
             preview = parsed
         } else {
-            error = "Couldn't find a readable SKILL.md there. Try the direct link to the file."
+            error = String(localized: "Couldn't find a readable SKILL.md there. Try the direct link to the file.", bundle: .main)
         }
     }
 
@@ -147,8 +147,8 @@ struct SkillImportView: View {
         error = nil
         preview = SkillIO.parse(markdown: text)
         if preview == nil {
-            error = "That doesn't parse as SKILL.md — it needs `---` frontmatter with a name, then the "
-                  + "instructions."
+            error = String(localized: "That doesn't parse as SKILL.md — it needs `---` frontmatter with a name, then the "
+                  + "instructions.", bundle: .main)
         }
     }
 
@@ -157,7 +157,7 @@ struct SkillImportView: View {
         Task {
             do {
                 _ = try await store.create(name: p.name, emoji: "📦",
-                                           summary: p.summary.isEmpty ? "Imported skill" : p.summary,
+                                           summary: p.summary.isEmpty ? String(localized: "Imported skill", bundle: .main) : p.summary,
                                            instructions: p.instructions)
                 dismiss()
             } catch {

@@ -230,7 +230,7 @@ public final class MCPToolV2Adapter: ToolV2, @unchecked Sendable {
         try AgentFailure(
             code: "tool.mcp.transport-uncertain",
             classification: .potentiallySideEffecting,
-            safeMessage: "The MCP server did not confirm the tool call; the result is uncertain.",
+            safeMessage: String(localized: "The MCP server did not confirm the tool call; the result is uncertain.", bundle: .main),
             retryAdvice: .never,
             externalEffect: .uncertain,
             requiredUserAction: .reconcile,
@@ -242,7 +242,7 @@ public final class MCPToolV2Adapter: ToolV2, @unchecked Sendable {
         try AgentFailure(
             code: "tool.mcp.cancelled",
             classification: .cancelled,
-            safeMessage: "The MCP tool stopped before producing a result.",
+            safeMessage: String(localized: "The MCP tool stopped before producing a result.", bundle: .main),
             retryAdvice: .never,
             externalEffect: .confirmedNone,
             requiredUserAction: .none,

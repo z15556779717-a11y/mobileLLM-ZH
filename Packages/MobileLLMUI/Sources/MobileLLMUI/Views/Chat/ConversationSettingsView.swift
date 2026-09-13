@@ -97,11 +97,11 @@ struct ConversationSettingsView: View {
         VStack(alignment: .leading, spacing: Theme.Space.md) {
             sectionTitle("Approval")
             approvalOption("Ask", mode: .ask,
-                           detail: "Approve per policy: external reads and online inference on first use")
+                           detail: String(localized: "Approve per policy: external reads and online inference on first use", bundle: .main))
             approvalOption("Safe preset", mode: .safePreset,
-                           detail: "Auto-approve in-app/reads and online model; ask for writes and dangerous actions")
+                           detail: String(localized: "Auto-approve in-app/reads and online model; ask for writes and dangerous actions", bundle: .main))
             approvalOption("Full access", mode: .fullAccess,
-                           detail: "Auto-approve everything inside the run ceiling")
+                           detail: String(localized: "Auto-approve everything inside the run ceiling", bundle: .main))
             if chat.conversationApprovalMode != nil {
                 Divider()
                 Button(role: .destructive) {
@@ -217,9 +217,9 @@ struct ConversationSettingsView: View {
 
     private var contextFootnote: String {
         if chat.isOnlineActive {
-            return "Online services use the setting up to the service window; device RAM doesn't bind it."
+            return String(localized: "Online services use the setting up to the service window; device RAM doesn't bind it.", bundle: .main)
         }
-        return "Local models are clamped by their native context and device memory."
+        return String(localized: "Local models are clamped by their native context and device memory.", bundle: .main)
     }
 
     // MARK: Sampling
@@ -242,12 +242,12 @@ struct ConversationSettingsView: View {
                             ? [0, 512, 1_024, 2_048, 4_096, 8_192, 16_384]
                             : [512, 1_024, 2_048, 4_096],
                         defaultLabel: chat.isOnlineActive
-                            ? (settings.onlineMaxTokens == 0 ? "Auto" : "\(settings.onlineMaxTokens)")
+                            ? (settings.onlineMaxTokens == 0 ? String(localized: "Auto", bundle: .main) : String(localized: "\(settings.onlineMaxTokens)", bundle: .main))
                             : "\(settings.maxTokens)",
                         selected: { chat.conversationSamplingOverride?.maxTokens.map(Double.init) },
                         set: { chat.setConversationMaxTokens($0.map(Int.init)) },
                         label: {
-                            chat.isOnlineActive && $0 == 0 ? "Auto (model max)" : "\(Int($0))"
+                            chat.isOnlineActive && $0 == 0 ? String(localized: "Auto (model max)", bundle: .main) : "\(Int($0))"
                         })
             if chat.isOnlineActive {
                 Text("Auto lets the online service use the model's own output maximum; explicit values clamp to the service window.")
@@ -303,8 +303,8 @@ struct ConversationSettingsView: View {
     private var futureSection: some View {
         VStack(alignment: .leading, spacing: Theme.Space.md) {
             sectionTitle("Workspace")
-            futureRow("Files", systemImage: "folder", detail: "Folder browsing and file reading — coming soon")
-            futureRow("Terminal", systemImage: "terminal", detail: "Shell terminal window — coming soon")
+            futureRow("Files", systemImage: "folder", detail: String(localized: "Folder browsing and file reading — coming soon", bundle: .main))
+            futureRow("Terminal", systemImage: "terminal", detail: String(localized: "Shell terminal window — coming soon", bundle: .main))
         }
         .padding(Theme.Space.md)
         .studioCard()

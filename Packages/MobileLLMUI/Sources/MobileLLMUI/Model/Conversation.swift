@@ -188,7 +188,7 @@ public struct Conversation: Identifiable, Codable, Sendable, Equatable {
     /// number of tags, and tags are shared across conversations. Optional → old records decode as nil.
     public var projectTags: [String]?
 
-    public init(id: UUID = UUID(), title: String = "New Chat", createdAt: Date = Date(),
+    public init(id: UUID = UUID(), title: String = String(localized: "New Chat", bundle: .main), createdAt: Date = Date(),
                 updatedAt: Date = Date(), systemPromptID: String? = nil, modelID: String,
                 variantID: String, messages: [Message] = [], pinned: Bool = false,
                 skillID: UUID? = nil, toolPolicy: ConversationToolPolicy? = nil,
@@ -224,7 +224,7 @@ public struct Conversation: Identifiable, Codable, Sendable, Equatable {
         for message in messages.reversed() where message.role != .system && !message.answer.isEmpty {
             return message.answer
         }
-        return "No messages yet"
+        return String(localized: "No messages yet", bundle: .main)
     }
 
     /// The index projection used for cheap list rendering + persistence consistency.

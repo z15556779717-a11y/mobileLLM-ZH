@@ -98,8 +98,8 @@ public enum ThinkingDisplayMode: String, CaseIterable, Codable, Sendable {
     public var label: String {
         switch self {
         case .autoCollapse: "Auto-collapse"
-        case .alwaysExpand: "Always show"
-        case .hidden: "Hidden"
+        case .alwaysExpand: String(localized: "Always show", bundle: .main)
+        case .hidden: String(localized: "Hidden", bundle: .main)
         }
     }
 }
@@ -109,9 +109,9 @@ public enum AppearanceMode: String, CaseIterable, Codable, Sendable {
     case system, light, dark
     public var label: String {
         switch self {
-        case .system: "System"
-        case .light: "Light"
-        case .dark: "Dark"
+        case .system: String(localized: "System", bundle: .main)
+        case .light: String(localized: "Light", bundle: .main)
+        case .dark: String(localized: "Dark", bundle: .main)
         }
     }
 }
@@ -123,7 +123,7 @@ public enum AppSection: String, CaseIterable, Identifiable, Sendable {
     case chat, models, settings
     public var id: String { rawValue }
     public var title: String {
-        switch self { case .chat: "Chat"; case .models: "Models"; case .settings: "Settings" }
+        switch self { case .chat: String(localized: "Chat", bundle: .main); case .models: String(localized: "Models", bundle: .main); case .settings: String(localized: "Settings", bundle: .main) }
     }
     public var icon: String {
         switch self {

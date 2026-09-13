@@ -71,7 +71,7 @@ struct MemoryView: View {
                     }
                 }
             } header: {
-                sectionHeader(book.isEmpty ? "Saved" : "\(book.count) saved")
+                sectionHeader(book.isEmpty ? String(localized: "Saved", bundle: .main) : String(localized: "\(book.count) saved", bundle: .main))
             }
 
             if !book.isEmpty {
@@ -175,8 +175,8 @@ struct MemoryView: View {
     /// "Saved by mobileLLM · 2h" / "Added by you · Yesterday" — who wrote a note is what tells you whether
     /// to trust it, and when tells you whether it's still true.
     static func provenance(_ fact: MemoryFact, now: Date = Date()) -> String {
-        let who = fact.source == .user ? "Added by you" : "Saved by mobileLLM"
-        return "\(who) · \(Format.relative(fact.createdAt, now: now))"
+        let who = fact.source == .user ? String(localized: "Added by you", bundle: .main) : String(localized: "Saved by mobileLLM", bundle: .main)
+        return String(localized: "\(who) · \(Format.relative(fact.createdAt, now: now))", bundle: .main)
     }
 
     private func sectionHeader(_ title: String) -> some View {
@@ -192,11 +192,13 @@ extension MemoryView {
     /// whether the model is allowed to use them at all, since a count alone would imply it is.
     @MainActor static func summary(book: MemoryBook, settings: AppSettings) -> String {
         let count = book.count
-        guard settings.memoryEnabled else { return count > 0 ? "Off · \(count) saved" : "Off" }
-        guard count > 0 else { return "Nothing saved yet" }
-        var text = "\(count) memor\(count == 1 ? "y" : "ies")"
+        guard settings.memoryEnabled else { return count > 0 ? String(localized: "Off · \(count) saved", bundle: .main) : String(localized: "Off", bundle: .main) }
+        guard count > 0 else { return String(localized: "Nothing saved yet", bundle: .main) }
+        var text = count == 1
+            ? String(localized: "\(count) memory", bundle: .main)
+            : String(localized: "\(count) memories", bundle: .main)
         let mine = book.userAuthoredCount
-        if mine > 0 { text += " · \(mine) added by you" }
+        if mine > 0 { text += String(localized: " · \(mine) added by you", bundle: .main) }
         return text
     }
 }

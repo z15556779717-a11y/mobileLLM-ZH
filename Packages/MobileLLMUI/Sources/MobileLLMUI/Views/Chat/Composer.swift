@@ -222,8 +222,8 @@ struct Composer: View {
     private var placeholder: String {
         let name = chat.onlineModelID.map(OnlineModelIdentity.displayLabel)
             ?? chat.activeModel?.model.displayName
-            ?? "the model"
-        return "Message \(name)…"
+            ?? String(localized: "the model", bundle: .main)
+        return String(localized: "Message \(name)…", bundle: .main)
     }
 
     // MARK: Dictation
@@ -411,8 +411,8 @@ struct Composer: View {
                                      chat.toolsEnabled = newValue
                                      chat.applyCurrentToolSelectionToActiveConversation()
                                      chat.showToast(Toast(newValue
-                                         ? "Selected tools are now available to the model."
-                                         : "Tools off.", autoDismiss: 3))
+                                         ? String(localized: "Selected tools are now available to the model.", bundle: .main)
+                                         : String(localized: "Tools off.", bundle: .main), autoDismiss: 3))
                                  })) {
                 Label("Allow selected tools", systemImage: "hammer")
             }
@@ -511,9 +511,9 @@ struct Composer: View {
             ForEach(chat.availableSkills) { skill in
                 Button { chat.setActiveSkill(skill.id) } label: {
                     if chat.activeSkill?.id == skill.id {
-                        Label("\(skill.emoji)  \(skill.name)", systemImage: "checkmark")
+                        Label("\(skill.emoji)  \(skill.displayName)", systemImage: "checkmark")
                     } else {
-                        Text("\(skill.emoji)  \(skill.name)")
+                        Text("\(skill.emoji)  \(skill.displayName)")
                     }
                 }
             }
@@ -533,7 +533,7 @@ struct Composer: View {
         HStack(spacing: 0) {
             HStack(spacing: Theme.Space.xs) {
                 Text(skill.emoji).font(.caption).accessibilityHidden(true)
-                Text(skill.name)
+                Text(skill.displayName)
                     .font(.caption.weight(.medium)).foregroundStyle(Theme.accent)
                     .lineLimit(1)
                 Button { chat.setActiveSkill(nil) } label: {
@@ -553,7 +553,7 @@ struct Composer: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .accessibilityElement(children: .combine)
-        .accessibilityLabel("Active skill: \(skill.name)")
+        .accessibilityLabel("Active skill: \(skill.displayName)")
     }
 
     // MARK: Send / Stop

@@ -461,7 +461,7 @@ public final class AppContainer {
         switch error {
         case .notInstalled, .noSelection:
             // There is something to do about both: get the weights, or pick a model that has them.
-            chat.showToast(Toast(error.message, kind: .error, actionTitle: "Open Models", autoDismiss: nil),
+            chat.showToast(Toast(error.message, kind: .error, actionTitle: String(localized: "Open Models", bundle: .main), autoDismiss: nil),
                            action: { [weak self] in self?.navigationRequest = .models })
         case .engineUnavailable:
             // Environment limit (MLX in the simulator) — nothing to retry; say it and stop.

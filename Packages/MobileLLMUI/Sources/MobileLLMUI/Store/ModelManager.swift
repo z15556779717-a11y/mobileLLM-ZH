@@ -22,11 +22,11 @@ public enum ModelActivationError: Error, Equatable {
     public var message: String {
         switch self {
         case .notInstalled:
-            "Download this model before switching to it."
+            String(localized: "Download this model before switching to it.", bundle: .main)
         case let .engineUnavailable(engine, reason):
-            "\(engine) can't run here — \(reason)."
+            String(localized: "\(engine) can't run here — \(reason).", bundle: .main)
         case .noSelection:
-            "Choose a model before generating."
+            String(localized: "Choose a model before generating.", bundle: .main)
         }
     }
 
@@ -34,7 +34,7 @@ public enum ModelActivationError: Error, Equatable {
         switch self {
         case .notInstalled: nil
         case .engineUnavailable: nil
-        case .noSelection: "Choose model"
+        case .noSelection: String(localized: "Choose model", bundle: .main)
         }
     }
 }
@@ -765,7 +765,7 @@ public final class ModelManager {
             var progress = downloads[variantID] ?? VariantDownload()
             progress.isPaused = false
             progress.isPausing = false
-            progress.error = "Another download is already writing these model files. Try again when it finishes."
+            progress.error = String(localized: "Another download is already writing these model files. Try again when it finishes.", bundle: .main)
             downloads[variantID] = progress
             return
         }

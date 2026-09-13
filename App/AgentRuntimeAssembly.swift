@@ -296,17 +296,17 @@ enum AppDynamicWorkflowIntegrationError: Error, LocalizedError, Sendable {
     var errorDescription: String? {
         switch self {
         case .parentRunUnavailable:
-            "The workflow's initiating agent run is unavailable."
+            String(localized: "The workflow's initiating agent run is unavailable.", bundle: .main)
         case .parentBindingMismatch:
-            "The workflow launch no longer matches its frozen initiating run."
+            String(localized: "The workflow launch no longer matches its frozen initiating run.", bundle: .main)
         case .delegationNotAuthorized:
-            "The initiating run did not reserve workflow delegation authority."
+            String(localized: "The initiating run did not reserve workflow delegation authority.", bundle: .main)
         case .frozenInputUnavailable:
-            "The workflow's frozen agent input could not be recovered."
+            String(localized: "The workflow's frozen agent input could not be recovered.", bundle: .main)
         case .requestedModelUnavailable(let value):
-            "The workflow requested a model outside its frozen policy: \(value)."
+            String(localized: "The workflow requested a model outside its frozen policy: \(value).", bundle: .main)
         case .childBudgetCannotAttenuate:
-            "The workflow parent budget cannot be safely attenuated for a child."
+            String(localized: "The workflow parent budget cannot be safely attenuated for a child.", bundle: .main)
         }
     }
 }

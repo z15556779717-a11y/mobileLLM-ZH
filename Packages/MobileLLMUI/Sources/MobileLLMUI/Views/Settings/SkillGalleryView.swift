@@ -145,9 +145,9 @@ struct SkillGalleryView: View {
 
     @ViewBuilder private func trailing(_ item: SkillGallery.GalleryItem) -> some View {
         if item.isInstalled(in: store) {
-            Chip(text: "Installed", filled: true, size: .small)
+            Chip(text: String(localized: "Installed", bundle: .main), filled: true, size: .small)
         } else if !item.isInstallable {
-            Chip(text: "On GitHub", size: .small)
+            Chip(text: String(localized: "On GitHub", bundle: .main), size: .small)
         } else {
             Image(systemName: "chevron.right").font(.caption).foregroundStyle(Theme.textTertiary)
         }
@@ -165,8 +165,8 @@ struct SkillGalleryView: View {
     }
 
     private func subtitle(_ item: SkillGallery.GalleryItem) -> String {
-        if let p = item.parsed { return p.summary.isEmpty ? "Community skill" : p.summary }
-        return "No importable SKILL.md — open on GitHub to view."
+        if let p = item.parsed { return p.summary.isEmpty ? String(localized: "Community skill", bundle: .main) : p.summary }
+        return String(localized: "No importable SKILL.md — open on GitHub to view.", bundle: .main)
     }
 
     // MARK: Footer
@@ -280,7 +280,7 @@ struct SkillGalleryView: View {
         Task {
             do {
                 _ = try await store.create(name: p.name, emoji: item.emoji,
-                                           summary: p.summary.isEmpty ? "Imported skill" : p.summary,
+                                           summary: p.summary.isEmpty ? String(localized: "Imported skill", bundle: .main) : p.summary,
                                            instructions: p.instructions)
                 selected = nil
             } catch {

@@ -267,7 +267,7 @@ extension AgentRunController {
         let marker = try AgentFailure(
             code: "execution.explicit-recovery-resumed",
             classification: .transient,
-            safeMessage: "The user explicitly resumed this durable recovery checkpoint.",
+            safeMessage: String(localized: "The user explicitly resumed this durable recovery checkpoint.", bundle: .main),
             retryAdvice: .never,
             externalEffect: .confirmedNone,
             requiredUserAction: .none,
@@ -469,7 +469,7 @@ extension AgentRunController {
             try AgentFailure(
                 code: "execution.tool-retry-exhausted",
                 classification: .permanent,
-                safeMessage: "The interrupted read cannot be retried within its frozen policy.",
+                safeMessage: String(localized: "The interrupted read cannot be retried within its frozen policy.", bundle: .main),
                 retryAdvice: .never,
                 externalEffect: .confirmedNone,
                 requiredUserAction: .none,
@@ -794,7 +794,7 @@ extension AgentRunController {
                     ? "execution.legacy-boundary-claim-uncertain"
                     : "execution.tool-attempt-interrupted-uncertain",
                 classification: .potentiallySideEffecting,
-                safeMessage: "The interrupted external operation has no stable outcome.",
+                safeMessage: String(localized: "The interrupted external operation has no stable outcome.", bundle: .main),
                 retryAdvice: .never,
                 externalEffect: .uncertain,
                 requiredUserAction: .reconcile,
@@ -808,7 +808,7 @@ extension AgentRunController {
             try AgentFailure(
                 code: "execution.tool-attempt-interrupted",
                 classification: .cancelled,
-                safeMessage: "The tool attempt stopped at a confirmed safe boundary.",
+                safeMessage: String(localized: "The tool attempt stopped at a confirmed safe boundary.", bundle: .main),
                 retryAdvice: .never,
                 externalEffect: .confirmedNone,
                 requiredUserAction: .none,
@@ -962,8 +962,8 @@ extension AgentRunController {
                     : "execution.model-approval-cancelled",
                 classification: .permissionRelated,
                 safeMessage: decision == .denied
-                    ? "The online model request was denied."
-                    : "The online model request was cancelled.",
+                    ? String(localized: "The online model request was denied.", bundle: .main)
+                    : String(localized: "The online model request was cancelled.", bundle: .main),
                 retryAdvice: .never,
                 externalEffect: .confirmedNone,
                 requiredUserAction: .none,
@@ -1038,8 +1038,8 @@ extension AgentRunController {
                     : "execution.tool-approval-cancelled",
                 classification: .permissionRelated,
                 safeMessage: decision == .denied
-                    ? "The user denied the requested tool operation."
-                    : "The user cancelled the requested tool operation.",
+                    ? String(localized: "The user denied the requested tool operation.", bundle: .main)
+                    : String(localized: "The user cancelled the requested tool operation.", bundle: .main),
                 retryAdvice: .never,
                 externalEffect: .confirmedNone,
                 requiredUserAction: .none,
@@ -1191,8 +1191,8 @@ extension AgentRunController {
                 : "execution.reconciled-failed",
             classification: .permanent,
             safeMessage: decision == .succeeded
-                ? "The external operation was confirmed successful."
-                : "The external operation was confirmed not to have succeeded.",
+                ? String(localized: "The external operation was confirmed successful.", bundle: .main)
+                : String(localized: "The external operation was confirmed not to have succeeded.", bundle: .main),
             retryAdvice: .never,
             externalEffect: decision == .succeeded ? .confirmedApplied : .confirmedNone,
             requiredUserAction: .none,

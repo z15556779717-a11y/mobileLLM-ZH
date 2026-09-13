@@ -143,6 +143,6 @@ extension ChatStore {
     static func autoTitle(from text: String) -> String {
         let firstLine = text.split(whereSeparator: \.isNewline).first.map(String.init) ?? text
         let trimmed = firstLine.trimmingCharacters(in: .whitespaces)
-        return trimmed.count > 48 ? String(trimmed.prefix(48)) + "…" : (trimmed.isEmpty ? "New Chat" : trimmed)
+        return trimmed.count > 48 ? String(trimmed.prefix(48)) + "…" : (trimmed.isEmpty ? String(localized: "New Chat", bundle: .main) : trimmed)
     }
 }

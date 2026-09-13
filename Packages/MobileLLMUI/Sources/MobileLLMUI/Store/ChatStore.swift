@@ -485,7 +485,7 @@ public final class ChatStore {
     /// Human-facing label for the sampling row: "Auto" when the online service picks its own max,
     /// otherwise the concrete token count.
     public var conversationOutputBudgetLabel: String {
-        isOnlineActive && isOnlineOutputBudgetAuto ? "Auto" : "\(conversationMaxTokens)"
+        isOnlineActive && isOnlineOutputBudgetAuto ? String(localized: "Auto", bundle: .main) : "\(conversationMaxTokens)"
     }
 
     /// Set one per-conversation sampling field; nil restores "follow the global setting".
@@ -541,7 +541,7 @@ public final class ChatStore {
         if let service = settings.onlineActiveService {
             return OnlineModelIdentity.displayLabel(service.name)
         }
-        return activeModel?.subtitle ?? "No model"
+        return activeModel?.subtitle ?? String(localized: "No model", bundle: .main)
     }
 
     /// The durable generation identity for the current selection: online when active, else the local
@@ -947,7 +947,7 @@ public final class ChatStore {
             restoreConversationModelIfNeeded()
         }
         // Optimistic: offer Undo instantly. The disk write + failure-rollback happen behind it.
-        showToast(Toast("Conversation deleted", actionTitle: "Undo", autoDismiss: Self.undoWindow),
+        showToast(Toast("Conversation deleted", actionTitle: String(localized: "Undo", bundle: .main), autoDismiss: Self.undoWindow),
                   action: { [weak self] in self?.restore(removed) })
         let epoch = persistenceEpoch
         Task { @MainActor [weak self] in
@@ -1202,7 +1202,7 @@ public final class ChatStore {
                         conversationID: conversationID,
                         assistantMessageID: assistant.id,
                         failed: true,
-                        errorMessage: "The model could not be loaded."
+                        errorMessage: String(localized: "The model could not be loaded.", bundle: .main)
                     )
                     return
                 }
@@ -1213,7 +1213,7 @@ public final class ChatStore {
                     conversationID: conversationID,
                     assistantMessageID: assistant.id,
                     failed: true,
-                    errorMessage: "The run was cancelled before it started."
+                    errorMessage: String(localized: "The run was cancelled before it started.", bundle: .main)
                 )
             } catch {
                 self?.agentLastSendError = "\(error)"
@@ -1592,7 +1592,7 @@ public final class ChatStore {
         let turnMemoryEnabled = turnToolConfig.enabled.contains(.recall)
 
         if toolsOn, !turnMCPServers.isEmpty {
-            state.warmingNote = "Connecting tools…"
+            state.warmingNote = String(localized: "Connecting tools…", bundle: .main)
         }
         // A turn carrying an image makes the engine bring the vision encoder up — ~940 MB and a few
         // seconds for the FIRST image of a session (it's resident afterwards, so later ones only pay to
@@ -1600,7 +1600,7 @@ public final class ChatStore {
         // hang. The note clears the moment tokens start.
         if convo.messages.last(where: { $0.role == .user })?.attachments?.isEmpty == false,
            activeModel?.variant.supportsVisionInput == true {
-            state.warmingNote = "Reading image…"
+            state.warmingNote = String(localized: "Reading image…", bundle: .main)
         }
         streaming = state
         streamingMessageID = assistantID
@@ -1909,7 +1909,7 @@ public final class ChatStore {
         streaming?.answer = ""
         streaming?.stats = nil
         streaming?.phase = .warming
-        streaming?.warmingNote = "Finishing answer…"
+        streaming?.warmingNote = String(localized: "Finishing answer…", bundle: .main)
     }
 
     /// Close the active reasoning segment and add it to the turn's accumulated reasoning-only duration.
@@ -2181,7 +2181,7 @@ public final class ChatStore {
     private func surfacePersistFailure() {
         if let id = persistFailureBannerID, banner?.id == id { return }
         let toast = Toast("Couldn't save changes — the device may be out of storage.",
-                          kind: .error, actionTitle: "Retry", autoDismiss: nil)
+                          kind: .error, actionTitle: String(localized: "Retry", bundle: .main), autoDismiss: nil)
         persistFailureBannerID = toast.id
         showToast(toast, action: { [weak self] in self?.retryPersist() })
     }

@@ -156,7 +156,7 @@ public struct LegacyLocalToolAdapter: ToolV2, Sendable {
         try AgentFailure(
             code: "tool.cancelled",
             classification: .cancelled,
-            safeMessage: "The local tool stopped before producing a result.",
+            safeMessage: String(localized: "The local tool stopped before producing a result.", bundle: .main),
             retryAdvice: .never,
             externalEffect: .confirmedNone,
             requiredUserAction: .none,

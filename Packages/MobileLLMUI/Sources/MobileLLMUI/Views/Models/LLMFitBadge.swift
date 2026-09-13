@@ -20,10 +20,10 @@ struct LLMFitBadge: View {
 
     private var text: String {
         switch presentation {
-        case .comfortable: "Runs great"
-        case let .tight(maxContext): "Tight · up to \(Format.shortCount(maxContext)) ctx"
-        case .experimental: "Experimental · may be interrupted"
-        case .unsupported: "High memory · may fail"
+        case .comfortable: String(localized: "Runs great", bundle: .main)
+        case let .tight(maxContext): String(localized: "Tight · up to \(Format.shortCount(maxContext)) ctx", bundle: .main)
+        case .experimental: String(localized: "Experimental · may be interrupted", bundle: .main)
+        case .unsupported: String(localized: "High memory · may fail", bundle: .main)
         }
     }
 

@@ -110,7 +110,7 @@ struct SkillsView: View {
             }
             Button("Cancel", role: .cancel) { pendingDelete = nil }
         } message: { skill in
-            Text("“\(skill.name)” will be removed. Conversations using it fall back to your normal prompt. "
+            Text("“\(skill.displayName)” will be removed. Conversations using it fall back to your normal prompt. "
                  + "This can't be undone.")
         }
         .alert("Skill wasn't changed",
@@ -129,9 +129,9 @@ struct SkillsView: View {
                     .frame(width: 30)
                     .accessibilityHidden(true)
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(skill.name).font(.subheadline.weight(.medium)).foregroundStyle(Theme.textPrimary)
+                    Text(skill.displayName).font(.subheadline.weight(.medium)).foregroundStyle(Theme.textPrimary)
                         .lineLimit(1)
-                    Text(skill.summary).font(.caption).foregroundStyle(Theme.textTertiary)
+                    Text(skill.displaySummary).font(.caption).foregroundStyle(Theme.textTertiary)
                         .lineLimit(2).fixedSize(horizontal: false, vertical: true)
                 }
                 Spacer(minLength: Theme.Space.sm)
@@ -142,8 +142,8 @@ struct SkillsView: View {
         }
         .buttonStyle(.plain)
         .listRowBackground(Theme.surface)
-        .accessibilityLabel(skill.name)
-        .accessibilityValue(skill.summary)
+        .accessibilityLabel(skill.displayName)
+        .accessibilityValue(skill.displaySummary)
         .accessibilityHint(skill.isBuiltIn ? "Built-in skill, opens read-only" : "Edit skill")
     }
 
@@ -160,8 +160,10 @@ extension SkillsView {
     static func summary(for store: SkillStore) -> String {
         let total = store.skills.count
         let custom = store.customSkills.count
-        var text = "\(total) skill\(total == 1 ? "" : "s")"
-        if custom > 0 { text += " · \(custom) custom" }
+        var text = total == 1
+            ? String(localized: "\(total) skill", bundle: .main)
+            : String(localized: "\(total) skills", bundle: .main)
+        if custom > 0 { text += String(localized: " · \(custom) custom", bundle: .main) }
         return text
     }
 }
@@ -200,12 +202,12 @@ struct SkillEditorView: View {
     @State private var isSaving = false
 
     /// A gentle starting skeleton for a brand-new skill — usable as-is, meant to be replaced.
-    private static let template = """
+    private static let template = String(localized: """
     Act as a <role>.
     - <the first rule the model should follow>
     - <the second rule>
     Keep answers <length / tone>.
-    """
+    """, bundle: .main)
 
     init(store: SkillStore, target: SkillEditorTarget) {
         self.store = store
@@ -245,7 +247,7 @@ struct SkillEditorView: View {
                     }
                     identityRow
                     labeledField("Summary", text: $summary,
-                                 placeholder: "One line on when to use it")
+                                 placeholder: String(localized: "One line on when to use it", bundle: .main))
                     instructionsField
                     if let skill = editingSkill {
                         Button(role: .destructive) { confirmDelete = true } label: {
@@ -271,7 +273,7 @@ struct SkillEditorView: View {
                             }
                             Button("Cancel", role: .cancel) {}
                         } message: {
-                            Text("“\(skill.name)” will be removed. This can't be undone.")
+                            Text("“\(skill.displayName)” will be removed. This can't be undone.")
                         }
                     }
                 }
@@ -318,7 +320,7 @@ struct SkillEditorView: View {
 
     private var navigationTitle: String {
         if isReadOnly { return name }
-        return isNew ? "New skill" : "Edit skill"
+        return isNew ? String(localized: "New skill", bundle: .main) : String(localized: "Edit skill", bundle: .main)
     }
 
     private var viewedSkill: Skill {

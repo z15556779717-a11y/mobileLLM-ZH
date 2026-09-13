@@ -31,9 +31,9 @@ struct ConversationListView: View {
         Group {
             if chat.conversations.isEmpty {
                 ChatPlaceholder(icon: "bubble.left.and.text.bubble.right",
-                                title: "No conversations yet",
-                                message: "Start a new chat — everything stays on your device.",
-                                actionTitle: "New chat", action: { startNew() })
+                                title: String(localized: "No conversations yet", bundle: .main),
+                                message: String(localized: "Start a new chat — everything stays on your device.", bundle: .main),
+                                actionTitle: String(localized: "New chat", bundle: .main), action: { startNew() })
             } else {
                 VStack(spacing: 0) {
                     searchField
@@ -83,7 +83,7 @@ struct ConversationListView: View {
     private var projectChips: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: Theme.Space.xs) {
-                chip(title: "All", tag: nil)
+                chip(title: String(localized: "All", bundle: .main), tag: nil)
                 ForEach(chat.allProjectTags, id: \.self) { tag in
                     chip(title: tag, tag: tag)
                 }
@@ -119,7 +119,7 @@ struct ConversationListView: View {
                         row(convo)
                     }
                 } header: {
-                    Text(group.rawValue)
+                    Text(group.label)
                         .font(.caption2.weight(.semibold))
                         .foregroundStyle(Theme.textTertiary)
                 }

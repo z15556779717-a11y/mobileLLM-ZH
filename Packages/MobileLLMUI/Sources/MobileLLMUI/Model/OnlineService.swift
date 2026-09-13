@@ -49,7 +49,7 @@ public struct OnlineService: Sendable, Hashable, Codable, Identifiable {
 
     /// Non-secret summary used by the settings list.
     public var summary: String {
-        let key = modelID ?? "service default"
-        return "\(key) · \(baseURL)"
+        let key = modelID ?? String(localized: "service default", bundle: .main)
+        return String(localized: "\(key) · \(baseURL)", bundle: .main)
     }
 }

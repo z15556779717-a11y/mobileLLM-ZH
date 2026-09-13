@@ -100,11 +100,11 @@ struct ExploreView: View {
             }
             .frame(maxWidth: .infinity).padding(.vertical, Theme.Space.xxl)
         case .failed:
-            state(icon: "wifi.exclamationmark", title: "Couldn't reach Hugging Face",
-                  msg: "Check your connection and try again.")
+            state(icon: "wifi.exclamationmark", title: String(localized: "Couldn't reach Hugging Face", bundle: .main),
+                  msg: String(localized: "Check your connection and try again.", bundle: .main))
         case .ready where results.isEmpty:
-            state(icon: "magnifyingglass", title: "No models found",
-                  msg: query.isEmpty ? "Nothing to show." : "Nothing matches “\(query)”.")
+            state(icon: "magnifyingglass", title: String(localized: "No models found", bundle: .main),
+                  msg: query.isEmpty ? String(localized: "Nothing to show.", bundle: .main) : String(localized: "Nothing matches “\(query)”.", bundle: .main))
         case .ready:
             ForEach(results) { row($0) }
         }
@@ -123,10 +123,13 @@ struct ExploreView: View {
                         Label(Format.shortCount(model.downloads), systemImage: "arrow.down.circle")
                             .font(.caption2.monospacedDigit()).foregroundStyle(Theme.textTertiary)
                         // MLX groups quants at list time; a GGUF repo's quants are files we fetch on tap.
-                        Text(model.variants.isEmpty ? model.publisher
-                             : "\(model.variants.count) quant\(model.variants.count == 1 ? "" : "s")")
+                        Text(model.variants.isEmpty
+                             ? model.publisher
+                             : model.variants.count == 1
+                                 ? String(localized: "\(model.variants.count) quant", bundle: .main)
+                                 : String(localized: "\(model.variants.count) quants", bundle: .main))
                             .font(.caption2).foregroundStyle(Theme.accent).lineLimit(1)
-                        Chip(text: "Unverified")
+                        Chip(text: String(localized: "Unverified", bundle: .main))
                     }
                 }
                 Spacer(minLength: Theme.Space.sm)
@@ -205,7 +208,7 @@ struct ExploreView: View {
             if remote.variants.isEmpty {
                 let quants = (try? await RemoteCatalog.quants(for: remote)) ?? []
                 guard !quants.isEmpty else {
-                    await MainActor.run { opening = nil; notice = "No usable quant files in \(remote.name)." }
+                    await MainActor.run { opening = nil; notice = String(localized: "No usable quant files in \(remote.name).", bundle: .main) }
                     return
                 }
                 resolved = RemoteModel(id: remote.id, name: remote.name, publisher: remote.publisher,

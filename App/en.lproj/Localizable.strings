@@ -1,4 +1,1430 @@
-/* English source strings. The key is the literal used in SwiftUI, exactly as written
-   in the source, so Text("Dismiss") resolves here through Bundle.main. */
+/* English source strings for Vela.
+   Each key is the LocalizedStringKey SwiftUI builds from the literal written in
+   Swift, so Text("...") resolves here through Bundle.main. */
 
+/* Act as a <role>. - <the first rule the model should follow> - <the second rule>  */
+"    Act as a <role>.\n    - <the first rule the model should follow>\n    - <the second rule>\n    Keep answers <length / tone>.\n    " = "    Act as a <role>.\n    - <the first rule the model should follow>\n    - <the second rule>\n    Keep answers <length / tone>.\n    ";
+/* (and any MCP server you add). */
+" (and any MCP server you add)." = " (and any MCP server you add).";
+/* Longer context costs memory (it's the KV cache) and slows the first token — it d */
+" Longer context costs memory (it's the KV cache) and slows the first token — it doesn't make the model smarter." = " Longer context costs memory (it's the KV cache) and slows the first token — it doesn't make the model smarter.";
+/* · \(all.count - on) off */
+" · %lld off" = " · %lld off";
+/* · \(custom) custom */
+" · %lld custom" = " · %lld custom";
+/* · \(mine) added by you */
+" · %lld added by you" = " · %lld added by you";
+/* · \(muted) muted */
+" · %lld muted" = " · %lld muted";
+/* · \(servers) MCP server selected */
+" · %lld MCP server selected" = " · %lld MCP server selected";
+/* · \(servers) MCP servers selected */
+" · %lld MCP servers selected" = " · %lld MCP servers selected";
+/* · sorted by downloads */
+" · sorted by downloads" = " · sorted by downloads";
+/* — secrets aren't wired here yet. */
+" — secrets aren't wired here yet." = " — secrets aren't wired here yet.";
+/* (\(summary)) */
+"(%@)" = "(%@)";
+/* , or an MCP server you've enabled. */
+", or an MCP server you've enabled." = ", or an MCP server you've enabled.";
+/* A bounded tool attempt started. */
+"A bounded tool attempt started." = "A bounded tool attempt started.";
+/* A child agent was cancelled before producing a result. */
+"A child agent was cancelled before producing a result." = "A child agent was cancelled before producing a result.";
+/* A conversation without an override follows the product default — currently Safe  */
+"A conversation without an override follows the product default — currently Safe preset." = "A conversation without an override follows the product default — currently Safe preset.";
+/* A private, open-source runner for open-weight language models — everything runs  */
+"A private, open-source runner for open-weight language models — everything runs on your device by default, with no account. The optional Tools feature can reach Wikipedia or MCP servers you configure, only when the model calls them. Each model's provider and license are shown on its card in Models." = "A private, open-source runner for open-weight language models — everything runs on your device by default, with no account. The optional Tools feature can reach Wikipedia or MCP servers you configure, only when the model calls them. Each model's provider and license are shown on its card in Models.";
+/* A remote MCP endpoint over Streamable HTTP. iOS can't run stdio servers, and App */
+"A remote MCP endpoint over Streamable HTTP. iOS can't run stdio servers, and App Transport Security requires https:// on device." = "A remote MCP endpoint over Streamable HTTP. iOS can't run stdio servers, and App Transport Security requires https:// on device.";
+/* A run is continuing in the background; the system shows its progress. */
+"A run is continuing in the background; the system shows its progress." = "A run is continuing in the background; the system shows its progress.";
+/* API key */
+"API key" = "API key";
+/* Abandon */
+"Abandon" = "Abandon";
+/* Accept: \(phase.acceptanceCriteria) */
+"Accept: %@" = "Accept: %@";
+/* Action */
+"Action" = "Action";
+/* Active */
+"Active" = "Active";
+/* Active & waiting */
+"Active & waiting" = "Active & waiting";
+/* Active model */
+"Active model" = "Active model";
+/* Active online model */
+"Active online model" = "Active online model";
+/* Active skill: \(activeSkill.displayName) */
+"Active skill: %@" = "Active skill: %@";
+/* Active, waiting, paused, and recoverable agent runs appear here. */
+"Active, waiting, paused, and recoverable agent runs appear here." = "Active, waiting, paused, and recoverable agent runs appear here.";
+/* Add */
+"Add" = "Add";
+/* Add a memory */
+"Add a memory" = "Add a memory";
+/* Add a model to start chatting. */
+"Add a model to start chatting." = "Add a model to start chatting.";
+/* Add a server */
+"Add a server" = "Add a server";
+/* Add a service */
+"Add a service" = "Add a service";
+/* Add an English fact after "The user ". */
+"Add an English fact after \"The user \"." = "Add an English fact after \"The user \".";
+/* Add an OpenAI-compatible endpoint to chat without loading a local model. */
+"Add an OpenAI-compatible endpoint to chat without loading a local model." = "Add an OpenAI-compatible endpoint to chat without loading a local model.";
+/* Add an event to the user's calendar */
+"Add an event to the user's calendar" = "Add an event to the user's calendar";
+/* Add events and read what's on your calendar. */
+"Add events and read what's on your calendar." = "Add events and read what's on your calendar.";
+/* Add one or more OpenAI-compatible services. Each key lives in the device Keychai */
+"Add one or more OpenAI-compatible services. Each key lives in the device Keychain only — never synced, backed up, or committed. Sends use the active service." = "Add one or more OpenAI-compatible services. Each key lives in the device Keychain only — never synced, backed up, or committed. Sends use the active service.";
+/* Add service */
+"Add service" = "Add service";
+/* Add skill */
+"Add skill" = "Add skill";
+/* Add to Project */
+"Add to Project" = "Add to Project";
+/* Added by you */
+"Added by you" = "Added by you";
+/* Agent \(call.ordinal) */
+"Agent %lld" = "Agent %lld";
+/* Agent runtime unavailable */
+"Agent runtime unavailable" = "Agent runtime unavailable";
+/* Agent runtime unavailable. Restart the app to try again. */
+"Agent runtime unavailable. Restart the app to try again." = "Agent runtime unavailable. Restart the app to try again.";
+/* All */
+"All" = "All";
+/* Allow selected tools */
+"Allow selected tools" = "Allow selected tools";
+/* Already in memory */
+"Already in memory" = "Already in memory";
+/* Always show */
+"Always show" = "Always show";
+/* An authorized image could not be verified for local model input. */
+"An authorized image could not be verified for local model input." = "An authorized image could not be verified for local model input.";
+/* Another download is already writing these model files. Try again when it finishe */
+"Another download is already writing these model files. Try again when it finishes." = "Another download is already writing these model files. Try again when it finishes.";
+/* Answer in three sentences or fewer. */
+"Answer in three sentences or fewer." = "Answer in three sentences or fewer.";
+/* Answered */
+"Answered" = "Answered";
+/* Appended to the system prompt while this skill is active. Keep it short and impe */
+"Appended to the system prompt while this skill is active. Keep it short and imperative — it's charged to the context window on every turn, and small models follow a few sharp rules better than many soft ones." = "Appended to the system prompt while this skill is active. Keep it short and imperative — it's charged to the context window on every turn, and small models follow a few sharp rules better than many soft ones.";
+/* Approval needed */
+"Approval needed" = "Approval needed";
+/* Approval needed: \(displayName) */
+"Approval needed: %@" = "Approval needed: %@";
+/* Approval: Ask */
+"Approval: Ask" = "Approval: Ask";
+/* Approval: Full access */
+"Approval: Full access" = "Approval: Full access";
+/* Approval: Safe preset */
+"Approval: Safe preset" = "Approval: Safe preset";
+/* Approve */
+"Approve" = "Approve";
+/* Approve \(approval.toolName)? */
+"Approve %@?" = "Approve %@?";
+/* Approve once */
+"Approve once" = "Approve once";
+/* Approve or deny below */
+"Approve or deny below" = "Approve or deny below";
+/* Approve per policy: external reads and online inference on first use */
+"Approve per policy: external reads and online inference on first use" = "Approve per policy: external reads and online inference on first use";
+/* Approved */
+"Approved" = "Approved";
+/* Approved — ready to start */
+"Approved — ready to start" = "Approved — ready to start";
+/* Arguments */
+"Arguments" = "Arguments";
+/* Asks for system permission when you enable it. */
+"Asks for system permission when you enable it." = "Asks for system permission when you enable it.";
+/* Assistant answer */
+"Assistant answer" = "Assistant answer";
+/* Assistant reasoning */
+"Assistant reasoning" = "Assistant reasoning";
+/* At least one tool reported an error or an uncertain result. */
+"At least one tool reported an error or an uncertain result." = "At least one tool reported an error or an uncertain result.";
+/* At most one service can be active at a time; the active one is what a send uses. */
+"At most one service can be active at a time; the active one is what a send uses." = "At most one service can be active at a time; the active one is what a send uses.";
+/* Attached image */
+"Attached image" = "Attached image";
+/* Attempt \(call.attempt) · \(call.status.label) */
+"Attempt %lld · %@" = "Attempt %lld · %@";
+/* Authorizes only this exact prepared operation. */
+"Authorizes only this exact prepared operation." = "Authorizes only this exact prepared operation.";
+/* Authorizes this model for the rest of this conversation. */
+"Authorizes this model for the rest of this conversation." = "Authorizes this model for the rest of this conversation.";
+/* Auto */
+"Auto" = "Auto";
+/* Auto (model max) */
+"Auto (model max)" = "Auto (model max)";
+/* Auto-approve everything inside the run ceiling */
+"Auto-approve everything inside the run ceiling" = "Auto-approve everything inside the run ceiling";
+/* Auto-approve in-app/reads and online model; ask for writes and dangerous actions */
+"Auto-approve in-app/reads and online model; ask for writes and dangerous actions" = "Auto-approve in-app/reads and online model; ask for writes and dangerous actions";
+/* Background GPU processing is not supported on this device. */
+"Background GPU processing is not supported on this device." = "Background GPU processing is not supported on this device.";
+/* Background continuation was cancelled. */
+"Background continuation was cancelled." = "Background continuation was cancelled.";
+/* Background tasks */
+"Background tasks" = "Background tasks";
+/* Backgrounded */
+"Backgrounded" = "Backgrounded";
+/* Backgrounded — resume to continue */
+"Backgrounded — resume to continue" = "Backgrounded — resume to continue";
+/* Be the first — post one in Discussions → Skills. */
+"Be the first — post one in Discussions → Skills." = "Be the first — post one in Discussions → Skills.";
+/* Browse Community Skills… */
+"Browse Community Skills…" = "Browse Community Skills…";
+/* Browsing */
+"Browsing " = "Browsing ";
+/* Built into the system */
+"Built into the system" = "Built into the system";
+/* Built-in skill — read-only. Duplicate it to make an editable copy. */
+"Built-in skill — read-only. Duplicate it to make an editable copy." = "Built-in skill — read-only. Duplicate it to make an editable copy.";
+/* Built-in skill, opens read-only */
+"Built-in skill, opens read-only" = "Built-in skill, opens read-only";
+/* Calculator */
+"Calculator" = "Calculator";
+/* Calendar */
+"Calendar" = "Calendar";
+/* Cancel */
+"Cancel" = "Cancel";
+/* Cancelled */
+"Cancelled" = "Cancelled";
+/* Candidate generation was interrupted. Send the /workflow command again. */
+"Candidate generation was interrupted. Send the /workflow command again." = "Candidate generation was interrupted. Send the /workflow command again.";
+/* Chat */
+"Chat" = "Chat";
+/* Chat options */
+"Chat options" = "Chat options";
+/* Chat with \(modelName) */
+"Chat with %@" = "Chat with %@";
+/* Check the current date and time. */
+"Check the current date and time." = "Check the current date and time.";
+/* Check your connection and try again. */
+"Check your connection and try again." = "Check your connection and try again.";
+/* Choose a different model */
+"Choose a different model" = "Choose a different model";
+/* Choose a model */
+"Choose a model" = "Choose a model";
+/* Choose a model before generating. */
+"Choose a model before generating." = "Choose a model before generating.";
+/* Choose a model to start chatting */
+"Choose a model to start chatting" = "Choose a model to start chatting";
+/* Choose model */
+"Choose model" = "Choose model";
+/* Choose tools */
+"Choose tools" = "Choose tools";
+/* Clear search */
+"Clear search" = "Clear search";
+/* Clock */
+"Clock" = "Clock";
+/* Close */
+"Close" = "Close";
+/* Code Explainer */
+"Code Explainer" = "Code Explainer";
+/* Collapse reasoning */
+"Collapse reasoning" = "Collapse reasoning";
+/* Community Skills */
+"Community Skills" = "Community Skills";
+/* Community skill */
+"Community skill" = "Community skill";
+/* Compatible with AI Edge Gallery community skills (SKILL.md). Paste a skill's web */
+"Compatible with AI Edge Gallery community skills (SKILL.md). Paste a skill's webhost or repo link, or the markdown itself." = "Compatible with AI Edge Gallery community skills (SKILL.md). Paste a skill's webhost or repo link, or the markdown itself.";
+/* Completed */
+"Completed" = "Completed";
+/* Completed with issues */
+"Completed with issues" = "Completed with issues";
+/* Completed · \(record.completedPhaseCount)/\(record.totalPhaseCount) phases · \(r */
+"Completed · %lld/%lld phases · %lld/%lld subagents · " = "Completed · %lld/%lld phases · %lld/%lld subagents · ";
+/* Concise Mode */
+"Concise Mode" = "Concise Mode";
+/* Confirm below */
+"Confirm below" = "Confirm below";
+/* Confirm what happened to the uncertain external action before continuing. */
+"Confirm what happened to the uncertain external action before continuing." = "Confirm what happened to the uncertain external action before continuing.";
+/* Connect a remote server for more tools */
+"Connect a remote server for more tools" = "Connect a remote server for more tools";
+/* Connected · \(tools.count) tool */
+"Connected · %lld tool" = "Connected · %lld tool";
+/* Connected · \(tools.count) tools */
+"Connected · %lld tools" = "Connected · %lld tools";
+/* Connecting tools… */
+"Connecting tools…" = "Connecting tools…";
+/* Connecting… */
+"Connecting…" = "Connecting…";
+/* Context length */
+"Context length" = "Context length";
+/* Context length couldn't be verified — assuming \(Format.shortCount(model.archite */
+"Context length couldn't be verified — assuming %@." = "Context length couldn't be verified — assuming %@.";
+/* Context used */
+"Context used" = "Context used";
+/* Context window: up to \(Format.shortCount(model.architecture.nativeContext)) tok */
+"Context window: up to %@ tokens." = "Context window: up to %@ tokens.";
+/* Continue work in background (iOS 26) */
+"Continue work in background (iOS 26)" = "Continue work in background (iOS 26)";
+/* Continued processing is not available on this device or OS. */
+"Continued processing is not available on this device or OS." = "Continued processing is not available on this device or OS.";
+/* Continued processing is not permitted on this device or provisioning profile. */
+"Continued processing is not permitted on this device or provisioning profile." = "Continued processing is not permitted on this device or provisioning profile.";
+/* Continued processing was cancelled by the user. */
+"Continued processing was cancelled by the user." = "Continued processing was cancelled by the user.";
+/* Conversation */
+"Conversation" = "Conversation";
+/* Conversation menu */
+"Conversation menu" = "Conversation menu";
+/* Conversation settings */
+"Conversation settings" = "Conversation settings";
+/* Conversations on disk */
+"Conversations on disk" = "Conversations on disk";
+/* Copied */
+"Copied" = "Copied";
+/* Copied code */
+"Copied code" = "Copied code";
+/* Copy */
+"Copy" = "Copy";
+/* Copy answer */
+"Copy answer" = "Copy answer";
+/* Copy code */
+"Copy code" = "Copy code";
+/* Couldn't connect */
+"Couldn't connect" = "Couldn't connect";
+/* Couldn't find a readable SKILL.md there. Try the direct link to the file. */
+"Couldn't find a readable SKILL.md there. Try the direct link to the file." = "Couldn't find a readable SKILL.md there. Try the direct link to the file.";
+/* Couldn't generate a reply */
+"Couldn't generate a reply" = "Couldn't generate a reply";
+/* Couldn't load community skills */
+"Couldn't load community skills" = "Couldn't load community skills";
+/* Couldn't reach GitHub. Check your connection and try again. */
+"Couldn't reach GitHub. Check your connection and try again." = "Couldn't reach GitHub. Check your connection and try again.";
+/* Couldn't reach Hugging Face */
+"Couldn't reach Hugging Face" = "Couldn't reach Hugging Face";
+/* Couldn't read that web page. */
+"Couldn't read that web page." = "Couldn't read that web page.";
+/* Couldn't save the key: \(error.localizedDescription) */
+"Couldn't save the key: %@" = "Couldn't save the key: %@";
+/* Couldn't save to memory */
+"Couldn't save to memory" = "Couldn't save to memory";
+/* Couldn’t list files for \(repo). Check your network connection and try again. */
+"Couldn’t list files for %@. Check your network connection and try again." = "Couldn’t list files for %@. Check your network connection and try again.";
+/* Create a reminder for the user */
+"Create a reminder for the user" = "Create a reminder for the user";
+/* Create reminders in the Reminders app. */
+"Create reminders in the Reminders app." = "Create reminders in the Reminders app.";
+/* Custom · \(text.replacingOccurrences(of: "\n", with: " ").prefix(60)) */
+"Custom · %@" = "Custom · %@";
+/* Dark */
+"Dark" = "Dark";
+/* Data */
+"Data" = "Data";
+/* Data & Privacy */
+"Data & Privacy" = "Data & Privacy";
+/* Deactivate skill */
+"Deactivate skill" = "Deactivate skill";
+/* Decision in progress */
+"Decision in progress" = "Decision in progress";
+/* Declares a secret requirement */
+"Declares a secret requirement" = "Declares a secret requirement";
+/* Delete */
+"Delete" = "Delete";
+/* Delete \($0.model.displayName)? */
+"Delete %@?" = "Delete %@?";
+/* Delete \(model.displayName) */
+"Delete %@" = "Delete %@";
+/* Delete all chats */
+"Delete all chats" = "Delete all chats";
+/* Delete all chats? */
+"Delete all chats?" = "Delete all chats?";
+/* Delete service */
+"Delete service" = "Delete service";
+/* Delete skill */
+"Delete skill" = "Delete skill";
+/* Delete this conversation? */
+"Delete this conversation?" = "Delete this conversation?";
+/* Delete this memory? */
+"Delete this memory?" = "Delete this memory?";
+/* Delete this skill? */
+"Delete this skill?" = "Delete this skill?";
+/* Delete this tag everywhere? */
+"Delete this tag everywhere?" = "Delete this tag everywhere?";
+/* Denied */
+"Denied" = "Denied";
+/* Denied or stopped */
+"Denied or stopped" = "Denied or stopped";
+/* Deny */
+"Deny" = "Deny";
+/* Destination */
+"Destination" = "Destination";
+/* Details */
+"Details" = "Details";
+/* Dictate */
+"Dictate" = "Dictate";
+/* Did not happen */
+"Did not happen" = "Did not happen";
+/* Did the external action happen? */
+"Did the external action happen?" = "Did the external action happen?";
+/* Disabled */
+"Disabled" = "Disabled";
+/* Discard \(n) later turn */
+"Discard %lld later turn" = "Discard %lld later turn";
+/* Discard \(n) later turns */
+"Discard %lld later turns" = "Discard %lld later turns";
+/* Dismiss */
 "Dismiss" = "Dismiss";
+/* Do arithmetic on-device. */
+"Do arithmetic on-device." = "Do arithmetic on-device.";
+/* Done */
+"Done" = "Done";
+/* Download \(model.displayName) to start chatting on-device. Everything runs local */
+"Download %@ to start chatting on-device. Everything runs locally — no account, and nothing leaves your device." = "Download %@ to start chatting on-device. Everything runs locally — no account, and nothing leaves your device.";
+/* Download a model to start chatting on-device. */
+"Download a model to start chatting on-device." = "Download a model to start chatting on-device.";
+/* Download this model before switching to it. */
+"Download this model before switching to it." = "Download this model before switching to it.";
+/* Download · \(Format.bytes(variant.totalOnDiskBytes)) */
+"Download · %@" = "Download · %@";
+/* Downloading \(model.displayName) */
+"Downloading %@" = "Downloading %@";
+/* Downloading \(model.displayName)… */
+"Downloading %@…" = "Downloading %@…";
+/* Downloading… \(Int(download.fraction * 100))% */
+"Downloading… %lld%%" = "Downloading… %lld%%";
+/* Duplicate */
+"Duplicate" = "Duplicate";
+/* Each service is an OpenAI-compatible Responses API endpoint. The key for each se */
+"Each service is an OpenAI-compatible Responses API endpoint. The key for each service lives in the device Keychain only — never synced, backed up, or committed. Sending to any service is data egress and asks for approval once per conversation." = "Each service is an OpenAI-compatible Responses API endpoint. The key for each service lives in the device Keychain only — never synced, backed up, or committed. Sending to any service is data egress and asks for approval once per conversation.";
+/* Edit & resend */
+"Edit & resend" = "Edit & resend";
+/* Edit memory */
+"Edit memory" = "Edit memory";
+/* Edit message */
+"Edit message" = "Edit message";
+/* Edit service */
+"Edit service" = "Edit service";
+/* Edit skill */
+"Edit skill" = "Edit skill";
+/* Edit this memory */
+"Edit this memory" = "Edit this memory";
+/* Editing your message resends it and regenerates the reply. */
+"Editing your message resends it and regenerates the reply." = "Editing your message resends it and regenerates the reply.";
+/* Effects */
+"Effects" = "Effects";
+/* Effort */
+"Effort" = "Effort";
+/* Effort applies to services that expose a reasoning-effort knob; local engines tr */
+"Effort applies to services that expose a reasoning-effort knob; local engines treat it as advisory. Medium is the default." = "Effort applies to services that expose a reasoning-effort knob; local engines treat it as advisory. Medium is the default.";
+/* Effort: \(chat.effectiveReasoningEffort.rawValue.capitalized) */
+"Effort: %@" = "Effort: %@";
+/* Emoji */
+"Emoji" = "Emoji";
+/* Enabled */
+"Enabled" = "Enabled";
+/* Engine */
+"Engine" = "Engine";
+/* Erase all app data */
+"Erase all app data" = "Erase all app data";
+/* Erase all app data? */
+"Erase all app data?" = "Erase all app data?";
+/* Erase everything */
+"Erase everything" = "Erase everything";
+/* Expand reasoning */
+"Expand reasoning" = "Expand reasoning";
+/* Experimental · may be interrupted */
+"Experimental · may be interrupted" = "Experimental · may be interrupted";
+/* Explain code by purpose first, then call out pitfalls. */
+"Explain code by purpose first, then call out pitfalls." = "Explain code by purpose first, then call out pitfalls.";
+/* Explore */
+"Explore" = "Explore";
+/* Export all chats (JSON) */
+"Export all chats (JSON)" = "Export all chats (JSON)";
+/* External result uncertain */
+"External result uncertain" = "External result uncertain";
+/* Failed */
+"Failed" = "Failed";
+/* Family \(model.family.displayName), license \(model.license.displayName) */
+"Family %@, license %@" = "Family %@, license %@";
+/* Featured */
+"Featured" = "Featured";
+/* Fetch & preview */
+"Fetch & preview" = "Fetch & preview";
+/* Fetching… */
+"Fetching…" = "Fetching…";
+/* File access is not enabled yet. When the sandbox runtime lands, this page will b */
+"File access is not enabled yet. When the sandbox runtime lands, this page will browse the conversation's workspace and artifacts." = "File access is not enabled yet. When the sandbox runtime lands, this page will browse the conversation's workspace and artifacts.";
+/* Files */
+"Files" = "Files";
+/* Filter by \(title) */
+"Filter by %@" = "Filter by %@";
+/* Finishing answer… */
+"Finishing answer…" = "Finishing answer…";
+/* Finishing the current file write safely… */
+"Finishing the current file write safely…" = "Finishing the current file write safely…";
+/* Finishing your request in the background */
+"Finishing your request in the background" = "Finishing your request in the background";
+/* Fix grammar and clarity, then summarize what changed. */
+"Fix grammar and clarity, then summarize what changed." = "Fix grammar and clarity, then summarize what changed.";
+/* Folder browsing and file reading — coming soon */
+"Folder browsing and file reading — coming soon" = "Folder browsing and file reading — coming soon";
+/* Follow (\(defaultLabel)) */
+"Follow (%@)" = "Follow (%@)";
+/* Follow settings (\(Format.shortCount(contextDefault))) */
+"Follow settings (%@)" = "Follow settings (%@)";
+/* Forget everything */
+"Forget everything" = "Forget everything";
+/* Forget everything? */
+"Forget everything?" = "Forget everything?";
+/* Frees the disk space. You can download it again anytime. */
+"Frees the disk space. You can download it again anytime." = "Frees the disk space. You can download it again anytime.";
+/* Full */
+"Full" = "Full";
+/* Full (unquantized) */
+"Full (unquantized)" = "Full (unquantized)";
+/* Generating candidate */
+"Generating candidate" = "Generating candidate";
+/* Generation stats */
+"Generation stats" = "Generation stats";
+/* Get \(model.displayName) · \(Format.bytes(variant.totalOnDiskBytes)) */
+"Get %@ · %@" = "Get %@ · %@";
+/* Get started */
+"Get started" = "Get started";
+/* Get the user's approximate current location */
+"Get the user's approximate current location" = "Get the user's approximate current location";
+/* GitHub isn't allowing anonymous access to the board right now. You can still ope */
+"GitHub isn't allowing anonymous access to the board right now. You can still open it on GitHub." = "GitHub isn't allowing anonymous access to the board right now. You can still open it on GitHub.";
+/* GitHub returned an unexpected error (code \(code)). Please try again. */
+"GitHub returned an unexpected error (code %lld). Please try again." = "GitHub returned an unexpected error (code %lld). Please try again.";
+/* GitHub's response couldn't be read. Please try again. */
+"GitHub's response couldn't be read. Please try again." = "GitHub's response couldn't be read. Please try again.";
+/* Hidden */
+"Hidden" = "Hidden";
+/* High memory · may fail */
+"High memory · may fail" = "High memory · may fail";
+/* How much conversation the model can see at once. */
+"How much conversation the model can see at once." = "How much conversation the model can see at once.";
+/* Import SKILL.md… */
+"Import SKILL.md…" = "Import SKILL.md…";
+/* Import skill */
+"Import skill" = "Import skill";
+/* Imported skill */
+"Imported skill" = "Imported skill";
+/* In progress */
+"In progress" = "In progress";
+/* In use */
+"In use" = "In use";
+/* Install */
+"Install" = "Install";
+/* Installed */
+"Installed" = "Installed";
+/* Instructions */
+"Instructions" = "Instructions";
+/* Interrupted — Resume to continue */
+"Interrupted — Resume to continue" = "Interrupted — Resume to continue";
+/* Invalid server response: \(reason) */
+"Invalid server response: %@" = "Invalid server response: %@";
+/* It failed */
+"It failed" = "It failed";
+/* It succeeded */
+"It succeeded" = "It succeeded";
+/* Its tools stop being offered to the model. Nothing on the server itself changes. */
+"Its tools stop being offered to the model. Nothing on the server itself changes." = "Its tools stop being offered to the model. Nothing on the server itself changes.";
+/* KV cache */
+"KV cache" = "KV cache";
+/* Keep mobileLLM open while downloading — it resumes automatically if interrupted. */
+"Keep mobileLLM open while downloading — it resumes automatically if interrupted." = "Keep mobileLLM open while downloading — it resumes automatically if interrupted.";
+/* Key stored */
+"Key stored" = "Key stored";
+/* Key stored — paste to replace */
+"Key stored — paste to replace" = "Key stored — paste to replace";
+/* Latest */
+"Latest" = "Latest";
+/* Light */
+"Light" = "Light";
+/* List the user's upcoming calendar events */
+"List the user's upcoming calendar events" = "List the user's upcoming calendar events";
+/* List upcoming events */
+"List upcoming events" = "List upcoming events";
+/* Loading */
+"Loading" = "Loading";
+/* Loading \(Int(p * 100))% */
+"Loading %lld%%" = "Loading %lld%%";
+/* Loading \(model.displayName) */
+"Loading %@" = "Loading %@";
+/* Loading \(modelName)… */
+"Loading %@…" = "Loading %@…";
+/* Loading model */
+"Loading model" = "Loading model";
+/* Loading model… */
+"Loading model…" = "Loading model…";
+/* Loading… */
+"Loading…" = "Loading…";
+/* Local models are clamped by their native context and device memory. */
+"Local models are clamped by their native context and device memory." = "Local models are clamped by their native context and device memory.";
+/* Location */
+"Location" = "Location";
+/* Long-press to choose the dictation language */
+"Long-press to choose the dictation language" = "Long-press to choose the dictation language";
+/* Look up "\(query)" on Wikipedia */
+"Look up \"%@\" on Wikipedia" = "Look up \"%@\" on Wikipedia";
+/* Look up a topic on Wikipedia over the network. */
+"Look up a topic on Wikipedia over the network." = "Look up a topic on Wikipedia over the network.";
+/* MCP servers */
+"MCP servers" = "MCP servers";
+/* Manage Skills… */
+"Manage Skills…" = "Manage Skills…";
+/* Match your system, or pin to Light or Dark. */
+"Match your system, or pin to Light or Dark." = "Match your system, or pin to Light or Dark.";
+/* Max output tokens must be a non-negative integer (0 = unknown). */
+"Max output tokens must be a non-negative integer (0 = unknown)." = "Max output tokens must be a non-negative integer (0 = unknown).";
+/* Memory */
+"Memory" = "Memory";
+/* Memory cannot be empty. */
+"Memory cannot be empty." = "Memory cannot be empty.";
+/* Memory is what the model knows about you between chats. It saves a short note wh */
+"Memory is what the model knows about you between chats. It saves a short note when you tell it something worth keeping, and the notes that matter to your question are added to its prompt before it answers. Model-saved notes use English so every model reads one consistent format. Everything here stays on this device." = "Memory is what the model knows about you between chats. It saves a short note when you tell it something worth keeping, and the notes that matter to your question are added to its prompt before it answers. Model-saved notes use English so every model reads one consistent format. Everything here stays on this device.";
+/* Memory must be one concise sentence. */
+"Memory must be one concise sentence." = "Memory must be one concise sentence.";
+/* Memory text */
+"Memory text" = "Memory text";
+/* Memory wasn't changed */
+"Memory wasn't changed" = "Memory wasn't changed";
+/* Memory wasn't saved */
+"Memory wasn't saved" = "Memory wasn't saved";
+/* Message */
+"Message" = "Message";
+/* Message \(name)… */
+"Message %@…" = "Message %@…";
+/* Model */
+"Model" = "Model";
+/* Model Context Protocol servers extend the model with tools you host or subscribe */
+"Model Context Protocol servers extend the model with tools you host or subscribe to. They're contacted only while a chat is generating with tool access on and that server selected." = "Model Context Protocol servers extend the model with tools you host or subscribe to. They're contacted only while a chat is generating with tool access on and that server selected.";
+/* Model supports \(m.label) input */
+"Model supports %@ input" = "Model supports %@ input";
+/* Models */
+"Models" = "Models";
+/* Multimodal */
+"Multimodal" = "Multimodal";
+/* Name */
+"Name" = "Name";
+/* Needs reconciliation */
+"Needs reconciliation" = "Needs reconciliation";
+/* Needs review */
+"Needs review" = "Needs review";
+/* Network */
+"Network" = "Network";
+/* New */
+"New" = "New";
+/* New Chat */
+"New Chat" = "New Chat";
+/* New MCP server */
+"New MCP server" = "New MCP server";
+/* New Skill */
+"New Skill" = "New Skill";
+/* New chat */
+"New chat" = "New chat";
+/* New memory */
+"New memory" = "New memory";
+/* New skill */
+"New skill" = "New skill";
+/* New tag */
+"New tag" = "New tag";
+/* No Wikipedia article found for "\(query)". */
+"No Wikipedia article found for \"%@\"." = "No Wikipedia article found for \"%@\".";
+/* No background tasks */
+"No background tasks" = "No background tasks";
+/* No chats match “\(query)”. */
+"No chats match “%@”." = "No chats match “%@”.";
+/* No conversations yet */
+"No conversations yet" = "No conversations yet";
+/* No importable SKILL.md — open on GitHub to view. */
+"No importable SKILL.md — open on GitHub to view." = "No importable SKILL.md — open on GitHub to view.";
+/* No key */
+"No key" = "No key";
+/* No messages yet */
+"No messages yet" = "No messages yet";
+/* No model */
+"No model" = "No model";
+/* No model loaded */
+"No model loaded" = "No model loaded";
+/* No models downloaded yet */
+"No models downloaded yet" = "No models downloaded yet";
+/* No models found */
+"No models found" = "No models found";
+/* No models installed */
+"No models installed" = "No models installed";
+/* No online services yet */
+"No online services yet" = "No online services yet";
+/* No servers yet */
+"No servers yet" = "No servers yet";
+/* No services configured */
+"No services configured" = "No services configured";
+/* No skills shared yet */
+"No skills shared yet" = "No skills shared yet";
+/* No tags yet — create the first one below. */
+"No tags yet — create the first one below." = "No tags yet — create the first one below.";
+/* No usable quant files in \(remote.name). */
+"No usable quant files in %@." = "No usable quant files in %@.";
+/* No workflow is running */
+"No workflow is running" = "No workflow is running";
+/* None */
+"None" = "None";
+/* Not https — iOS will refuse to connect on device. */
+"Not https — iOS will refuse to connect on device." = "Not https — iOS will refuse to connect on device.";
+/* Not now */
+"Not now" = "Not now";
+/* Not selected */
+"Not selected" = "Not selected";
+/* Not started: \(diagnostic) */
+"Not started: %@" = "Not started: %@";
+/* Not tested yet */
+"Not tested yet" = "Not tested yet";
+/* Notes that matter to your question are added to the model's prompt. */
+"Notes that matter to your question are added to the model's prompt." = "Notes that matter to your question are added to the model's prompt.";
+/* Nothing matches this filter */
+"Nothing matches this filter" = "Nothing matches this filter";
+/* Nothing matches “\(query)”. */
+"Nothing matches “%@”." = "Nothing matches “%@”.";
+/* Nothing saved yet */
+"Nothing saved yet" = "Nothing saved yet";
+/* Nothing saved yet. Tap + to add something you want the model to know about you — */
+"Nothing saved yet. Tap + to add something you want the model to know about you — or just tell it in a chat, and it'll note it down itself." = "Nothing saved yet. Tap + to add something you want the model to know about you — or just tell it in a chat, and it'll note it down itself.";
+/* Nothing to show. */
+"Nothing to show." = "Nothing to show.";
+/* Off */
+"Off" = "Off";
+/* Off keeps the server configured but skips it — no connection, no tools. */
+"Off keeps the server configured but skips it — no connection, no tools." = "Off keeps the server configured but skips it — no connection, no tools.";
+/* Off · \(count) saved */
+"Off · %lld saved" = "Off · %lld saved";
+/* Off · \(text) */
+"Off · %@" = "Off · %@";
+/* Off — no instructions are sent */
+"Off — no instructions are sent" = "Off — no instructions are sent";
+/* Older */
+"Older" = "Older";
+/* On GitHub */
+"On GitHub" = "On GitHub";
+/* On device */
+"On device" = "On device";
+/* On-device models */
+"On-device models" = "On-device models";
+/* One line on when to use it */
+"One line on when to use it" = "One line on when to use it";
+/* Online */
+"Online" = "Online";
+/* Online max output */
+"Online max output" = "Online max output";
+/* Online models */
+"Online models" = "Online models";
+/* Online services */
+"Online services" = "Online services";
+/* Online services use the setting as-is, up to the service window (\(window)); dev */
+"Online services use the setting as-is, up to the service window (%@); device RAM doesn't bind it. Longer context costs more tokens on the service." = "Online services use the setting as-is, up to the service window (%@); device RAM doesn't bind it. Longer context costs more tokens on the service.";
+/* Online services use the setting up to the service window; device RAM doesn't bin */
+"Online services use the setting up to the service window; device RAM doesn't bind it." = "Online services use the setting up to the service window; device RAM doesn't bind it.";
+/* Online · \(serviceModel) */
+"Online · %@" = "Online · %@";
+/* Only the tools selected below are exposed to the model. */
+"Only the tools selected below are exposed to the model." = "Only the tools selected below are exposed to the model.";
+/* Only tools selected below are exposed to the model. The model decides whether to */
+"Only tools selected below are exposed to the model. The model decides whether to call one; every call adds another model pass, and network tools such as web search, Wikipedia, and remote MCP also wait for the network." = "Only tools selected below are exposed to the model. The model decides whether to call one; every call adds another model pass, and network tools such as web search, Wikipedia, and remote MCP also wait for the network.";
+/* Open Models */
+"Open Models" = "Open Models";
+/* Open Settings */
+"Open Settings" = "Open Settings";
+/* Open a link and read its main text over the network. */
+"Open a link and read its main text over the network." = "Open a link and read its main text over the network.";
+/* Open on GitHub */
+"Open on GitHub" = "Open on GitHub";
+/* Open the board */
+"Open the board" = "Open the board";
+/* Opens \(model.variants.count) precisions to download */
+"Opens %lld precisions to download" = "Opens %lld precisions to download";
+/* Opens a preview to install */
+"Opens a preview to install" = "Opens a preview to install";
+/* Opens on GitHub */
+"Opens on GitHub" = "Opens on GitHub";
+/* Operation authorized. */
+"Operation authorized." = "Operation authorized.";
+/* Operation declined. */
+"Operation declined." = "Operation declined.";
+/* Outcome requires reconciliation */
+"Outcome requires reconciliation" = "Outcome requires reconciliation";
+/* Paste Image */
+"Paste Image" = "Paste Image";
+/* Pause */
+"Pause" = "Pause";
+/* Pause \(title(for: run.conversationID)) */
+"Pause %@" = "Pause %@";
+/* Pause download */
+"Pause download" = "Pause download";
+/* Pause run */
+"Pause run" = "Pause run";
+/* Paused */
+"Paused" = "Paused";
+/* Paused to let the device cool. */
+"Paused to let the device cool." = "Paused to let the device cool.";
+/* Pausing */
+"Pausing" = "Pausing";
+/* Pausing \(model.displayName) */
+"Pausing %@" = "Pausing %@";
+/* Pausing… */
+"Pausing…" = "Pausing…";
+/* Pending */
+"Pending" = "Pending";
+/* Personal data */
+"Personal data" = "Personal data";
+/* Phases */
+"Phases" = "Phases";
+/* Photo Library */
+"Photo Library" = "Photo Library";
+/* Pin */
+"Pin" = "Pin";
+/* Pinned */
+"Pinned" = "Pinned";
+/* Precision */
+"Precision" = "Precision";
+/* Prepared */
+"Prepared" = "Prepared";
+/* Prepended to every chat. Keep it short — it's charged to the context window on e */
+"Prepended to every chat. Keep it short — it's charged to the context window on every turn, and small models follow three sharp rules better than ten soft ones." = "Prepended to every chat. Keep it short — it's charged to the context window on every turn, and small models follow three sharp rules better than ten soft ones.";
+/* Preview */
+"Preview" = "Preview";
+/* Previous 30 Days */
+"Previous 30 Days" = "Previous 30 Days";
+/* Previous 7 Days */
+"Previous 7 Days" = "Previous 7 Days";
+/* Private, on-device, no account. Ask anything to get started. */
+"Private, on-device, no account. Ask anything to get started." = "Private, on-device, no account. Ask anything to get started.";
+/* Proofreader */
+"Proofreader" = "Proofreader";
+/* Question for you */
+"Question for you" = "Question for you";
+/* Reached GitHub's limit for anonymous browsing (60 requests an hour). Wait a litt */
+"Reached GitHub's limit for anonymous browsing (60 requests an hour). Wait a little and try again, or open the board on GitHub." = "Reached GitHub's limit for anonymous browsing (60 requests an hour). Wait a little and try again, or open the board on GitHub.";
+/* Reaching GitHub… */
+"Reaching GitHub…" = "Reaching GitHub…";
+/* Reaching Hugging Face… */
+"Reaching Hugging Face…" = "Reaching Hugging Face…";
+/* Reading image… */
+"Reading image…" = "Reading image…";
+/* Ready to run */
+"Ready to run" = "Ready to run";
+/* Ready — no download needed */
+"Ready — no download needed" = "Ready — no download needed";
+/* Reasoning */
+"Reasoning" = "Reasoning";
+/* Recommended */
+"Recommended" = "Recommended";
+/* Recording */
+"Recording" = "Recording";
+/* Recoverable */
+"Recoverable" = "Recoverable";
+/* Regenerate answer */
+"Regenerate answer" = "Regenerate answer";
+/* Regenerate this reply? */
+"Regenerate this reply?" = "Regenerate this reply?";
+/* Regenerating an earlier reply removes every turn after it. */
+"Regenerating an earlier reply removes every turn after it." = "Regenerating an earlier reply removes every turn after it.";
+/* Remember details you share and use them later. See and edit what's saved in Sett */
+"Remember details you share and use them later. See and edit what's saved in Settings → Memory." = "Remember details you share and use them later. See and edit what's saved in Settings → Memory.";
+/* Reminders */
+"Reminders" = "Reminders";
+/* Remove */
+"Remove" = "Remove";
+/* Remove attached image */
+"Remove attached image" = "Remove attached image";
+/* Remove server */
+"Remove server" = "Remove server";
+/* Remove this server? */
+"Remove this server?" = "Remove this server?";
+/* Removes every conversation and image attachment on this device. Models, memory,  */
+"Removes every conversation and image attachment on this device. Models, memory, skills, settings, and MCP credentials are kept. This can't be undone." = "Removes every conversation and image attachment on this device. Models, memory, skills, settings, and MCP credentials are kept. This can't be undone.";
+/* Rename */
+"Rename" = "Rename";
+/* Rename chat */
+"Rename chat" = "Rename chat";
+/* Rename tag */
+"Rename tag" = "Rename tag";
+/* Reply below */
+"Reply below" = "Reply below";
+/* Researcher */
+"Researcher" = "Researcher";
+/* Resend */
+"Resend" = "Resend";
+/* Reset to default (Safe preset) */
+"Reset to default (Safe preset)" = "Reset to default (Safe preset)";
+/* Reset to the standard prompt */
+"Reset to the standard prompt" = "Reset to the standard prompt";
+/* Restart agent */
+"Restart agent" = "Restart agent";
+/* Restart the app to try again. */
+"Restart the app to try again." = "Restart the app to try again.";
+/* Resume */
+"Resume" = "Resume";
+/* Resume \(title(for: run.conversationID)) */
+"Resume %@" = "Resume %@";
+/* Resume run */
+"Resume run" = "Resume run";
+/* Resume to continue */
+"Resume to continue" = "Resume to continue";
+/* Resume · \(Int(download.fraction * 100))% */
+"Resume · %lld%%" = "Resume · %lld%%";
+/* Retry */
+"Retry" = "Retry";
+/* Retry download */
+"Retry download" = "Retry download";
+/* Retrying once with constrained structured output. */
+"Retrying once with constrained structured output." = "Retrying once with constrained structured output.";
+/* Return to the app to resume */
+"Return to the app to resume" = "Return to the app to resume";
+/* Returns mobileLLM to a fresh install. It permanently removes chats and attachmen */
+"Returns mobileLLM to a fresh install. It permanently removes chats and attachments, memory, custom skills, settings, MCP credentials, community-model records, and every downloaded model. Calendar events or reminders already created outside the app are not changed. This can't be undone." = "Returns mobileLLM to a fresh install. It permanently removes chats and attachments, memory, custom skills, settings, MCP credentials, community-model records, and every downloaded model. Calendar events or reminders already created outside the app are not changed. This can't be undone.";
+/* Run backgrounded */
+"Run backgrounded" = "Run backgrounded";
+/* Run needs resume */
+"Run needs resume" = "Run needs resume";
+/* Run paused */
+"Run paused" = "Run paused";
+/* Run status: \(label) */
+"Run status: %@" = "Run status: %@";
+/* Run workflow */
+"Run workflow" = "Run workflow";
+/* Running */
+"Running" = "Running";
+/* Running… */
+"Running…" = "Running…";
+/* Runs great */
+"Runs great" = "Runs great";
+/* Runs here */
+"Runs here" = "Runs here";
+/* SHA-256 verification failed for \(file). The downloaded bytes were discarded; ta */
+"SHA-256 verification failed for %@. The downloaded bytes were discarded; tap download again to retry." = "SHA-256 verification failed for %@. The downloaded bytes were discarded; tap download again to retry.";
+/* Save */
+"Save" = "Save";
+/* Save a lasting fact to the user's on-device memory */
+"Save a lasting fact to the user's on-device memory" = "Save a lasting fact to the user's on-device memory";
+/* Saved */
+"Saved" = "Saved";
+/* Saved by mobileLLM */
+"Saved by mobileLLM" = "Saved by mobileLLM";
+/* Saved to memory */
+"Saved to memory" = "Saved to memory";
+/* Saving to memory… */
+"Saving to memory…" = "Saving to memory…";
+/* Scroll to latest */
+"Scroll to latest" = "Scroll to latest";
+/* Search Hugging Face — Qwen, Gemma, Llama… */
+"Search Hugging Face — Qwen, Gemma, Llama…" = "Search Hugging Face — Qwen, Gemma, Llama…";
+/* Search chats */
+"Search chats" = "Search chats";
+/* Search models — name, publisher… */
+"Search models — name, publisher…" = "Search models — name, publisher…";
+/* Search the live web. Uses the network and adds another model pass. */
+"Search the live web. Uses the network and adds another model pass." = "Search the live web. Uses the network and adds another model pass.";
+/* Search the user's on-device memory */
+"Search the user's on-device memory" = "Search the user's on-device memory";
+/* Search the web */
+"Search the web" = "Search the web";
+/* Search the web for: \(query) */
+"Search the web for: %@" = "Search the web for: %@";
+/* Search the web, read the best source, answer with citations. */
+"Search the web, read the best source, answer with citations." = "Search the web, read the best source, answer with citations.";
+/* Selected */
+"Selected" = "Selected";
+/* Selected tools are now available to the model. */
+"Selected tools are now available to the model." = "Selected tools are now available to the model.";
+/* Send */
+"Send" = "Send";
+/* Send answer to agent */
+"Send answer to agent" = "Send answer to agent";
+/* Server */
+"Server" = "Server";
+/* Server repeated a tools-page cursor. */
+"Server repeated a tools-page cursor." = "Server repeated a tools-page cursor.";
+/* Server response was too large. */
+"Server response was too large." = "Server response was too large.";
+/* Server returned more than \(limit) tool pages. */
+"Server returned more than %lld tool pages." = "Server returned more than %lld tool pages.";
+/* Settings */
+"Settings" = "Settings";
+/* Share your own in Discussions → Skills */
+"Share your own in Discussions → Skills" = "Share your own in Discussions → Skills";
+/* Share your own in Discussions → Skills. */
+"Share your own in Discussions → Skills." = "Share your own in Discussions → Skills.";
+/* Shell terminal window — coming soon */
+"Shell terminal window — coming soon" = "Shell terminal window — coming soon";
+/* Show details */
+"Show details" = "Show details";
+/* Show or hide run steps */
+"Show or hide run steps" = "Show or hide run steps";
+/* Show reasoning */
+"Show reasoning" = "Show reasoning";
+/* Size verification failed for \(file) (expected \(expected) bytes, received \(act */
+"Size verification failed for %@ (expected %lld bytes, received %lld). Tap download again to retry." = "Size verification failed for %@ (expected %lld bytes, received %lld). Tap download again to retry.";
+/* Skill */
+"Skill" = "Skill";
+/* Skill emoji */
+"Skill emoji" = "Skill emoji";
+/* Skill instructions */
+"Skill instructions" = "Skill instructions";
+/* Skill name */
+"Skill name" = "Skill name";
+/* Skill wasn't changed */
+"Skill wasn't changed" = "Skill wasn't changed";
+/* Skill wasn't installed */
+"Skill wasn't installed" = "Skill wasn't installed";
+/* Skill wasn't saved */
+"Skill wasn't saved" = "Skill wasn't saved";
+/* Skills */
+"Skills" = "Skills";
+/* Skills shared by the community on GitHub Discussions. Tap one to preview it, the */
+"Skills shared by the community on GitHub Discussions. Tap one to preview it, then install with a tap — it joins your custom skills like any other." = "Skills shared by the community on GitHub Discussions. Tap one to preview it, then install with a tap — it joins your custom skills like any other.";
+/* Some data wasn't erased */
+"Some data wasn't erased" = "Some data wasn't erased";
+/* Standard prompt */
+"Standard prompt" = "Standard prompt";
+/* Start */
+"Start" = "Start";
+/* Start a new chat — everything stays on your device. */
+"Start a new chat — everything stays on your device." = "Start a new chat — everything stays on your device.";
+/* Stop */
+"Stop" = "Stop";
+/* Stop Generating */
+"Stop Generating" = "Stop Generating";
+/* Stopped */
+"Stopped" = "Stopped";
+/* Stored in the device Keychain only. */
+"Stored in the device Keychain only." = "Stored in the device Keychain only.";
+/* Stored in the device Keychain. Leave empty to keep it. */
+"Stored in the device Keychain. Leave empty to keep it." = "Stored in the device Keychain. Leave empty to keep it.";
+/* Submits one decision */
+"Submits one decision" = "Submits one decision";
+/* Succeeded */
+"Succeeded" = "Succeeded";
+/* Switch Model… */
+"Switch Model…" = "Switch Model…";
+/* Switch model */
+"Switch model" = "Switch model";
+/* System */
+"System" = "System";
+/* System prompt */
+"System prompt" = "System prompt";
+/* Tag name */
+"Tag name" = "Tag name";
+/* Tags */
+"Tags" = "Tags";
+/* Take Photo */
+"Take Photo" = "Take Photo";
+/* Terminal */
+"Terminal" = "Terminal";
+/* Terminated */
+"Terminated" = "Terminated";
+/* Test */
+"Test" = "Test";
+/* Test connection */
+"Test connection" = "Test connection";
+/* That doesn't parse as SKILL.md — it needs `---` frontmatter with a name, then th */
+"That doesn't parse as SKILL.md — it needs `---` frontmatter with a name, then the instructions." = "That doesn't parse as SKILL.md — it needs `---` frontmatter with a name, then the instructions.";
+/* The MCP server did not confirm the tool call; the result is uncertain. */
+"The MCP server did not confirm the tool call; the result is uncertain." = "The MCP server did not confirm the tool call; the result is uncertain.";
+/* The MCP tool stopped before producing a result. */
+"The MCP tool stopped before producing a result." = "The MCP tool stopped before producing a result.";
+/* The agent needs an answer */
+"The agent needs an answer" = "The agent needs an answer";
+/* The built-in calculator, clock and Wikipedia lookup work without one. */
+"The built-in calculator, clock and Wikipedia lookup work without one." = "The built-in calculator, clock and Wikipedia lookup work without one.";
+/* The cancelled external operation has no stable outcome. */
+"The cancelled external operation has no stable outcome." = "The cancelled external operation has no stable outcome.";
+/* The external operation was confirmed not to have succeeded. */
+"The external operation was confirmed not to have succeeded." = "The external operation was confirmed not to have succeeded.";
+/* The external operation was confirmed successful. */
+"The external operation was confirmed successful." = "The external operation was confirmed successful.";
+/* The initiating run did not reserve workflow delegation authority. */
+"The initiating run did not reserve workflow delegation authority." = "The initiating run did not reserve workflow delegation authority.";
+/* The interrupted external operation has no stable outcome. */
+"The interrupted external operation has no stable outcome." = "The interrupted external operation has no stable outcome.";
+/* The interrupted read cannot be retried within its frozen policy. */
+"The interrupted read cannot be retried within its frozen policy." = "The interrupted read cannot be retried within its frozen policy.";
+/* The local model engine returned an invalid generation stream. */
+"The local model engine returned an invalid generation stream." = "The local model engine returned an invalid generation stream.";
+/* The local model engine stopped before completing this attempt. */
+"The local model engine stopped before completing this attempt." = "The local model engine stopped before completing this attempt.";
+/* The local model produced a tool action that could not be validated. */
+"The local model produced a tool action that could not be validated." = "The local model produced a tool action that could not be validated.";
+/* The local model provider stopped before completing this attempt. */
+"The local model provider stopped before completing this attempt." = "The local model provider stopped before completing this attempt.";
+/* The local model response did not match the required structured output schema. */
+"The local model response did not match the required structured output schema." = "The local model response did not match the required structured output schema.";
+/* The local tool stopped before producing a result. */
+"The local tool stopped before producing a result." = "The local tool stopped before producing a result.";
+/* The memory store couldn't be written. */
+"The memory store couldn't be written." = "The memory store couldn't be written.";
+/* The model could not be loaded. */
+"The model could not be loaded." = "The model could not be loaded.";
+/* The model decides whether to call an allowed tool. Each call adds another model  */
+"The model decides whether to call an allowed tool. Each call adds another model pass; network tools such as web search, Wikipedia, and remote MCP also wait for the network, so they can make a reply noticeably slower." = "The model decides whether to call an allowed tool. Each call adds another model pass; network tools such as web search, Wikipedia, and remote MCP also wait for the network, so they can make a reply noticeably slower.";
+/* The model didn't reply */
+"The model didn't reply" = "The model didn't reply";
+/* The model returned an invalid structured action. */
+"The model returned an invalid structured action." = "The model returned an invalid structured action.";
+/* The next message goes to this service instead of the on-device model. */
+"The next message goes to this service instead of the on-device model." = "The next message goes to this service instead of the on-device model.";
+/* The online model request was cancelled. */
+"The online model request was cancelled." = "The online model request was cancelled.";
+/* The online model request was denied. */
+"The online model request was denied." = "The online model request was denied.";
+/* The online model returned invalid structured output. */
+"The online model returned invalid structured output." = "The online model returned invalid structured output.";
+/* The online model returned no answer text. It may have spent its output budget on */
+"The online model returned no answer text. It may have spent its output budget on service-side reasoning; turn thinking off or raise Max tokens and retry." = "The online model returned no answer text. It may have spent its output budget on service-side reasoning; turn thinking off or raise Max tokens and retry.";
+/* The online model service is not configured. Add an API key and model in Settings */
+"The online model service is not configured. Add an API key and model in Settings." = "The online model service is not configured. Add an API key and model in Settings.";
+/* The run ended without a committed answer. */
+"The run ended without a committed answer." = "The run ended without a committed answer.";
+/* The run was cancelled before it started. */
+"The run was cancelled before it started." = "The run was cancelled before it started.";
+/* The shell terminal is not enabled yet. When the sandbox runtime lands, this page */
+"The shell terminal is not enabled yet. When the sandbox runtime lands, this page will run commands inside the conversation's sandbox." = "The shell terminal is not enabled yet. When the sandbox runtime lands, this page will run commands inside the conversation's sandbox.";
+/* The skill store couldn't be written. */
+"The skill store couldn't be written." = "The skill store couldn't be written.";
+/* The system cannot start continued processing immediately. */
+"The system cannot start continued processing immediately." = "The system cannot start continued processing immediately.";
+/* The system could not start continued processing immediately. */
+"The system could not start continued processing immediately." = "The system could not start continued processing immediately.";
+/* The system ended background processing; the run is paused and can be resumed. */
+"The system ended background processing; the run is paused and can be resumed." = "The system ended background processing; the run is paused and can be resumed.";
+/* The system ended continued processing before the run finished. */
+"The system ended continued processing before the run finished." = "The system ended continued processing before the run finished.";
+/* The tool attempt stopped at a cancellation boundary. */
+"The tool attempt stopped at a cancellation boundary." = "The tool attempt stopped at a cancellation boundary.";
+/* The tool attempt stopped at a confirmed safe boundary. */
+"The tool attempt stopped at a confirmed safe boundary." = "The tool attempt stopped at a confirmed safe boundary.";
+/* The tool authorization was denied, expired, or changed. */
+"The tool authorization was denied, expired, or changed." = "The tool authorization was denied, expired, or changed.";
+/* The tool exceeded its fixed byte or resource budget. */
+"The tool exceeded its fixed byte or resource budget." = "The tool exceeded its fixed byte or resource budget.";
+/* The tool stopped before applying an external effect. */
+"The tool stopped before applying an external effect." = "The tool stopped before applying an external effect.";
+/* The tool stopped before its outcome could be proven. Tell the agent what actuall */
+"The tool stopped before its outcome could be proven. Tell the agent what actually happened." = "The tool stopped before its outcome could be proven. Tell the agent what actually happened.";
+/* The tool stopped before producing a result. */
+"The tool stopped before producing a result." = "The tool stopped before producing a result.";
+/* The tool stopped before producing a stable result. */
+"The tool stopped before producing a stable result." = "The tool stopped before producing a stable result.";
+/* The tool violated its execution contract. */
+"The tool violated its execution contract." = "The tool violated its execution contract.";
+/* The user cancelled the requested tool operation. */
+"The user cancelled the requested tool operation." = "The user cancelled the requested tool operation.";
+/* The user denied the requested tool operation. */
+"The user denied the requested tool operation." = "The user denied the requested tool operation.";
+/* The user explicitly resumed this durable recovery checkpoint. */
+"The user explicitly resumed this durable recovery checkpoint." = "The user explicitly resumed this durable recovery checkpoint.";
+/* The workflow launch no longer matches its frozen initiating run. */
+"The workflow launch no longer matches its frozen initiating run." = "The workflow launch no longer matches its frozen initiating run.";
+/* The workflow parent budget cannot be safely attenuated for a child. */
+"The workflow parent budget cannot be safely attenuated for a child." = "The workflow parent budget cannot be safely attenuated for a child.";
+/* The workflow requested a model outside its frozen policy: \(value). */
+"The workflow requested a model outside its frozen policy: %@." = "The workflow requested a model outside its frozen policy: %@.";
+/* The workflow's frozen agent input could not be recovered. */
+"The workflow's frozen agent input could not be recovered." = "The workflow's frozen agent input could not be recovered.";
+/* The workflow's initiating agent run is unavailable. */
+"The workflow's initiating agent run is unavailable." = "The workflow's initiating agent run is unavailable.";
+/* These notes stay saved, but the model isn't shown them, and it won't take new on */
+"These notes stay saved, but the model isn't shown them, and it won't take new ones." = "These notes stay saved, but the model isn't shown them, and it won't take new ones.";
+/* Thinking */
+"Thinking" = "Thinking";
+/* Thinking mode by default */
+"Thinking mode by default" = "Thinking mode by default";
+/* Thinking, tools and image attachments */
+"Thinking, tools and image attachments" = "Thinking, tools and image attachments";
+/* Thinking… */
+"Thinking…" = "Thinking…";
+/* This local model adapter cannot create durable artifact output directly. */
+"This local model adapter cannot create durable artifact output directly." = "This local model adapter cannot create durable artifact output directly.";
+/* This may change data outside mobileLLM. */
+"This may change data outside mobileLLM." = "This may change data outside mobileLLM.";
+/* This model is above the usual memory budget on this device. Use will still attem */
+"This model is above the usual memory budget on this device. Use will still attempt to load it, but the system may interrupt the app." = "This model is above the usual memory budget on this device. Use will still attempt to load it, but the system may interrupt the app.";
+/* This post doesn't include an importable SKILL.md — it may link to one instead. O */
+"This post doesn't include an importable SKILL.md — it may link to one instead. Open it on GitHub to read it." = "This post doesn't include an importable SKILL.md — it may link to one instead. Open it on GitHub to read it.";
+/* Thought for \(Self.format(seconds)) */
+"Thought for %@" = "Thought for %@";
+/* Tight · up to \(Format.shortCount(maxContext)) ctx */
+"Tight · up to %@ ctx" = "Tight · up to %@ ctx";
+/* Timed out waiting for the MCP server. */
+"Timed out waiting for the MCP server." = "Timed out waiting for the MCP server.";
+/* Title */
+"Title" = "Title";
+/* Today */
+"Today" = "Today";
+/* Toggle Thinking */
+"Toggle Thinking" = "Toggle Thinking";
+/* Tool Settings… */
+"Tool Settings…" = "Tool Settings…";
+/* Tool access */
+"Tool access" = "Tool access";
+/* Tools */
+"Tools" = "Tools";
+/* Tools off. */
+"Tools off." = "Tools off.";
+/* Translate between Chinese and English — nothing else. */
+"Translate between Chinese and English — nothing else." = "Translate between Chinese and English — nothing else.";
+/* Translate the full fact into English. Proper names may stay unchanged. */
+"Translate the full fact into English. Proper names may stay unchanged." = "Translate the full fact into English. Proper names may stay unchanged.";
+/* Translator */
+"Translator" = "Translator";
+/* Try the erase again. */
+"Try the erase again." = "Try the erase again.";
+/* Turn on the Web search tool below to use these engines. */
+"Turn on the Web search tool below to use these engines." = "Turn on the Web search tool below to use these engines.";
+/* Typing… */
+"Typing…" = "Typing…";
+/* Unavailable */
+"Unavailable" = "Unavailable";
+/* Uncertain */
+"Uncertain" = "Uncertain";
+/* Undo */
+"Undo" = "Undo";
+/* Unpin */
+"Unpin" = "Unpin";
+/* Unverified */
+"Unverified" = "Unverified";
+/* Use */
+"Use" = "Use";
+/* Use \(model.displayName) */
+"Use %@" = "Use %@";
+/* Use memory */
+"Use memory" = "Use memory";
+/* Use this example prompt */
+"Use this example prompt" = "Use this example prompt";
+/* Use your approximate (city-level) location. */
+"Use your approximate (city-level) location." = "Use your approximate (city-level) location.";
+/* Uses the Gallery's run_js tool — this app has no JS runtime yet, so those steps  */
+"Uses the Gallery's run_js tool — this app has no JS runtime yet, so those steps won't execute. The instructions still import for you to adapt." = "Uses the Gallery's run_js tool — this app has no JS runtime yet, so those steps won't execute. The instructions still import for you to adapt.";
+/* Using \(AgentRunStore.readableToolName(tool.title)) */
+"Using %@" = "Using %@";
+/* Using \(prettyName)… */
+"Using %@…" = "Using %@…";
+/* Waiting */
+"Waiting" = "Waiting";
+/* Waiting for approval */
+"Waiting for approval" = "Waiting for approval";
+/* Waiting for foreground */
+"Waiting for foreground" = "Waiting for foreground";
+/* Waiting for the model */
+"Waiting for the model" = "Waiting for the model";
+/* Waiting for the system to grant continued processing… */
+"Waiting for the system to grant continued processing…" = "Waiting for the system to grant continued processing…";
+/* Waiting for your answer */
+"Waiting for your answer" = "Waiting for your answer";
+/* Warming up the model */
+"Warming up the model" = "Warming up the model";
+/* Web search */
+"Web search" = "Web search";
+/* Web search failed: all search engines returned no results or were unreachable. */
+"Web search failed: all search engines returned no results or were unreachable." = "Web search failed: all search engines returned no results or were unreachable.";
+/* Web search reads these engines' public results pages directly (no API key), trie */
+"Web search reads these engines' public results pages directly (no API key), tries them in order, and hands the model the top links. Keep at least one on." = "Web search reads these engines' public results pages directly (no API key), tries them in order, and hands the model the top links. Keep at least one on.";
+/* Web search requires a non-empty query. */
+"Web search requires a non-empty query." = "Web search requires a non-empty query.";
+/* Webpage reader */
+"Webpage reader" = "Webpage reader";
+/* When available, an active finite run may keep processing after you leave the app */
+"When available, an active finite run may keep processing after you leave the app, with progress shown by the system. Ordinary chat is never submitted unless you turn this on, and a rejected submission pauses the run until you resume it in the foreground." = "When available, an active finite run may keep processing after you leave the app, with progress shown by the system. Ordinary chat is never submitted unless you turn this on, and a rejected submission pauses the run until you resume it in the foreground.";
+/* Wikipedia lookup failed or returned no article. */
+"Wikipedia lookup failed or returned no article." = "Wikipedia lookup failed or returned no article.";
+/* Workflow */
+"Workflow" = "Workflow";
+/* Workflow JavaScript source */
+"Workflow JavaScript source" = "Workflow JavaScript source";
+/* Workflow action failed: \(error.localizedDescription) */
+"Workflow action failed: %@" = "Workflow action failed: %@";
+/* Workflow candidates and running workflows appear here with their source, status, */
+"Workflow candidates and running workflows appear here with their source, status, activity, and controls. The Workflow menu entry enables itself only while a workflow is active in this conversation." = "Workflow candidates and running workflows appear here with their source, status, activity, and controls. The Workflow menu entry enables itself only while a workflow is active in this conversation.";
+/* Workflow could not resume: \(error.localizedDescription) */
+"Workflow could not resume: %@" = "Workflow could not resume: %@";
+/* Workflow plan generation failed: \(reason) */
+"Workflow plan generation failed: %@" = "Workflow plan generation failed: %@";
+/* Workflow snapshot could not be read: \(error.localizedDescription) */
+"Workflow snapshot could not be read: %@" = "Workflow snapshot could not be read: %@";
+/* Workflow snapshot unavailable: \(reason) */
+"Workflow snapshot unavailable: %@" = "Workflow snapshot unavailable: %@";
+/* Workflow: \(record.title) */
+"Workflow: %@" = "Workflow: %@";
+/* Working… */
+"Working…" = "Working…";
+/* Workspace */
+"Workspace" = "Workspace";
+/* Write one short English sentence about you, beginning with “The user ” — the mod */
+"Write one short English sentence about you, beginning with “The user ” — the model reads it as a note it took. It is charged to the context window whenever it's relevant." = "Write one short English sentence about you, beginning with “The user ” — the model reads it as a note it took. It is charged to the context window whenever it's relevant.";
+/* Write the memory in English, beginning with "The user ". */
+"Write the memory in English, beginning with \"The user \"." = "Write the memory in English, beginning with \"The user \".";
+/* Yesterday */
+"Yesterday" = "Yesterday";
+/* You said */
+"You said" = "You said";
+/* Your answer… */
+"Your answer…" = "Your answer…";
+/* Your chats, prompts, and the models stay on this device — there's no account and */
+"Your chats, prompts, and the models stay on this device — there's no account and no telemetry." = "Your chats, prompts, and the models stay on this device — there's no account and no telemetry.";
+/* Your last tool call already executed in this turn. Do not call any tool again —  */
+"Your last tool call already executed in this turn. Do not call any tool again — answer the user directly." = "Your last tool call already executed in this turn. Do not call any tool again — answer the user directly.";
+/* \($0.title) access is off */
+"%@ access is off" = "%@ access is off";
+/* \(Format.bytes(models.installedBytes)) used */
+"%@ used" = "%@ used";
+/* \(Int(download.fraction * 100)) percent */
+"%lld percent" = "%lld percent";
+/* \(activeSkill.emoji) \(activeSkill.displayName) · skill active */
+"%@ %@ · skill active" = "%@ %@ · skill active";
+/* \(activeToolCount) tool available to the model. */
+"%lld tool available to the model." = "%lld tool available to the model.";
+/* \(activeToolCount) tools available to the model. */
+"%lld tools available to the model." = "%lld tools available to the model.";
+/* \(all.count) configured */
+"%lld configured" = "%lld configured";
+/* \(approved ? "Approve" : "Deny") \(approval.toolName) */
+"%@ %@" = "%@ %@";
+/* \(attachments.count) attached images */
+"%lld attached images" = "%lld attached images";
+/* \(book.count) saved */
+"%lld saved" = "%lld saved";
+/* \(call.ordinal). \(name) · attempt \(call.attempt) · \(call.status.label)\(phase */
+"%lld. %@ · attempt %lld · %@%@%@" = "%lld. %@ · attempt %lld · %@%@%@";
+/* \(chat.projectTagCount(tag)) chat */
+"%lld chat" = "%lld chat";
+/* \(chat.projectTagCount(tag)) chats */
+"%lld chats" = "%lld chats";
+/* \(childCalls.count) calls */
+"%lld calls" = "%lld calls";
+/* \(count) memories */
+"%lld memories" = "%lld memories";
+/* \(count) memory */
+"%lld memory" = "%lld memory";
+/* \(dynamic.completedCallCount) of \(dynamic.totalCallCount) agents completed */
+"%lld of %lld agents completed" = "%lld of %lld agents completed";
+/* \(engine) can't run here — \(reason). */
+"%@ can't run here — %@." = "%@ can't run here — %@.";
+/* \(failure.safeMessage) (\(reason)) */
+"%@ (%@)" = "%@ (%@)";
+/* \(index + 1). \(phase.title) */
+"%lld. %@" = "%lld. %@";
+/* \(invocation) failed */
+"%@ failed" = "%@ failed";
+/* \(key) · \(baseURL) */
+"%@ · %@" = "%@ · %@";
+/* \(label): \(value) */
+"%@: %@" = "%@: %@";
+/* \(max(1, s))s left */
+"%llds left" = "%llds left";
+/* \(model.displayName) is unavailable. \(reason.message) */
+"%@ is unavailable. %@" = "%@ is unavailable. %@";
+/* \(model.displayName) supports up to \(native); this device holds about \(fits). */
+"%@ supports up to %@; this device holds about %@." = "%@ supports up to %@; this device holds about %@.";
+/* \(model.displayName) tops out at \(native), so that's what it runs at. */
+"%@ tops out at %@, so that's what it runs at." = "%@ tops out at %@, so that's what it runs at.";
+/* \(model.displayName), \(variant.quant.displayName), \(variant.engine.label) */
+"%@, %@, %@" = "%@, %@, %@";
+/* \(model.variants.count) quant */
+"%lld quant" = "%lld quant";
+/* \(model.variants.count) quants */
+"%lld quants" = "%lld quants";
+/* \(noun). \(message.answer) */
+"%@. %@" = "%@. %@";
+/* \(on) of \(total) built-in tools selected */
+"%lld of %lld built-in tools selected" = "%lld of %lld built-in tools selected";
+/* \(phase.status.label) · \(phase.completedChildCount)/\(totalChildren) subagents  */
+"%@ · %lld/%lld subagents · %@ tokens · %lld tool calls" = "%@ · %lld/%lld subagents · %@ tokens · %lld tool calls";
+/* \(prettyName) failed. \(result) */
+"%@ failed. %@" = "%@ failed. %@";
+/* \(prettyName) returned \(result) */
+"%@ returned %@" = "%@ returned %@";
+/* \(q.displayName), \(fitWord(for: q)) */
+"%@, %@" = "%@, %@";
+/* \(row.title) is turned off for mobileLLM in system Settings. The tool stays sele */
+"%@ is turned off for mobileLLM in system Settings. The tool stays selected here, but the model's calls will fail until you allow access." = "%@ is turned off for mobileLLM in system Settings. The tool stays selected here, but the model's calls will fail until you allow access.";
+/* \(run.steps.count) action */
+"%lld action" = "%lld action";
+/* \(run.steps.count) actions */
+"%lld actions" = "%lld actions";
+/* \(s / 3600)h \(String(format: "%02d", (s % 3600) / 60))m left */
+"%lldh %@m left" = "%lldh %@m left";
+/* \(s / 60)m \(String(format: "%02d", s % 60))s left */
+"%lldm %@s left" = "%lldm %@s left";
+/* \(secs)s */
+"%llds" = "%llds";
+/* \(settings.kvBits)-bit */
+"%lld-bit" = "%lld-bit";
+/* \(settings.onlineMaxTokens) */
+"%lld" = "%lld";
+/* \(settings.onlineServices.count) service · Off */
+"%lld service · Off" = "%lld service · Off";
+/* \(settings.onlineServices.count) service · On · \(service.name) */
+"%lld service · On · %@" = "%lld service · On · %@";
+/* \(settings.onlineServices.count) services */
+"%lld services" = "%lld services";
+/* \(settings.onlineServices.count) services · Off */
+"%lld services · Off" = "%lld services · Off";
+/* \(settings.onlineServices.count) services · On · \(service.name) */
+"%lld services · On · %@" = "%lld services · On · %@";
+/* \(skill.emoji) \(skill.displayName) */
+"%@  %@" = "%@  %@";
+/* \(tools.count - server.disabledTools.count) of \(tools.count) on */
+"%lld of %lld on" = "%lld of %lld on";
+/* \(tools.count) tool */
+"%lld tool" = "%lld tool";
+/* \(tools.count) tools */
+"%lld tools" = "%lld tools";
+/* \(total) skill */
+"%lld skill" = "%lld skill";
+/* \(total) skills */
+"%lld skills" = "%lld skills";
+/* \(usage.used) of \(usage.cap) tokens */
+"%lld of %lld tokens" = "%lld of %lld tokens";
+/* \(used.formatted()) / \(shortCount(cap)) */
+"%@ / %@" = "%@ / %@";
+/* asks you */
+"asks you" = "asks you";
+/* attached image */
+"attached image" = "attached image";
+/* by \(item.author) */
+"by %@" = "by %@";
+/* dynamic workflow generator did not return source */
+"dynamic workflow generator did not return source" = "dynamic workflow generator did not return source";
+/* high memory */
+"high memory" = "high memory";
+/* mobileLLM agent run */
+"mobileLLM agent run" = "mobileLLM agent run";
+/* mobileLLM runs entirely on your device — pick a model to download once, then cha */
+"mobileLLM runs entirely on your device — pick a model to download once, then chat offline with nothing leaving your phone." = "mobileLLM runs entirely on your device — pick a model to download once, then chat offline with nothing leaving your phone.";
+/* needs resume */
+"needs resume" = "needs resume";
+/* needs review */
+"needs review" = "needs review";
+/* online model */
+"online model" = "online model";
+/* runs great */
+"runs great" = "runs great";
+/* service default */
+"service default" = "service default";
+/* the model */
+"the model" = "the model";
+/* workflow: \(record.title) */
+"workflow: %@" = "workflow: %@";
+/* your model */
+"your model" = "your model";
+/* · image input works (llama.cpp) */
+"· image input works (llama.cpp)" = "· image input works (llama.cpp)";
+/* · text-only here for now */
+"· text-only here for now" = "· text-only here for now";
+/* “\(skill.displayName)” will be removed. Conversations using it fall back to your */
+"“%@” will be removed. Conversations using it fall back to your normal prompt. This can't be undone." = "“%@” will be removed. Conversations using it fall back to your normal prompt. This can't be undone.";
+/* “\(skill.displayName)” will be removed. This can't be undone. */
+"“%@” will be removed. This can't be undone." = "“%@” will be removed. This can't be undone.";
+/* “\(text)” will be forgotten. This can't be undone. */
+"“%@” will be forgotten. This can't be undone." = "“%@” will be forgotten. This can't be undone.";
+/* → \(result) */
+"→ %@" = "→ %@";

@@ -207,7 +207,7 @@ final class AppToolCatalog: ExecutableToolCatalog, @unchecked Sendable {
                 effects: [.localWrite],
                 destinationIdentity: "mobilellm.calendar",
                 dataCategory: "user.calendar",
-                userPreview: "Add an event to the user's calendar",
+                userPreview: String(localized: "Add an event to the user's calendar", bundle: .main),
                 trustRevision: "builtin.v1",
                 timeoutMilliseconds: 5_000
             ))
@@ -218,7 +218,7 @@ final class AppToolCatalog: ExecutableToolCatalog, @unchecked Sendable {
                 effects: [.localRead],
                 destinationIdentity: "mobilellm.calendar",
                 dataCategory: "user.calendar",
-                userPreview: "List the user's upcoming calendar events",
+                userPreview: String(localized: "List the user's upcoming calendar events", bundle: .main),
                 trustRevision: "builtin.v1",
                 timeoutMilliseconds: 5_000
             ))
@@ -229,7 +229,7 @@ final class AppToolCatalog: ExecutableToolCatalog, @unchecked Sendable {
                 effects: [.localWrite],
                 destinationIdentity: "mobilellm.reminders",
                 dataCategory: "user.reminders",
-                userPreview: "Create a reminder for the user",
+                userPreview: String(localized: "Create a reminder for the user", bundle: .main),
                 trustRevision: "builtin.v1",
                 timeoutMilliseconds: 5_000
             ))
@@ -240,7 +240,7 @@ final class AppToolCatalog: ExecutableToolCatalog, @unchecked Sendable {
                 effects: [.localRead],
                 destinationIdentity: "mobilellm.location",
                 dataCategory: "user.location",
-                userPreview: "Get the user's approximate current location",
+                userPreview: String(localized: "Get the user's approximate current location", bundle: .main),
                 trustRevision: "builtin.v1",
                 timeoutMilliseconds: 15_000
             ))

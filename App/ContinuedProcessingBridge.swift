@@ -64,11 +64,11 @@ final class BGContinuedProcessingSchedulerAdapter: ContinuedProcessingScheduling
                 switch schedulerError.code {
                 case .immediateRunIneligible, .tooManyPendingTaskRequests:
                     throw ContinuedProcessingSubmissionError.notImmediatelyRunnable(
-                        reason: "The system cannot start continued processing immediately."
+                        reason: String(localized: "The system cannot start continued processing immediately.", bundle: .main)
                     )
                 case .notPermitted:
                     throw ContinuedProcessingSubmissionError.notPermitted(
-                        reason: "Continued processing is not permitted on this device or provisioning profile."
+                        reason: String(localized: "Continued processing is not permitted on this device or provisioning profile.", bundle: .main)
                     )
                 default:
                     throw ContinuedProcessingSubmissionError.unavailable(

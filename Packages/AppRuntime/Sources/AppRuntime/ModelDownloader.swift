@@ -937,7 +937,7 @@ public enum ModelDownloadError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .emptyFileList(let repo):
-            return "Couldn’t list files for \(repo). Check your network connection and try again."
+            return String(localized: "Couldn’t list files for \(repo). Check your network connection and try again.", bundle: .main)
         case .incompleteDownload(let repo):
             return "Download didn’t finish for \(repo) — some weight files are missing. Tap download again to resume."
         case .invalidURL(let url):
@@ -945,9 +945,9 @@ public enum ModelDownloadError: LocalizedError {
         case .invalidIntegrityMetadata(let file):
             return "The model repo supplied invalid SHA-256 metadata for \(file). The file was not downloaded."
         case .sizeMismatch(let file, let expected, let actual):
-            return "Size verification failed for \(file) (expected \(expected) bytes, received \(actual)). Tap download again to retry."
+            return String(localized: "Size verification failed for \(file) (expected \(expected) bytes, received \(actual)). Tap download again to retry.", bundle: .main)
         case .hashMismatch(let file):
-            return "SHA-256 verification failed for \(file). The downloaded bytes were discarded; tap download again to retry."
+            return String(localized: "SHA-256 verification failed for \(file). The downloaded bytes were discarded; tap download again to retry.", bundle: .main)
         case .unsafePath(let path):
             return "Refused an unsafe file path from the model repo: \(path)."
         }

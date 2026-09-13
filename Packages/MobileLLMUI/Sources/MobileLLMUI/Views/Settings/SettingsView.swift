@@ -106,9 +106,9 @@ struct SettingsView: View {
     /// One-line status for the system-prompt row: the stock prompt, off, or a custom preview.
     private var systemPromptSummary: String {
         let text = settings.systemPrompt.trimmingCharacters(in: .whitespacesAndNewlines)
-        if text.isEmpty { return "Off — no instructions are sent" }
-        if SystemPrompt.isStandard(settings.systemPrompt) { return "Standard prompt" }
-        return "Custom · \(text.replacingOccurrences(of: "\n", with: " ").prefix(60))"
+        if text.isEmpty { return String(localized: "Off — no instructions are sent", bundle: .main) }
+        if SystemPrompt.isStandard(settings.systemPrompt) { return String(localized: "Standard prompt", bundle: .main) }
+        return String(localized: "Custom · \(text.replacingOccurrences(of: "\n", with: " ").prefix(60))", bundle: .main)
     }
 
     // MARK: Model
@@ -202,15 +202,15 @@ struct SettingsView: View {
         case .idle, .finished:
             return nil
         case .submitted:
-            return "Waiting for the system to grant continued processing…"
+            return String(localized: "Waiting for the system to grant continued processing…", bundle: .main)
         case .running:
-            return "A run is continuing in the background; the system shows its progress."
+            return String(localized: "A run is continuing in the background; the system shows its progress.", bundle: .main)
         case .rejected(let diagnostic):
-            return "Not started: \(diagnostic)"
+            return String(localized: "Not started: \(diagnostic)", bundle: .main)
         case .expired:
-            return "The system ended background processing; the run is paused and can be resumed."
+            return String(localized: "The system ended background processing; the run is paused and can be resumed.", bundle: .main)
         case .cancelled:
-            return "Background continuation was cancelled."
+            return String(localized: "Background continuation was cancelled.", bundle: .main)
         }
     }
 
@@ -300,12 +300,18 @@ struct SettingsView: View {
 
     private var onlineSummary: String {
         if let service = settings.onlineActiveService {
-            return "\(settings.onlineServices.count) service\(settings.onlineServices.count == 1 ? "" : "s") · On · \(service.name)"
+            return settings.onlineServices.count == 1
+                ? String(localized: "\(settings.onlineServices.count) service · On · \(service.name)",
+                                 bundle: .main)
+                : String(localized: "\(settings.onlineServices.count) services · On · \(service.name)",
+                                 bundle: .main)
         }
         if settings.onlineServices.isEmpty {
-            return "No services configured"
+            return String(localized: "No services configured", bundle: .main)
         }
-        return "\(settings.onlineServices.count) service\(settings.onlineServices.count == 1 ? "" : "s") · Off"
+        return settings.onlineServices.count == 1
+            ? String(localized: "\(settings.onlineServices.count) service · Off", bundle: .main)
+            : String(localized: "\(settings.onlineServices.count) services · Off", bundle: .main)
     }
 
     // MARK: Choose tools
@@ -449,11 +455,11 @@ struct SettingsView: View {
     private var contextFootnote: String {
         if container.chat.isOnlineActive {
             let window = Format.shortCount(OnlineModelIdentity.maximumContextTokens)
-            return "Online services use the setting as-is, up to the service window (\(window)); device "
-                + "RAM doesn't bind it. Longer context costs more tokens on the service."
+            return String(localized: "Online services use the setting as-is, up to the service window (\(window)); device "
+                + "RAM doesn't bind it. Longer context costs more tokens on the service.", bundle: .main)
         }
         guard let model = contextModel else {
-            return "How much conversation the model can see at once."
+            return String(localized: "How much conversation the model can see at once.", bundle: .main)
         }
         let native = Format.shortCount(model.architecture.nativeContext)
         let variant = AppSettings.preferredVariant(for: model, device: container.models.device,
@@ -463,10 +469,13 @@ struct SettingsView: View {
                                                                   device: container.models.device))
         let clamped = ContextPolicy.effective(requested: settings.contextLength, model: model) < settings.contextLength
         let head = clamped
-            ? "\(model.displayName) tops out at \(native), so that's what it runs at."
-            : "\(model.displayName) supports up to \(native); this device holds about \(fits)."
-        return head + " Longer context costs memory (it's the KV cache) and slows the first token — "
-             + "it doesn't make the model smarter."
+            ? String(localized: "\(model.displayName) tops out at \(native), so that's what it runs at.",
+                             bundle: .main)
+            : String(localized: "\(model.displayName) supports up to \(native); this device holds about \(fits).",
+                             bundle: .main)
+        return head + String(
+            localized: " Longer context costs memory (it's the KV cache) and slows the first token — it doesn't make the model smarter.",
+            bundle: .main)
     }
 
     // MARK: Appearance
@@ -506,7 +515,7 @@ struct SettingsView: View {
     /// Claiming "nothing is sent to a server" is false the moment a tool call reaches Wikipedia or an MCP
     /// server, so the sentence changes with the Tools setting.
     private var privacyBlurb: String {
-        let base = "Your chats, prompts, and the models stay on this device — there's no account and no telemetry."
+        let base = String(localized: "Your chats, prompts, and the models stay on this device — there's no account and no telemetry.", bundle: .main)
         guard settings.toolsEnabled else {
             return base + " Nothing is sent to a server. (Turning on Tools lets the model reach the web — "
                  + "search, a webpage reader, Wikipedia — or an MCP server you configure, and lets tools you "
@@ -515,7 +524,7 @@ struct SettingsView: View {
         let hasMCP = settings.mcpServers.contains(where: \.isEnabled)
         return base + " Tools are on: when the model uses a web tool it sends that query or its arguments to "
              + "that endpoint — a search engine, a page you link, or Wikipedia"
-             + (hasMCP ? ", or an MCP server you've enabled." : " (and any MCP server you add).")
+             + (hasMCP ? String(localized: ", or an MCP server you've enabled.", bundle: .main) : String(localized: " (and any MCP server you add).", bundle: .main))
              + " The calendar, reminders, and location tools read or write that system data only when the "
              + "model calls them, each asks the system for permission when selected, and only if you select "
              + "it in Choose tools."

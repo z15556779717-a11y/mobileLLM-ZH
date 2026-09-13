@@ -109,7 +109,7 @@ struct OnlineServicesView: View {
     }
 
     private func keyLabel(_ serviceID: String) -> String {
-        ((try? store.loadAPIKey(serviceID: serviceID)) != nil) ? "Key stored" : "No key"
+        ((try? store.loadAPIKey(serviceID: serviceID)) != nil) ? String(localized: "Key stored", bundle: .main) : String(localized: "No key", bundle: .main)
     }
 }
 
@@ -254,7 +254,7 @@ private struct OnlineServiceEditorView: View {
         let trimmedMaxOutput = maximumOutputTokens.trimmingCharacters(in: .whitespacesAndNewlines)
         let parsedMaxOutput = Int(trimmedMaxOutput)
         if !trimmedMaxOutput.isEmpty, parsedMaxOutput == nil || parsedMaxOutput! < 0 {
-            status = "Max output tokens must be a non-negative integer (0 = unknown)."
+            status = String(localized: "Max output tokens must be a non-negative integer (0 = unknown).", bundle: .main)
             return
         }
         let trimmedKey = key.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -264,7 +264,7 @@ private struct OnlineServiceEditorView: View {
                 stored = true
                 key = ""
             } catch {
-                status = "Couldn't save the key: \(error.localizedDescription)"
+                status = String(localized: "Couldn't save the key: \(error.localizedDescription)", bundle: .main)
                 return
             }
         }

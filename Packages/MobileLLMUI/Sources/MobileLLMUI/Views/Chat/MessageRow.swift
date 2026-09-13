@@ -62,8 +62,8 @@ struct UserBubble: View {
 
     private var accessibilityValue: String {
         guard !attachments.isEmpty else { return message.answer }
-        let noun = attachments.count == 1 ? "attached image" : "\(attachments.count) attached images"
-        return message.answer.isEmpty ? noun : "\(noun). \(message.answer)"
+        let noun = attachments.count == 1 ? String(localized: "attached image", bundle: .main) : String(localized: "\(attachments.count) attached images", bundle: .main)
+        return message.answer.isEmpty ? noun : String(localized: "\(noun). \(message.answer)", bundle: .main)
     }
 }
 
@@ -126,16 +126,16 @@ struct ToolActivityPresentation: Equatable {
         if run.name == ToolID.remember.rawValue {
             if run.result == nil {
                 state = .running
-                title = "Saving to memory…"
+                title = String(localized: "Saving to memory…", bundle: .main)
             } else if run.result.map(Self.isFailureResult) == true {
                 state = .failed
-                title = "Couldn't save to memory"
+                title = String(localized: "Couldn't save to memory", bundle: .main)
             } else if run.result == "Already in memory." {
                 state = .succeeded
-                title = "Already in memory"
+                title = String(localized: "Already in memory", bundle: .main)
             } else {
                 state = .succeeded
-                title = "Saved to memory"
+                title = String(localized: "Saved to memory", bundle: .main)
             }
             detail = nil
             accessibilityLabel = title
@@ -144,18 +144,18 @@ struct ToolActivityPresentation: Equatable {
 
         let prettyName = run.name.replacingOccurrences(of: "_", with: " ").capitalized
         let summary = Self.argumentSummary(run.arguments)
-        let invocation = prettyName + (summary.isEmpty ? "" : "(\(summary))")
+        let invocation = prettyName + (summary.isEmpty ? "" : String(localized: "(\(summary))", bundle: .main))
         if let result = run.result {
             let failed = Self.isFailureResult(result)
             state = failed ? .failed : .succeeded
-            title = failed ? "\(invocation) failed" : invocation
-            detail = "→ \(result)"
-            accessibilityLabel = failed ? "\(prettyName) failed. \(result)" : "\(prettyName) returned \(result)"
+            title = failed ? String(localized: "\(invocation) failed", bundle: .main) : invocation
+            detail = String(localized: "→ \(result)", bundle: .main)
+            accessibilityLabel = failed ? String(localized: "\(prettyName) failed. \(result)", bundle: .main) : String(localized: "\(prettyName) returned \(result)", bundle: .main)
         } else {
             state = .running
-            title = "Using \(prettyName)…"
+            title = String(localized: "Using \(prettyName)…", bundle: .main)
             detail = nil
-            accessibilityLabel = "Using \(prettyName)"
+            accessibilityLabel = String(localized: "Using \(prettyName)", bundle: .main)
         }
     }
 
@@ -226,9 +226,9 @@ struct EmptyReplyRow: View {
 
     private var label: String {
         switch outcome {
-        case .stopped: "Stopped"
-        case .noReply: "The model didn't reply"
-        case .failed: "Couldn't generate a reply"
+        case .stopped: String(localized: "Stopped", bundle: .main)
+        case .noReply: String(localized: "The model didn't reply", bundle: .main)
+        case .failed: String(localized: "Couldn't generate a reply", bundle: .main)
         }
     }
     private var icon: String { outcome == .stopped ? "stop.circle" : "exclamationmark.triangle" }

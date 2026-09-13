@@ -31,7 +31,7 @@ struct ChatDetailView: View {
     private var loadingModelName: String {
         chat.activeModel?.model.displayName
             ?? LLMCatalog.model(id: container.settings.defaultModelID)?.displayName
-            ?? "your model"
+            ?? String(localized: "your model", bundle: .main)
     }
 
     var body: some View {

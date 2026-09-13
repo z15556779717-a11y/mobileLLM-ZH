@@ -86,10 +86,10 @@ public struct ThinkingTimeline: Equatable {
     /// The disclosure header label ("Thinking…" / "Thought for 4.2s").
     public var label: String {
         switch presentation {
-        case .idle: return "Reasoning"
-        case .thinking, .thinkingCollapsed: return "Thinking…"
+        case .idle: return String(localized: "Reasoning", bundle: .main)
+        case .thinking, .thinkingCollapsed: return String(localized: "Thinking…", bundle: .main)
         case let .collapsed(seconds), let .expanded(seconds):
-            return "Thought for \(Self.format(seconds))"
+            return String(localized: "Thought for \(Self.format(seconds))", bundle: .main)
         }
     }
 

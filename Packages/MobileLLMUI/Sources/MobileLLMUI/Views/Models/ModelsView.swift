@@ -25,7 +25,7 @@ struct ModelsView: View {
     /// The two-tier library: curated (verified + adapted) vs live Hugging Face browse.
     private enum Tier: String, CaseIterable {
         case featured, explore
-        var label: String { self == .featured ? "Featured" : "Explore" }
+        var label: String { self == .featured ? String(localized: "Featured", bundle: .main) : String(localized: "Explore", bundle: .main) }
     }
 
     /// Catalog filter (the catalog now spans several families, so it needs search + shape). No "Chinese"
@@ -35,8 +35,8 @@ struct ModelsView: View {
         case all, runs, installed, reasoning, multimodal
         var label: String {
             switch self {
-            case .all: "All"; case .runs: "Runs here"; case .installed: "Installed"
-            case .reasoning: "Reasoning"; case .multimodal: "Multimodal"
+            case .all: String(localized: "All", bundle: .main); case .runs: String(localized: "Runs here", bundle: .main); case .installed: String(localized: "Installed", bundle: .main)
+            case .reasoning: String(localized: "Reasoning", bundle: .main); case .multimodal: String(localized: "Multimodal", bundle: .main)
             }
         }
     }
@@ -389,7 +389,7 @@ struct ModelCard: View {
     /// (llama.cpp mtmd), so say so; MLX vision + audio aren't wired, so they stay "text-only".
     private var modalityFootnote: String {
         let visionReady = model.variants(for: .llamaCpp).contains { $0.supportsVisionInput }
-        return visionReady ? "· image input works (llama.cpp)" : "· text-only here for now"
+        return visionReady ? String(localized: "· image input works (llama.cpp)", bundle: .main) : String(localized: "· text-only here for now", bundle: .main)
     }
 
     private var header: some View {
@@ -408,13 +408,13 @@ struct ModelCard: View {
             // Engine picker (only when the model ships more than one engine). Switching reflows the
             // precision chips + live-updates the fit badge above.
             if model.engines.count > 1 {
-                matrixRow(label: "Engine") {
+                matrixRow(label: String(localized: "Engine", bundle: .main)) {
                     Segmented(selection: engineBinding, options: model.engines) { $0.label }
                         .frame(maxWidth: 240)
                 }
             }
             // Precision as chips — each carries its own fit dot, so the whole matrix reads at a glance.
-            matrixRow(label: "Precision") {
+            matrixRow(label: String(localized: "Precision", bundle: .main)) {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: Theme.Space.xs) {
                         ForEach(quantsForEngine, id: \.self) { q in precisionChip(q) }
@@ -485,10 +485,10 @@ struct ModelCard: View {
         // offering it.
         if systemModelBlocked { return "unavailable" }
         switch models.fitPresentation(model, v, context: context) {
-        case .comfortable: return "runs great"
+        case .comfortable: return String(localized: "runs great", bundle: .main)
         case .tight: return "tight"
         case .experimental: return "experimental"
-        case .unsupported: return "high memory"
+        case .unsupported: return String(localized: "high memory", bundle: .main)
         }
     }
 
@@ -605,8 +605,8 @@ struct ModelCard: View {
     /// An activation is in flight somewhere — every Use button disables so a second tap can't re-enter it.
     private var activationBusy: Bool { models.activatingVariantID != nil }
     private var loadingLabel: String {
-        if let p = models.loadProgress { return "Loading \(Int(p * 100))%" }
-        return "Loading…"
+        if let p = models.loadProgress { return String(localized: "Loading \(Int(p * 100))%", bundle: .main) }
+        return String(localized: "Loading…", bundle: .main)
     }
 
     @ViewBuilder private var installedRow: some View {
