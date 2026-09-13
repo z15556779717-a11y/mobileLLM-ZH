@@ -173,7 +173,7 @@ struct ChatThreadView: View {
             VStack(alignment: .trailing, spacing: Theme.Space.xs) {
                 UserBubble(message: message,
                            onEdit: isBusy ? nil : { beginEdit(message) },
-                           onCopy: { Clipboard.copy(message.answer); chat.showToast(Toast("Copied")) },
+                           onCopy: { Clipboard.copy(message.answer); chat.showToast(Toast(String(localized: "Copied", bundle: .main))) },
                            attachmentLoader: { await chat.attachmentData($0) })
                 if let workflow = message.workflowRecord {
                     NavigationLink {
@@ -203,7 +203,7 @@ struct ChatThreadView: View {
                 modelName: message.generatedBy?.displayName ?? String(localized: "Model", bundle: .main),
                 toolRuns: message.toolRuns ?? [],
                 emptyOutcome: message.emptyOutcome,
-                onCopy: { Clipboard.copy(message.answer); chat.showToast(Toast("Copied")) },
+                onCopy: { Clipboard.copy(message.answer); chat.showToast(Toast(String(localized: "Copied", bundle: .main))) },
                 onRegenerate: isBusy ? nil : { requestRegenerate(message) })
         }
     }

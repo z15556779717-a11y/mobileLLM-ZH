@@ -556,9 +556,9 @@ struct SettingsView: View {
             do {
                 try await container.deleteAllChats()
                 storageBytes = await container.conversationStore.storageBytes()
-                container.chat.showToast(Toast("All chats and attachments deleted", kind: .success))
+                container.chat.showToast(Toast(String(localized: "All chats and attachments deleted", bundle: .main), kind: .success))
             } catch {
-                container.chat.showToast(Toast("Chats couldn't be deleted: \(error.localizedDescription)",
+                container.chat.showToast(Toast(String(localized: "Chats couldn't be deleted: \(error.localizedDescription)", bundle: .main),
                                                kind: .error, autoDismiss: nil))
             }
         }
@@ -569,7 +569,7 @@ struct SettingsView: View {
             do {
                 try await container.eraseAllAppData()
                 storageBytes = 0
-                container.chat.showToast(Toast("All Vela data erased", kind: .success))
+                container.chat.showToast(Toast(String(localized: "All Vela data erased", bundle: .main), kind: .success))
             } catch {
                 eraseError = error.localizedDescription
                 storageBytes = await container.conversationStore.storageBytes()
@@ -585,7 +585,7 @@ struct SettingsView: View {
         encoder.dateEncodingStrategy = .iso8601
         if let data = try? encoder.encode(convos), let json = String(data: data, encoding: .utf8) {
             Clipboard.copy(json)
-            container.chat.showToast(Toast("Copied \(convos.count) chats as JSON", kind: .success))
+            container.chat.showToast(Toast(String(localized: "Copied \(convos.count) chats as JSON", bundle: .main), kind: .success))
         }
     }
 

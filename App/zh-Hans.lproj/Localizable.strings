@@ -62,6 +62,8 @@
 "Active, waiting, paused, and recoverable agent runs appear here." = "活动、等待中、已暂停以及可恢复的智能体运行会显示在这里。";
 /* Add */
 "Add" = "添加";
+/* Add a goal with /workflow, e.g. /workflow research the topic */
+"Add a goal with /workflow, e.g. /workflow research the topic" = "用 /workflow 添加目标，例如 /workflow 调研这个主题";
 /* Add a memory */
 "Add a memory" = "添加记忆";
 /* Add a model to start chatting. */
@@ -96,6 +98,12 @@
 "Agent runtime unavailable. Restart the app to try again." = "智能体运行时不可用。请重启应用后重试。";
 /* All */
 "All" = "全部";
+/* All Vela data erased */
+"All Vela data erased" = "Vela 的所有数据已清除";
+/* All chats and attachments deleted */
+"All chats and attachments deleted" = "所有对话和附件已删除";
+/* Allow microphone and speech access in Settings to dictate. */
+"Allow microphone and speech access in Settings to dictate." = "请在“设置”中允许麦克风和语音识别访问，以使用听写功能。";
 /* Allow selected tools */
 "Allow selected tools" = "允许所选工具";
 /* Already in memory */
@@ -202,6 +210,8 @@
 "Chat options" = "对话选项";
 /* Chat with \(modelName) */
 "Chat with %@" = "与 %@ 对话";
+/* Chats couldn't be deleted: \(error.localizedDescription) */
+"Chats couldn't be deleted: %@" = "无法删除对话：%@";
 /* Check the current date and time. */
 "Check the current date and time." = "查看当前日期和时间。";
 /* Check your connection and try again. */
@@ -274,6 +284,8 @@
 "Continued processing was cancelled by the user." = "用户取消了继续处理。";
 /* Conversation */
 "Conversation" = "对话";
+/* Conversation deleted */
+"Conversation deleted" = "对话已删除";
 /* Conversation menu */
 "Conversation menu" = "对话菜单";
 /* Conversation settings */
@@ -282,6 +294,8 @@
 "Conversations on disk" = "磁盘上的对话";
 /* Copied */
 "Copied" = "已复制";
+/* Copied \(convos.count) chats as JSON */
+"Copied %lld chats as JSON" = "已复制 %lld 个对话为 JSON";
 /* Copied code */
 "Copied code" = "已复制代码";
 /* Copy */
@@ -290,8 +304,14 @@
 "Copy answer" = "复制回答";
 /* Copy code */
 "Copy code" = "复制代码";
+/* Couldn't add that image. */
+"Couldn't add that image." = "无法添加该图片。";
+/* Couldn't add that photo. */
+"Couldn't add that photo." = "无法添加该照片。";
 /* Couldn't connect */
 "Couldn't connect" = "无法连接";
+/* Couldn't delete the conversation. */
+"Couldn't delete the conversation." = "无法删除该对话。";
 /* Couldn't find a readable SKILL.md there. Try the direct link to the file. */
 "Couldn't find a readable SKILL.md there. Try the direct link to the file." = "在那里找不到可读取的 SKILL.md。请尝试该文件的直接链接。";
 /* Couldn't generate a reply */
@@ -304,6 +324,12 @@
 "Couldn't reach Hugging Face" = "无法连接 Hugging Face";
 /* Couldn't read that web page. */
 "Couldn't read that web page." = "无法读取该网页。";
+/* Couldn't restore the conversation. */
+"Couldn't restore the conversation." = "无法恢复该对话。";
+/* Couldn't save changes — the device may be out of storage. */
+"Couldn't save changes — the device may be out of storage." = "无法保存更改——设备存储空间可能已满。";
+/* Couldn't save the attached image. Your draft was restored; check available stora */
+"Couldn't save the attached image. Your draft was restored; check available storage and try again." = "无法保存附加的图片。草稿已恢复，请检查可用存储空间后重试。";
 /* Couldn't save the key: \(error.localizedDescription) */
 "Couldn't save the key: %@" = "无法保存密钥：%@";
 /* Couldn't save to memory */
@@ -362,6 +388,8 @@
 "Details" = "详情";
 /* Dictate */
 "Dictate" = "听写";
+/* Dictation isn't available for this language. */
+"Dictation isn't available for this language." = "该语言不支持听写。";
 /* Did not happen */
 "Did not happen" = "没有发生";
 /* Did the external action happen? */
@@ -638,6 +666,8 @@
 "No chats match “%@”." = "没有与“%@”匹配的对话。";
 /* No conversations yet */
 "No conversations yet" = "还没有对话";
+/* No image on the clipboard. */
+"No image on the clipboard." = "剪贴板中没有图片。";
 /* No importable SKILL.md — open on GitHub to view. */
 "No importable SKILL.md — open on GitHub to view." = "没有可导入的 SKILL.md — 请在 GitHub 上打开查看。";
 /* No key */
@@ -764,6 +794,8 @@
 "Pause run" = "暂停运行";
 /* Paused */
 "Paused" = "已暂停";
+/* Paused to let the device cool — it'll resume automatically. */
+"Paused to let the device cool — it'll resume automatically." = "已暂停以便设备降温——之后会自动继续。";
 /* Paused to let the device cool. */
 "Paused to let the device cool." = "已暂停，让设备降温。";
 /* Pausing */
@@ -980,6 +1012,8 @@
 "Skill wasn't saved" = "技能未保存";
 /* Skills */
 "Skills" = "技能";
+/* Skills couldn't be loaded: \(error.localizedDescription) */
+"Skills couldn't be loaded: %@" = "技能加载失败：%@";
 /* Skills shared by the community on GitHub Discussions. Tap one to preview it, the */
 "Skills shared by the community on GitHub Discussions. Tap one to preview it, then install with a tap — it joins your custom skills like any other." = "社区在 GitHub Discussions 上分享的技能。点按即可预览，再点按即可安装 — 它会像其他技能一样加入你的自定义技能。";
 /* Some data wasn't erased */
@@ -1146,6 +1180,8 @@
 "This local model adapter cannot create durable artifact output directly." = "此本地模型适配器无法直接创建持久化产物。";
 /* This may change data outside Vela. */
 "This may change data outside Vela." = "这可能会更改 Vela 之外的数据。";
+/* This model can't read images — switch to an image-capable model and try again. */
+"This model can't read images — switch to an image-capable model and try again." = "该模型无法读取图片——请切换到支持图片的模型后重试。";
 /* This model is above the usual memory budget on this device. Use will still attem */
 "This model is above the usual memory budget on this device. Use will still attempt to load it, but the system may interrupt the app." = "此模型超出了本设备通常的内存预算。仍会尝试加载，但系统可能会中断应用。";
 /* This post doesn't include an importable SKILL.md — it may link to one instead. O */
@@ -1250,6 +1286,8 @@
 "Workflow candidates and running workflows appear here with their source, status, activity, and controls. The Workflow menu entry enables itself only while a workflow is active in this conversation." = "工作流候选和正在运行的工作流会连同其源码、状态、活动和控件显示在这里。“工作流”菜单项仅在当前对话中有活动工作流时才可用。";
 /* Workflow could not resume: \(error.localizedDescription) */
 "Workflow could not resume: %@" = "工作流无法继续：%@";
+/* Workflow couldn't start: \(error.localizedDescription) */
+"Workflow couldn't start: %@" = "工作流无法启动：%@";
 /* Workflow plan generation failed: \(reason) */
 "Workflow plan generation failed: %@" = "工作流计划生成失败：%@";
 /* Workflow snapshot could not be read: \(error.localizedDescription) */
@@ -1324,6 +1362,8 @@
 "%@: %@" = "%@：%@";
 /* \(max(1, s))s left */
 "%llds left" = "剩余 %lld 秒";
+/* \(model.displayName) is ready */
+"%@ is ready" = "%@ 已就绪";
 /* \(model.displayName) is unavailable. \(reason.message) */
 "%@ is unavailable. %@" = "%@ 不可用。%@";
 /* \(model.displayName) supports up to \(native); this device holds about \(fits). */
@@ -1348,6 +1388,8 @@
 "%@ returned %@" = "%@ 返回了 %@";
 /* \(q.displayName), \(fitWord(for: q)) */
 "%@, %@" = "%@，%@";
+/* \(row.title) is selected, but access is off in system Settings. */
+"%@ is selected, but access is off in system Settings." = "已选中“%@”，但系统“设置”中的访问权限已关闭。";
 /* \(row.title) is turned off for Vela in system Settings. The tool stays selected  */
 "%@ is turned off for Vela in system Settings. The tool stays selected here, but the model's calls will fail until you allow access." = "%@ 已在系统“设置”中为 Vela 关闭。此处该工具仍处于选中状态，但在你允许访问之前，模型的调用会失败。";
 /* \(run.steps.count) action */

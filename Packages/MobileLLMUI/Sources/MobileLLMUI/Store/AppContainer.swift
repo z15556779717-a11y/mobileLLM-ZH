@@ -365,7 +365,7 @@ public final class AppContainer {
         do {
             try await skills.load()   // seed the built-in skills on first launch, else read them back from disk
         } catch {
-            chat.showToast(Toast("Skills couldn't be loaded: \(error.localizedDescription)",
+            chat.showToast(Toast(String(localized: "Skills couldn't be loaded: \(error.localizedDescription)", bundle: .main),
                                  kind: .error, autoDismiss: 4))
         }
         await memory.refresh()   // the first send composes its memory block from this mirror
@@ -444,7 +444,7 @@ public final class AppContainer {
             // "Default model" is not a setting anymore — it auto-tracks the last successfully used model,
             // so a fresh launch (or a brand-new thread) lands on what you were actually using.
             settings.defaultModelID = model.id
-            if announce { chat.showToast(Toast("\(model.displayName) is ready", kind: .success)) }
+            if announce { chat.showToast(Toast(String(localized: "\(model.displayName) is ready", bundle: .main), kind: .success)) }
         } catch is CancellationError {
             // Superseded by a newer switch, or the data-erase gate: neither is the user's problem.
         } catch let error as ModelActivationError {

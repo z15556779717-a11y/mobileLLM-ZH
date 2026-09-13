@@ -95,7 +95,7 @@ struct Composer: View {
             CameraPicker { data in
                 showCamera = false
                 if let data, !chat.attach(imageData: data) {
-                    chat.showToast(Toast("Couldn't add that photo.", kind: .warning, autoDismiss: 3))
+                    chat.showToast(Toast(String(localized: "Couldn't add that photo.", bundle: .main), kind: .warning, autoDismiss: 3))
                 }
             }
             .ignoresSafeArea()
@@ -108,10 +108,10 @@ struct Composer: View {
         .onChange(of: dictation.state) { _, state in
             switch state {
             case .denied:
-                chat.showToast(Toast("Allow microphone and speech access in Settings to dictate.",
+                chat.showToast(Toast(String(localized: "Allow microphone and speech access in Settings to dictate.", bundle: .main),
                                      kind: .warning, autoDismiss: 4))
             case .unavailable:
-                chat.showToast(Toast("Dictation isn't available for this language.",
+                chat.showToast(Toast(String(localized: "Dictation isn't available for this language.", bundle: .main),
                                      kind: .warning, autoDismiss: 4))
             case .idle, .recording:
                 break
@@ -336,11 +336,11 @@ struct Composer: View {
     /// Attach an image from the clipboard, or tell the user there isn't one.
     private func pasteImage() {
         guard let data = Clipboard.imageData() else {
-            chat.showToast(Toast("No image on the clipboard.", kind: .warning, autoDismiss: 3))
+            chat.showToast(Toast(String(localized: "No image on the clipboard.", bundle: .main), kind: .warning, autoDismiss: 3))
             return
         }
         if !chat.attach(imageData: data) {
-            chat.showToast(Toast("Couldn't add that image.", kind: .warning, autoDismiss: 3))
+            chat.showToast(Toast(String(localized: "Couldn't add that image.", bundle: .main), kind: .warning, autoDismiss: 3))
         }
     }
 
@@ -471,7 +471,7 @@ struct Composer: View {
                         if await row.requestPermission(eventStore: toolEventStore,
                                                        locationProvider: toolLocationProvider) == .denied {
                             chat.showToast(Toast(
-                                "\(row.title) is selected, but access is off in system Settings.",
+                                String(localized: "\(row.title) is selected, but access is off in system Settings.", bundle: .main),
                                 kind: .warning, autoDismiss: 5
                             ))
                         }

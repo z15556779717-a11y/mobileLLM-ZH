@@ -62,6 +62,8 @@
 "Active, waiting, paused, and recoverable agent runs appear here." = "Active, waiting, paused, and recoverable agent runs appear here.";
 /* Add */
 "Add" = "Add";
+/* Add a goal with /workflow, e.g. /workflow research the topic */
+"Add a goal with /workflow, e.g. /workflow research the topic" = "Add a goal with /workflow, e.g. /workflow research the topic";
 /* Add a memory */
 "Add a memory" = "Add a memory";
 /* Add a model to start chatting. */
@@ -96,6 +98,12 @@
 "Agent runtime unavailable. Restart the app to try again." = "Agent runtime unavailable. Restart the app to try again.";
 /* All */
 "All" = "All";
+/* All Vela data erased */
+"All Vela data erased" = "All Vela data erased";
+/* All chats and attachments deleted */
+"All chats and attachments deleted" = "All chats and attachments deleted";
+/* Allow microphone and speech access in Settings to dictate. */
+"Allow microphone and speech access in Settings to dictate." = "Allow microphone and speech access in Settings to dictate.";
 /* Allow selected tools */
 "Allow selected tools" = "Allow selected tools";
 /* Already in memory */
@@ -202,6 +210,8 @@
 "Chat options" = "Chat options";
 /* Chat with \(modelName) */
 "Chat with %@" = "Chat with %@";
+/* Chats couldn't be deleted: \(error.localizedDescription) */
+"Chats couldn't be deleted: %@" = "Chats couldn't be deleted: %@";
 /* Check the current date and time. */
 "Check the current date and time." = "Check the current date and time.";
 /* Check your connection and try again. */
@@ -274,6 +284,8 @@
 "Continued processing was cancelled by the user." = "Continued processing was cancelled by the user.";
 /* Conversation */
 "Conversation" = "Conversation";
+/* Conversation deleted */
+"Conversation deleted" = "Conversation deleted";
 /* Conversation menu */
 "Conversation menu" = "Conversation menu";
 /* Conversation settings */
@@ -282,6 +294,8 @@
 "Conversations on disk" = "Conversations on disk";
 /* Copied */
 "Copied" = "Copied";
+/* Copied \(convos.count) chats as JSON */
+"Copied %lld chats as JSON" = "Copied %lld chats as JSON";
 /* Copied code */
 "Copied code" = "Copied code";
 /* Copy */
@@ -290,8 +304,14 @@
 "Copy answer" = "Copy answer";
 /* Copy code */
 "Copy code" = "Copy code";
+/* Couldn't add that image. */
+"Couldn't add that image." = "Couldn't add that image.";
+/* Couldn't add that photo. */
+"Couldn't add that photo." = "Couldn't add that photo.";
 /* Couldn't connect */
 "Couldn't connect" = "Couldn't connect";
+/* Couldn't delete the conversation. */
+"Couldn't delete the conversation." = "Couldn't delete the conversation.";
 /* Couldn't find a readable SKILL.md there. Try the direct link to the file. */
 "Couldn't find a readable SKILL.md there. Try the direct link to the file." = "Couldn't find a readable SKILL.md there. Try the direct link to the file.";
 /* Couldn't generate a reply */
@@ -304,6 +324,12 @@
 "Couldn't reach Hugging Face" = "Couldn't reach Hugging Face";
 /* Couldn't read that web page. */
 "Couldn't read that web page." = "Couldn't read that web page.";
+/* Couldn't restore the conversation. */
+"Couldn't restore the conversation." = "Couldn't restore the conversation.";
+/* Couldn't save changes — the device may be out of storage. */
+"Couldn't save changes — the device may be out of storage." = "Couldn't save changes — the device may be out of storage.";
+/* Couldn't save the attached image. Your draft was restored; check available stora */
+"Couldn't save the attached image. Your draft was restored; check available storage and try again." = "Couldn't save the attached image. Your draft was restored; check available storage and try again.";
 /* Couldn't save the key: \(error.localizedDescription) */
 "Couldn't save the key: %@" = "Couldn't save the key: %@";
 /* Couldn't save to memory */
@@ -362,6 +388,8 @@
 "Details" = "Details";
 /* Dictate */
 "Dictate" = "Dictate";
+/* Dictation isn't available for this language. */
+"Dictation isn't available for this language." = "Dictation isn't available for this language.";
 /* Did not happen */
 "Did not happen" = "Did not happen";
 /* Did the external action happen? */
@@ -638,6 +666,8 @@
 "No chats match “%@”." = "No chats match “%@”.";
 /* No conversations yet */
 "No conversations yet" = "No conversations yet";
+/* No image on the clipboard. */
+"No image on the clipboard." = "No image on the clipboard.";
 /* No importable SKILL.md — open on GitHub to view. */
 "No importable SKILL.md — open on GitHub to view." = "No importable SKILL.md — open on GitHub to view.";
 /* No key */
@@ -764,6 +794,8 @@
 "Pause run" = "Pause run";
 /* Paused */
 "Paused" = "Paused";
+/* Paused to let the device cool — it'll resume automatically. */
+"Paused to let the device cool — it'll resume automatically." = "Paused to let the device cool — it'll resume automatically.";
 /* Paused to let the device cool. */
 "Paused to let the device cool." = "Paused to let the device cool.";
 /* Pausing */
@@ -980,6 +1012,8 @@
 "Skill wasn't saved" = "Skill wasn't saved";
 /* Skills */
 "Skills" = "Skills";
+/* Skills couldn't be loaded: \(error.localizedDescription) */
+"Skills couldn't be loaded: %@" = "Skills couldn't be loaded: %@";
 /* Skills shared by the community on GitHub Discussions. Tap one to preview it, the */
 "Skills shared by the community on GitHub Discussions. Tap one to preview it, then install with a tap — it joins your custom skills like any other." = "Skills shared by the community on GitHub Discussions. Tap one to preview it, then install with a tap — it joins your custom skills like any other.";
 /* Some data wasn't erased */
@@ -1146,6 +1180,8 @@
 "This local model adapter cannot create durable artifact output directly." = "This local model adapter cannot create durable artifact output directly.";
 /* This may change data outside Vela. */
 "This may change data outside Vela." = "This may change data outside Vela.";
+/* This model can't read images — switch to an image-capable model and try again. */
+"This model can't read images — switch to an image-capable model and try again." = "This model can't read images — switch to an image-capable model and try again.";
 /* This model is above the usual memory budget on this device. Use will still attem */
 "This model is above the usual memory budget on this device. Use will still attempt to load it, but the system may interrupt the app." = "This model is above the usual memory budget on this device. Use will still attempt to load it, but the system may interrupt the app.";
 /* This post doesn't include an importable SKILL.md — it may link to one instead. O */
@@ -1250,6 +1286,8 @@
 "Workflow candidates and running workflows appear here with their source, status, activity, and controls. The Workflow menu entry enables itself only while a workflow is active in this conversation." = "Workflow candidates and running workflows appear here with their source, status, activity, and controls. The Workflow menu entry enables itself only while a workflow is active in this conversation.";
 /* Workflow could not resume: \(error.localizedDescription) */
 "Workflow could not resume: %@" = "Workflow could not resume: %@";
+/* Workflow couldn't start: \(error.localizedDescription) */
+"Workflow couldn't start: %@" = "Workflow couldn't start: %@";
 /* Workflow plan generation failed: \(reason) */
 "Workflow plan generation failed: %@" = "Workflow plan generation failed: %@";
 /* Workflow snapshot could not be read: \(error.localizedDescription) */
@@ -1324,6 +1362,8 @@
 "%@: %@" = "%@: %@";
 /* \(max(1, s))s left */
 "%llds left" = "%llds left";
+/* \(model.displayName) is ready */
+"%@ is ready" = "%@ is ready";
 /* \(model.displayName) is unavailable. \(reason.message) */
 "%@ is unavailable. %@" = "%@ is unavailable. %@";
 /* \(model.displayName) supports up to \(native); this device holds about \(fits). */
@@ -1348,6 +1388,8 @@
 "%@ returned %@" = "%@ returned %@";
 /* \(q.displayName), \(fitWord(for: q)) */
 "%@, %@" = "%@, %@";
+/* \(row.title) is selected, but access is off in system Settings. */
+"%@ is selected, but access is off in system Settings." = "%@ is selected, but access is off in system Settings.";
 /* \(row.title) is turned off for Vela in system Settings. The tool stays selected  */
 "%@ is turned off for Vela in system Settings. The tool stays selected here, but the model's calls will fail until you allow access." = "%@ is turned off for Vela in system Settings. The tool stays selected here, but the model's calls will fail until you allow access.";
 /* \(run.steps.count) action */

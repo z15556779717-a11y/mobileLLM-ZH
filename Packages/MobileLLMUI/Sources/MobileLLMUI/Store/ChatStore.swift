@@ -947,7 +947,9 @@ public final class ChatStore {
             restoreConversationModelIfNeeded()
         }
         // Optimistic: offer Undo instantly. The disk write + failure-rollback happen behind it.
-        showToast(Toast("Conversation deleted", actionTitle: String(localized: "Undo", bundle: .main), autoDismiss: Self.undoWindow),
+        showToast(Toast(String(localized: "Conversation deleted", bundle: .main),
+                        actionTitle: String(localized: "Undo", bundle: .main),
+                        autoDismiss: Self.undoWindow),
                   action: { [weak self] in self?.restore(removed) })
         let epoch = persistenceEpoch
         Task { @MainActor [weak self] in
@@ -967,7 +969,7 @@ public final class ChatStore {
                     self.activeID = previousActive
                     self.restoreConversationModelIfNeeded()
                 }
-                self.showToast(Toast("Couldn't delete the conversation.", kind: .error, autoDismiss: 4))
+                self.showToast(Toast(String(localized: "Couldn't delete the conversation.", bundle: .main), kind: .error, autoDismiss: 4))
             }
         }
     }
@@ -986,7 +988,7 @@ public final class ChatStore {
                 self.restoreConversationModelIfNeeded()
             } catch {
                 guard self.persistenceEpoch == epoch, !self.conversationEraseInProgress else { return }
-                self.showToast(Toast("Couldn't restore the conversation.", kind: .error, autoDismiss: 4))
+                self.showToast(Toast(String(localized: "Couldn't restore the conversation.", bundle: .main), kind: .error, autoDismiss: 4))
             }
         }
     }
@@ -1022,7 +1024,7 @@ public final class ChatStore {
         // match, so ordinary prose is never silently re-routed to the workflow runtime.
         if let goal = Self.workflowGoal(in: text) {
             guard !goal.isEmpty else {
-                showToast(Toast("Add a goal with /workflow, e.g. /workflow research the topic",
+                showToast(Toast(String(localized: "Add a goal with /workflow, e.g. /workflow research the topic", bundle: .main),
                                 kind: .warning, autoDismiss: 5))
                 return
             }
@@ -1041,7 +1043,7 @@ public final class ChatStore {
            isOnlineActive
                 || activeModel?.variant.engine != .llamaCpp
                 || activeModel?.variant.supportsVisionInput != true {
-            showToast(Toast("This model can't read images — switch to an image-capable model and try again.",
+            showToast(Toast(String(localized: "This model can't read images — switch to an image-capable model and try again.", bundle: .main),
                             kind: .warning, autoDismiss: 5))
             return
         }
@@ -1269,7 +1271,7 @@ public final class ChatStore {
             try await workflowLaunch(goal, conversationID, userMessageID, workflowID)
         } catch {
             showToast(Toast(
-                "Workflow couldn't start: \(error.localizedDescription)",
+                String(localized: "Workflow couldn't start: \(error.localizedDescription)", bundle: .main),
                 kind: .error,
                 autoDismiss: 5
             ))
@@ -1793,7 +1795,7 @@ public final class ChatStore {
         }
         genTask = nil
         showToast(Toast(
-            "Couldn't save the attached image. Your draft was restored; check available storage and try again.",
+            String(localized: "Couldn't save the attached image. Your draft was restored; check available storage and try again.", bundle: .main),
             kind: .error,
             autoDismiss: 6
         ))
@@ -2123,7 +2125,7 @@ public final class ChatStore {
         if error is CancellationError { return }
         switch error {
         case ThermalError.pausedForHeat:
-            showToast(Toast("Paused to let the device cool — it'll resume automatically.",
+            showToast(Toast(String(localized: "Paused to let the device cool — it'll resume automatically.", bundle: .main),
                             kind: .warning, autoDismiss: 4))
         case let activation as ModelActivationError:
             showToast(Toast(activation.message, kind: .error, actionTitle: activation.forwardTitle,
@@ -2180,7 +2182,7 @@ public final class ChatStore {
     /// that banner is gone and a later save fails.
     private func surfacePersistFailure() {
         if let id = persistFailureBannerID, banner?.id == id { return }
-        let toast = Toast("Couldn't save changes — the device may be out of storage.",
+        let toast = Toast(String(localized: "Couldn't save changes — the device may be out of storage.", bundle: .main),
                           kind: .error, actionTitle: String(localized: "Retry", bundle: .main), autoDismiss: nil)
         persistFailureBannerID = toast.id
         showToast(toast, action: { [weak self] in self?.retryPersist() })
