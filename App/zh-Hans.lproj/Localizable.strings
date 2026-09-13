@@ -238,6 +238,8 @@
 "Chat with %@" = "与 %@ 对话";
 /* Chats couldn't be deleted: \(error.localizedDescription) */
 "Chats couldn't be deleted: %@" = "无法删除对话：%@";
+/* Check the API key and the service's base URL in Settings → Online models, then r */
+"Check the API key and the service's base URL in Settings → Online models, then re-save." = "请在“设置 → 在线模型”中检查 API key 和服务的 Base URL，然后重新保存。";
 /* Check the current date and time. */
 "Check the current date and time." = "查看当前日期和时间。";
 /* Check your connection and try again. */
@@ -458,6 +460,8 @@
 "Downloading %@…" = "正在下载 %@…";
 /* Downloading… \(Int(download.fraction * 100))% */
 "Downloading… %lld%%" = "正在下载… %lld%%";
+/* Draft a polite reminder email. */
+"Draft a polite reminder email." = "帮我写一封礼貌的提醒邮件。";
 /* Duplicate */
 "Duplicate" = "复制副本";
 /* Each service is an OpenAI-compatible Responses API endpoint. The key for each se */
@@ -482,7 +486,7 @@
 "Effort" = "推理强度";
 /* Effort applies to services that expose a reasoning-effort knob; local engines tr */
 "Effort applies to services that expose a reasoning-effort knob; local engines treat it as advisory. Medium is the default." = "推理强度只对提供该调节项的服务生效；本地引擎将其视为参考值。默认为“中”。";
-/* Effort: \(chat.effectiveReasoningEffort.rawValue.capitalized) */
+/* Effort: \(chat.effectiveReasoningEffort.displayLabel) */
 "Effort: %@" = "推理强度：%@";
 /* Emoji */
 "Emoji" = "表情符号";
@@ -502,6 +506,8 @@
 "Experimental · may be interrupted" = "实验性 · 可能被中断";
 /* Explain code by purpose first, then call out pitfalls. */
 "Explain code by purpose first, then call out pitfalls." = "先讲代码的用途，再指出易错点。";
+/* Explain how sleep affects memory. */
+"Explain how sleep affects memory." = "睡眠如何影响记忆？";
 /* Explore */
 "Explore" = "探索";
 /* Export all chats (JSON) */
@@ -566,10 +572,14 @@
 "GitHub returned an unexpected error (code %lld). Please try again." = "GitHub 返回了意外错误（代码 %lld）。请重试。";
 /* GitHub's response couldn't be read. Please try again. */
 "GitHub's response couldn't be read. Please try again." = "无法解析 GitHub 的响应。请重试。";
+/* Give me a 20-minute dinner idea. */
+"Give me a 20-minute dinner idea." = "给我一个 20 分钟能做好的晚餐建议。";
 /* Google's newest edge model — multilingual, compact. Non-thinking. Gemma chat for */
 "Google's newest edge model — multilingual, compact. Non-thinking. Gemma chat format." = "Google 最新的端侧模型——多语言、体积紧凑。非思考模式。Gemma 对话格式。";
 /* Hidden */
 "Hidden" = "隐藏";
+/* High */
+"High" = "高";
 /* High memory · may fail */
 "High memory · may fail" = "占用内存高 · 可能失败";
 /* How much conversation the model can see at once. */
@@ -644,6 +654,8 @@
 "Look up \"%@\" on Wikipedia" = "在 Wikipedia 上查询“%@”";
 /* Look up a topic on Wikipedia over the network. */
 "Look up a topic on Wikipedia over the network." = "通过网络在 Wikipedia 上查询主题。";
+/* Low */
+"Low" = "低";
 /* MCP servers */
 "MCP servers" = "MCP 服务器";
 /* Manage Skills… */
@@ -654,6 +666,8 @@
 "Max output tokens must be a non-negative integer (0 = unknown)." = "最大输出 token 数必须是非负整数（0 表示未知）。";
 /* Max tokens */
 "Max tokens" = "最大 Token 数";
+/* Medium */
+"Medium" = "中等";
 /* Memory */
 "Memory" = "记忆";
 /* Memory cannot be empty. */
@@ -1200,6 +1214,12 @@
 "The online model returned no answer text. It may have spent its output budget on service-side reasoning; turn thinking off or raise Max tokens and retry." = "在线模型没有返回任何回答文本。输出预算可能被服务端的推理消耗了；请关闭思考功能，或提高“最大 token 数”后重试。";
 /* The online model service is not configured. Add an API key and model in Settings */
 "The online model service is not configured. Add an API key and model in Settings." = "在线模型服务尚未配置。请在“设置”中添加 API key 和模型。";
+/* The online model service rejected the API key. */
+"The online model service rejected the API key." = "在线模型服务拒绝了该 API key。";
+/* The online model service rejected the request. */
+"The online model service rejected the request." = "在线模型服务拒绝了该请求。";
+/* The online model stream failed. */
+"The online model stream failed." = "在线模型流式响应失败。";
 /* The run ended without a committed answer. */
 "The run ended without a committed answer." = "运行结束时没有给出最终答复。";
 /* The run was cancelled before it started. */
@@ -1396,6 +1416,8 @@
 "Working…" = "正在处理…";
 /* Workspace */
 "Workspace" = "工作区";
+/* Write a haiku about the ocean. */
+"Write a haiku about the ocean." = "写一首关于海洋的俳句。";
 /* Write one short English sentence about you, beginning with “The user ” — the mod */
 "Write one short English sentence about you, beginning with “The user ” — the model reads it as a note it took. It is charged to the context window whenever it's relevant." = "用一句简短的英文描述你自己，以“The user ”开头 — 模型会把它当作自己记下的笔记。只要相关，它就会计入上下文窗口。";
 /* Write the memory in English, beginning with "The user ". */
@@ -1550,6 +1572,8 @@
 "runs great" = "运行流畅";
 /* service default */
 "service default" = "服务默认";
+/* stop: \(stats.stopReason.displayLabel) */
+"stop: %@" = "停止原因：%@";
 /* the model */
 "the model" = "模型";
 /* workflow: \(record.title) */

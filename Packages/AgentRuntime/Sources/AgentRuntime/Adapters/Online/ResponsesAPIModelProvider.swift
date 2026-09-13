@@ -332,7 +332,9 @@ public final class ResponsesAPIModelProvider: AgentModelProvider, @unchecked Sen
                 throw AgentModelProviderFailure(
                     try Self.httpFailure(
                         status: http?.statusCode ?? -1,
-                        body: String(data: data, encoding: .utf8)
+                        body: String(data: data, encoding: .utf8),
+                        endpoint: urlRequest.url,
+                        modelID: request.selection.modelID.rawValue
                     )
                 )
             }
@@ -345,14 +347,22 @@ public final class ResponsesAPIModelProvider: AgentModelProvider, @unchecked Sen
                         bytes,
                         emitter: emitter,
                         emitReasoning: emitReasoning,
-                        emit: streamEmission
+                        emit: streamEmission,
+                        diagnostics: Self.requestDiagnostics(
+                            endpoint: urlRequest.url,
+                            modelID: request.selection.modelID.rawValue
+                        )
                     )
                 case .deepSeekChatCompletions:
                     try await Self.consumeChatCompletionsEventStream(
                         bytes,
                         emitter: emitter,
                         emitReasoning: emitReasoning,
-                        emit: streamEmission
+                        emit: streamEmission,
+                        diagnostics: Self.requestDiagnostics(
+                            endpoint: urlRequest.url,
+                            modelID: request.selection.modelID.rawValue
+                        )
                     )
                 }
                 try await accounting.record(parsed.usage)
@@ -534,7 +544,8 @@ public final class ResponsesAPIModelProvider: AgentModelProvider, @unchecked Sen
         _ bytes: AccountedResponseBytes,
         emitter: AgentModelBoundaryEmitter,
         emitReasoning: Bool,
-        emit: Bool = true
+        emit: Bool = true,
+        diagnostics: String = ""
     ) async throws -> ParsedResponse {
         var reasoning = ""
         var text = ""
@@ -641,15 +652,18 @@ public final class ResponsesAPIModelProvider: AgentModelProvider, @unchecked Sen
                         || reason == "incomplete"
                 }
             case "response.failed":
-                let message: String
-                if case .object(let error)? = event["error"],
-                   case .string(let errorMessage)? = error["message"]
-                {
-                    message = errorMessage
-                } else {
-                    message = "The online model stream failed."
+                // The service told us the turn failed after the stream opened. Report what it said
+                // rather than a generic sentence — the event's own error object is the diagnosis.
+                var code: String?
+                var message: String?
+                if case .object(let error)? = event["error"] {
+                    if case .string(let value)? = error["code"] { code = value }
+                    else if case .string(let value)? = error["type"] { code = value }
+                    if case .string(let value)? = error["message"] { message = value }
                 }
-                throw AgentModelProviderFailure(try Self.streamFailure(message))
+                throw AgentModelProviderFailure(try Self.streamFailure(
+                    Self.streamFailureDetail(code: code, message: message, diagnostics: diagnostics)
+                ))
             default:
                 break
             }
@@ -668,7 +682,8 @@ public final class ResponsesAPIModelProvider: AgentModelProvider, @unchecked Sen
         _ bytes: AccountedResponseBytes,
         emitter: AgentModelBoundaryEmitter,
         emitReasoning: Bool,
-        emit: Bool = true
+        emit: Bool = true,
+        diagnostics: String = ""
     ) async throws -> ParsedResponse {
         var reasoning = ""
         var text = ""
@@ -691,10 +706,14 @@ public final class ResponsesAPIModelProvider: AgentModelProvider, @unchecked Sen
             else { continue }
 
             if case .object(let error)? = root["error"] {
-                let message: String
+                var code: String?
+                var message: String?
+                if case .string(let value)? = error["code"] { code = value }
+                else if case .string(let value)? = error["type"] { code = value }
                 if case .string(let value)? = error["message"] { message = value }
-                else { message = "The online model stream failed." }
-                throw AgentModelProviderFailure(try streamFailure(message))
+                throw AgentModelProviderFailure(try streamFailure(
+                    streamFailureDetail(code: code, message: message, diagnostics: diagnostics)
+                ))
             }
             if case .object(let usageObject)? = root["usage"] {
                 usage = ParsedUsage(
@@ -811,11 +830,15 @@ public final class ResponsesAPIModelProvider: AgentModelProvider, @unchecked Sen
         }
     }
 
-    private static func streamFailure(_ message: String) throws -> AgentFailure {
-        try AgentFailure(
+    private static func streamFailure(
+        _ message: String,
+        diagnostics: String? = nil
+    ) throws -> AgentFailure {
+        let text = diagnostics.map { "\($0)\n\(scrubCredentials(message))" } ?? scrubCredentials(message)
+        return try AgentFailure(
             code: "model.online.stream",
             classification: .transient,
-            safeMessage: message,
+            safeMessage: text,
             retryAdvice: AgentRetryAdvice(
                 automaticallyRetryable: true,
                 maximumAdditionalAttempts: 1
@@ -824,6 +847,121 @@ public final class ResponsesAPIModelProvider: AgentModelProvider, @unchecked Sen
             requiredUserAction: .none,
             redaction: RedactionMetadata(classification: .publicMetadata, policyVersion: 1)
         )
+    }
+
+    // MARK: - Failure diagnostics
+
+    /// The block shown when the service fails a turn *after* the stream opened (HTTP was 200, so
+    /// there is no status to report — the error object is the whole story).
+    static func streamFailureDetail(code: String?, message: String?, diagnostics: String) -> String {
+        var lines = [String(localized: "The online model stream failed.", bundle: .main)]
+        if let code, !code.isEmpty { lines.append(code) }
+        if let message, !message.isEmpty { lines.append(scrubCredentials(message)) }
+        if !diagnostics.isEmpty { lines.append(diagnostics) }
+        return lines.joined(separator: "\n")
+    }
+
+    /// The identity of one in-flight request, as a pre-formatted block the stream consumers can
+    /// append to a failure. Built once per attempt so a mid-stream error still says which endpoint
+    /// and which model produced it.
+    static func requestDiagnostics(endpoint: URL?, modelID: String) -> String {
+        var lines: [String] = []
+        if let endpoint {
+            let path = endpoint.path.isEmpty ? "/" : endpoint.path
+            lines.append("POST \(path)")
+            if let host = endpoint.host { lines.append("host \(host)") }
+        }
+        if !modelID.isEmpty { lines.append("model \(modelID)") }
+        return lines.joined(separator: "\n")
+    }
+
+    /// The service's own structured error, when its body is OpenAI-shaped.
+    ///
+    /// Gateways differ: most nest under `error`, some wrap it in `response`. Anything else is left to
+    /// the scrubbed free-text fallback rather than guessed at.
+    static func structuredError(fromBody body: String) -> (code: String?, message: String?) {
+        guard let data = body.data(using: .utf8),
+              let value = try? AgentWireDecoder.decode(
+                  JSONValue.self, from: data, limits: .inlineValue
+              ),
+              case .object(let root) = value
+        else { return (nil, nil) }
+        var scope = root
+        if case .object(let error)? = root["error"] {
+            scope = error
+        } else if case .object(let response)? = root["response"],
+                  case .object(let error)? = response["error"]
+        {
+            scope = error
+        }
+        var code: String?
+        if case .string(let value)? = scope["code"] { code = value }
+        else if case .string(let value)? = scope["type"] { code = value }
+        var message: String?
+        if case .string(let value)? = scope["message"] { message = value }
+        return (code, message)
+    }
+
+    /// A bounded diagnostic block: the service's status, error code and message, and where the
+    /// request went.
+    ///
+    /// Safe by construction — every field is either a number the service sent or a value the user
+    /// configured. Credentials never reach it: structured bodies contribute only their `code` and
+    /// `message`, and the free-text fallback is passed through `scrubCredentials` first.
+    static func httpFailureDetail(
+        headline: String,
+        status: Int?,
+        endpoint: URL?,
+        modelID: String,
+        body: String?
+    ) -> String {
+        var lines = [headline]
+        var identity: [String] = []
+        if let status { identity.append("HTTP \(status)") }
+        let structured: (code: String?, message: String?) = body.flatMap { structuredError(fromBody: $0) }
+            ?? (code: nil, message: nil)
+        if let code = structured.code, !code.isEmpty { identity.append(code) }
+        if !identity.isEmpty { lines.append(identity.joined(separator: " · ")) }
+        if let message = structured.message, !message.isEmpty {
+            lines.append(scrubCredentials(message))
+        } else if let body, !body.isEmpty {
+            // Nothing structured to read: fall back to a bounded, scrubbed excerpt so an unusual
+            // gateway still explains itself.
+            let cleaned = scrubCredentials(
+                body.trimmingCharacters(in: .whitespacesAndNewlines)
+                    .replacingOccurrences(of: "\n", with: " ")
+            )
+            if !cleaned.isEmpty {
+                lines.append(cleaned.count > 200 ? String(cleaned.prefix(200)) + "…" : cleaned)
+            }
+        }
+        if let endpoint {
+            let path = endpoint.path.isEmpty ? "/" : endpoint.path
+            lines.append(endpoint.host.map { "\(path) · \($0)" } ?? path)
+        }
+        if !modelID.isEmpty { lines.append("model \(modelID)") }
+        return lines.joined(separator: "\n")
+    }
+
+    /// Remove anything credential-shaped from text that is about to be shown.
+    ///
+    /// A gateway that echoes the offending request back would otherwise put the key on screen. The
+    /// patterns are deliberately broad — over-redacting a diagnostic costs a little legibility, and
+    /// leaking a key costs the account.
+    static func scrubCredentials(_ text: String) -> String {
+        var out = text
+        let patterns = [
+            "(?i)bearer\\s+[A-Za-z0-9._~+/=-]{8,}",
+            "(?i)sk-[A-Za-z0-9._-]{8,}",
+            "(?i)\\b(?:api[-_]?key|authorization|cookie|access[-_]?token|refresh[-_]?token|secret)"
+                + "\\b\"?\\s*[:=]\\s*\"?[^\"\\s,}]+",
+        ]
+        for pattern in patterns {
+            out = out.replacingOccurrences(
+                of: pattern, with: "<redacted>", options: .regularExpression
+            )
+        }
+        return out
     }
 
     // MARK: - Pure request/response mapping (unit-tested)
@@ -895,9 +1033,13 @@ public final class ResponsesAPIModelProvider: AgentModelProvider, @unchecked Sen
     }
 
     private static func chatMessagesPayload(
-        _ messages: [AgentModelMessage]
+        _ messages: [AgentModelMessage],
+        localeInstruction: String? = ResponsesAPIModelProvider.localeInstruction()
     ) -> [JSONValue] {
-        messages.map { message in
+        // The Chat Completions shape carries the system prompt as a message, so the locale
+        // instruction rides in that message's text rather than becoming a field of its own — the
+        // wire shape DeepSeek already accepts stays exactly as it was.
+        var payload = messages.map { message in
             let role: String = switch message.role {
             case .system: "system"
             case .user: "user"
@@ -914,6 +1056,30 @@ public final class ResponsesAPIModelProvider: AgentModelProvider, @unchecked Sen
                 "content": .string(content),
             ])
         }
+        guard let localeInstruction, !localeInstruction.isEmpty else { return payload }
+        let systemIndex = payload.firstIndex { value in
+            if case .object(let object) = value, case .string("system")? = object["role"] {
+                return true
+            }
+            return false
+        }
+        if let index = systemIndex,
+           case .object(let object) = payload[index],
+           case .string(let existing)? = object["content"]
+        {
+            payload[index] = .object([
+                "role": .string("system"),
+                "content": .string(existing.isEmpty
+                    ? localeInstruction
+                    : "\(existing)\n\n\(localeInstruction)"),
+            ])
+        } else {
+            payload.insert(.object([
+                "role": .string("system"),
+                "content": .string(localeInstruction),
+            ]), at: 0)
+        }
+        return payload
     }
 
     private static func chatCompletionsToolsPayload(
@@ -1002,14 +1168,50 @@ public final class ResponsesAPIModelProvider: AgentModelProvider, @unchecked Sen
         return try body.canonicalData()
     }
 
+    /// True for the Simplified Chinese locales the app ships: `zh`, `zh-Hans`, `zh-CN`, `zh-SG`.
+    /// Traditional Chinese (`zh-Hant`, `zh-TW`, `zh-HK`, `zh-MO`) is deliberately not included.
+    static func prefersSimplifiedChinese(_ identifier: String) -> Bool {
+        let id = identifier.replacingOccurrences(of: "_", with: "-").lowercased()
+        guard id == "zh" || id.hasPrefix("zh-") else { return false }
+        if id.contains("hant") { return false }
+        if id.contains("hans") { return true }
+        return !["tw", "hk", "mo"].contains(where: { id.hasSuffix("-\($0)") })
+    }
+
+    /// The app-language instruction appended to every online request at composition time.
+    ///
+    /// Added here rather than to the user's system prompt: Settings keeps exactly what the user
+    /// typed, and nothing about this is persisted. It asks the service to write its answer — and any
+    /// reasoning it chooses to expose — directly in the app's language, so a Chinese conversation
+    /// stops coming back with an English thinking summary above a Chinese answer. It constrains the
+    /// model's *visible output* only; internal chain-of-thought is not something a request controls,
+    /// and nothing here translates anything after the fact.
+    static func localeInstruction(bundle: Bundle = .main, locale: Locale = .current) -> String {
+        let uiLanguage = bundle.preferredLocalizations.first ?? locale.identifier
+        if prefersSimplifiedChinese(uiLanguage) {
+            return "Respond in Simplified Chinese (简体中文). Any reasoning, thinking, or reasoning "
+                + "summary you show the user must also be written directly in Simplified Chinese."
+        }
+        let name = locale.language.languageCode?.identifier ?? "the user's language"
+        return "Respond in the user's language (\(name)). Any reasoning, thinking, or reasoning "
+            + "summary you show the user must also be written directly in that language."
+    }
+
     /// Splits the compiled conversation into the Responses API wire shape: a top-level `instructions`
     /// string for system content and `input` items for everything else. Tool results are relayed as
     /// user-role text because the compiled message does not carry the native `call_id`.
-    static func messagesPayload(_ messages: [AgentModelMessage]) throws -> (instructions: String, input: [JSONValue]) {
-        let instructions = messages
+    static func messagesPayload(
+        _ messages: [AgentModelMessage],
+        localeInstruction: String? = ResponsesAPIModelProvider.localeInstruction()
+    ) throws -> (instructions: String, input: [JSONValue]) {
+        let systemText = messages
             .filter { $0.role == .system }
             .map(\.content)
             .joined(separator: "\n")
+        let instructions = [systemText, localeInstruction]
+            .compactMap { $0 }
+            .filter { !$0.isEmpty }
+            .joined(separator: "\n\n")
         let input = messages
             .filter { $0.role != .system }
             .map { message -> JSONValue in
@@ -1276,30 +1478,31 @@ public final class ResponsesAPIModelProvider: AgentModelProvider, @unchecked Sen
         )
     }
 
-    static func httpFailure(status: Int, body: String? = nil) throws -> AgentFailure {
-        var message: String
+    static func httpFailure(
+        status: Int,
+        body: String? = nil,
+        endpoint: URL? = nil,
+        modelID: String = ""
+    ) throws -> AgentFailure {
+        let headline: String
         if status == 401 || status == 403 {
-            message = "The online model service rejected the API key (HTTP \(status)). "
-                + "Check the API key AND the service's base URL in Settings → Online models, "
-                + "then re-save."
+            headline = String(localized: "The online model service rejected the API key.", bundle: .main)
+                + " " + String(localized: "Check the API key and the service's base URL in Settings → Online models, then re-save.", bundle: .main)
         } else {
-            message = "The online model service returned HTTP \(status)."
+            headline = String(localized: "The online model service rejected the request.", bundle: .main)
         }
-        // Gateway error bodies are the fastest path to "why": include a bounded, cleaned excerpt so
-        // the user (and the E2E diagnostics) can see the service's own reason.
-        if let body {
-            let cleaned = body
-                .trimmingCharacters(in: .whitespacesAndNewlines)
-                .replacingOccurrences(of: "\n", with: " ")
-            let excerpt = cleaned.count > 200 ? String(cleaned.prefix(200)) + "…" : cleaned
-            if !excerpt.isEmpty {
-                message += " \(excerpt)"
-            }
-        }
+        // Gateways explain themselves in the body. Show the service's own error code and message
+        // (scrubbed) plus the status, endpoint and model, so "it failed" becomes a fixable fact.
         return try AgentFailure(
             code: "model.online.http",
             classification: .permanent,
-            safeMessage: message,
+            safeMessage: httpFailureDetail(
+                headline: headline,
+                status: status,
+                endpoint: endpoint,
+                modelID: modelID,
+                body: body
+            ),
             retryAdvice: .never,
             externalEffect: .confirmedNone,
             requiredUserAction: .none,

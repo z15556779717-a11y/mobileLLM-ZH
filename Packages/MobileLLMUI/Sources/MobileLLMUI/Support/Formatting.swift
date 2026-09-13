@@ -76,7 +76,7 @@ enum Format {
                 parts.append(String(format: "%.0f tok/s", stats.tokensPerSecond))
             }
         }
-        parts.append("stop: \(stats.stopReason.rawValue)")
+        parts.append(String(localized: "stop: \(stats.stopReason.displayLabel)", bundle: .main))
         return parts.joined(separator: " · ")
     }
 
@@ -121,6 +121,29 @@ extension String {
     var localizedLabel: String {
         Bundle.main.localizedString(forKey: self, value: self, table: nil)
     }
+}
+
+extension ReasoningEffort {
+    /// What the UI shows for a reasoning-effort level.
+    ///
+    /// The raw values are the wire values the provider sends ("low" / "medium" / "high"), so they
+    /// stay exactly as they are; only this label is translated.
+    var displayLabel: String {
+        switch self {
+        case .low: String(localized: "Low", bundle: .main)
+        case .medium: String(localized: "Medium", bundle: .main)
+        case .high: String(localized: "High", bundle: .main)
+        @unknown default: rawValue.capitalized
+        }
+    }
+}
+
+extension StopReason {
+    /// What the footer shows for a stop reason.
+    ///
+    /// The case names are protocol values (`eos`, `maxTokens`, …). The footer *labels* one
+    /// (`停止原因：eos`) — it does not rename it, so the value stays exactly the raw one.
+    var displayLabel: String { rawValue }
 }
 
 extension LLMModel {

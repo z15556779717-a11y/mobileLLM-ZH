@@ -81,11 +81,14 @@ struct EmptyChatState: View {
     /// is visible before the first message (Skills v1, S5).
     var activeSkill: Skill? = nil
 
+    /// Starter prompts. Resolved once here so the button label and the text it puts in the composer
+    /// are the same string — a Chinese user sends a Chinese prompt, not a translated label over an
+    /// English one.
     private let examples = [
-        "Explain how sleep affects memory.",
-        "Write a haiku about the ocean.",
-        "Draft a polite reminder email.",
-        "Give me a 20-minute dinner idea.",
+        String(localized: "Explain how sleep affects memory.", bundle: .main),
+        String(localized: "Write a haiku about the ocean.", bundle: .main),
+        String(localized: "Draft a polite reminder email.", bundle: .main),
+        String(localized: "Give me a 20-minute dinner idea.", bundle: .main),
     ]
 
     var body: some View {

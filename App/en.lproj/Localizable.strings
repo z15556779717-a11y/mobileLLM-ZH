@@ -238,6 +238,8 @@
 "Chat with %@" = "Chat with %@";
 /* Chats couldn't be deleted: \(error.localizedDescription) */
 "Chats couldn't be deleted: %@" = "Chats couldn't be deleted: %@";
+/* Check the API key and the service's base URL in Settings → Online models, then r */
+"Check the API key and the service's base URL in Settings → Online models, then re-save." = "Check the API key and the service's base URL in Settings → Online models, then re-save.";
 /* Check the current date and time. */
 "Check the current date and time." = "Check the current date and time.";
 /* Check your connection and try again. */
@@ -458,6 +460,8 @@
 "Downloading %@…" = "Downloading %@…";
 /* Downloading… \(Int(download.fraction * 100))% */
 "Downloading… %lld%%" = "Downloading… %lld%%";
+/* Draft a polite reminder email. */
+"Draft a polite reminder email." = "Draft a polite reminder email.";
 /* Duplicate */
 "Duplicate" = "Duplicate";
 /* Each service is an OpenAI-compatible Responses API endpoint. The key for each se */
@@ -482,7 +486,7 @@
 "Effort" = "Effort";
 /* Effort applies to services that expose a reasoning-effort knob; local engines tr */
 "Effort applies to services that expose a reasoning-effort knob; local engines treat it as advisory. Medium is the default." = "Effort applies to services that expose a reasoning-effort knob; local engines treat it as advisory. Medium is the default.";
-/* Effort: \(chat.effectiveReasoningEffort.rawValue.capitalized) */
+/* Effort: \(chat.effectiveReasoningEffort.displayLabel) */
 "Effort: %@" = "Effort: %@";
 /* Emoji */
 "Emoji" = "Emoji";
@@ -502,6 +506,8 @@
 "Experimental · may be interrupted" = "Experimental · may be interrupted";
 /* Explain code by purpose first, then call out pitfalls. */
 "Explain code by purpose first, then call out pitfalls." = "Explain code by purpose first, then call out pitfalls.";
+/* Explain how sleep affects memory. */
+"Explain how sleep affects memory." = "Explain how sleep affects memory.";
 /* Explore */
 "Explore" = "Explore";
 /* Export all chats (JSON) */
@@ -566,10 +572,14 @@
 "GitHub returned an unexpected error (code %lld). Please try again." = "GitHub returned an unexpected error (code %lld). Please try again.";
 /* GitHub's response couldn't be read. Please try again. */
 "GitHub's response couldn't be read. Please try again." = "GitHub's response couldn't be read. Please try again.";
+/* Give me a 20-minute dinner idea. */
+"Give me a 20-minute dinner idea." = "Give me a 20-minute dinner idea.";
 /* Google's newest edge model — multilingual, compact. Non-thinking. Gemma chat for */
 "Google's newest edge model — multilingual, compact. Non-thinking. Gemma chat format." = "Google's newest edge model — multilingual, compact. Non-thinking. Gemma chat format.";
 /* Hidden */
 "Hidden" = "Hidden";
+/* High */
+"High" = "High";
 /* High memory · may fail */
 "High memory · may fail" = "High memory · may fail";
 /* How much conversation the model can see at once. */
@@ -644,6 +654,8 @@
 "Look up \"%@\" on Wikipedia" = "Look up \"%@\" on Wikipedia";
 /* Look up a topic on Wikipedia over the network. */
 "Look up a topic on Wikipedia over the network." = "Look up a topic on Wikipedia over the network.";
+/* Low */
+"Low" = "Low";
 /* MCP servers */
 "MCP servers" = "MCP servers";
 /* Manage Skills… */
@@ -654,6 +666,8 @@
 "Max output tokens must be a non-negative integer (0 = unknown)." = "Max output tokens must be a non-negative integer (0 = unknown).";
 /* Max tokens */
 "Max tokens" = "Max tokens";
+/* Medium */
+"Medium" = "Medium";
 /* Memory */
 "Memory" = "Memory";
 /* Memory cannot be empty. */
@@ -1200,6 +1214,12 @@
 "The online model returned no answer text. It may have spent its output budget on service-side reasoning; turn thinking off or raise Max tokens and retry." = "The online model returned no answer text. It may have spent its output budget on service-side reasoning; turn thinking off or raise Max tokens and retry.";
 /* The online model service is not configured. Add an API key and model in Settings */
 "The online model service is not configured. Add an API key and model in Settings." = "The online model service is not configured. Add an API key and model in Settings.";
+/* The online model service rejected the API key. */
+"The online model service rejected the API key." = "The online model service rejected the API key.";
+/* The online model service rejected the request. */
+"The online model service rejected the request." = "The online model service rejected the request.";
+/* The online model stream failed. */
+"The online model stream failed." = "The online model stream failed.";
 /* The run ended without a committed answer. */
 "The run ended without a committed answer." = "The run ended without a committed answer.";
 /* The run was cancelled before it started. */
@@ -1396,6 +1416,8 @@
 "Working…" = "Working…";
 /* Workspace */
 "Workspace" = "Workspace";
+/* Write a haiku about the ocean. */
+"Write a haiku about the ocean." = "Write a haiku about the ocean.";
 /* Write one short English sentence about you, beginning with “The user ” — the mod */
 "Write one short English sentence about you, beginning with “The user ” — the model reads it as a note it took. It is charged to the context window whenever it's relevant." = "Write one short English sentence about you, beginning with “The user ” — the model reads it as a note it took. It is charged to the context window whenever it's relevant.";
 /* Write the memory in English, beginning with "The user ". */
@@ -1550,6 +1572,8 @@
 "runs great" = "runs great";
 /* service default */
 "service default" = "service default";
+/* stop: \(stats.stopReason.displayLabel) */
+"stop: %@" = "stop: %@";
 /* the model */
 "the model" = "the model";
 /* workflow: \(record.title) */

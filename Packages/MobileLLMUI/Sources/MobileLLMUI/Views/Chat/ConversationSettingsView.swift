@@ -69,15 +69,15 @@ struct ConversationSettingsView: View {
                     ForEach(ReasoningEffort.allCases, id: \.self) { effort in
                         Button { chat.conversationReasoningEffort = effort } label: {
                             if chat.effectiveReasoningEffort == effort {
-                                Label(effort.rawValue.capitalized, systemImage: "checkmark")
+                                Label(effort.displayLabel, systemImage: "checkmark")
                             } else {
-                                Text(effort.rawValue.capitalized)
+                                Text(effort.displayLabel)
                             }
                         }
                     }
                 } label: {
                     HStack(spacing: 4) {
-                        Text(chat.effectiveReasoningEffort.rawValue.capitalized)
+                        Text(chat.effectiveReasoningEffort.displayLabel)
                         Image(systemName: "chevron.up.chevron.down").font(.caption2)
                     }
                     .foregroundStyle(Theme.accent)

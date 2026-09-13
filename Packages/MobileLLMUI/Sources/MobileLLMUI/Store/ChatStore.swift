@@ -710,26 +710,16 @@ public final class ChatStore {
         // An online thread remembers the service model id; reopen it by arming the same selection.
         // No local weights are involved, so there is nothing to load or restore.
         if let parts = OnlineModelIdentity.serviceParts(fromConversationModelID: convo.modelID) {
-            // Re-arm the exact service the thread used. If the service was deleted, recreate a minimal
-            // entry so the thread's model identity stays truthful and sends fail closed on the missing key.
+            // Re-arm the exact service the thread used, but only as a *selection*: the service's saved
+            // base URL, model and output budget are the user's configuration and are never rewritten
+            // from a conversation. A thread remembers which model answered it, and that remembering is
+            // what the request path reads — rewriting the service here would silently undo an edit in
+            // Settings the moment an older thread was opened.
             if settings.onlineServices.contains(where: { $0.id == parts.serviceID }) {
-                let existing = settings.onlineServices.first { $0.id == parts.serviceID }!
-                settings.upsertOnlineService(OnlineService(
-                    id: existing.id,
-                    name: existing.name,
-                    baseURL: existing.baseURL,
-                    modelID: parts.model,
-                    isEnabled: true
-                ))
-            } else {
-                settings.upsertOnlineService(OnlineService(
-                    id: parts.serviceID,
-                    name: parts.serviceID,
-                    baseURL: settings.openAIBaseURL,
-                    modelID: parts.model,
-                    isEnabled: true
-                ))
+                settings.setOnlineServiceEnabled(id: parts.serviceID, enabled: true)
             }
+            // A deleted service stays deleted: the thread keeps its own model identity and sends fail
+            // closed on the missing endpoint rather than silently redirecting the data (spec §20).
             return
         }
         let modelDiffers = convo.modelID != activeModel?.model.id

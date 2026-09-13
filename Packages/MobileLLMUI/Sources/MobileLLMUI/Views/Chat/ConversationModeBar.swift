@@ -30,14 +30,14 @@ struct ConversationModeBar: View {
                         chat.conversationReasoningEffort = effort
                     } label: {
                         if chat.effectiveReasoningEffort == effort {
-                            Label(effort.rawValue.capitalized, systemImage: "checkmark")
+                            Label(effort.displayLabel, systemImage: "checkmark")
                         } else {
-                            Text(effort.rawValue.capitalized)
+                            Text(effort.displayLabel)
                         }
                     }
                 }
             } label: {
-                Label("Effort: \(chat.effectiveReasoningEffort.rawValue.capitalized)",
+                Label("Effort: \(chat.effectiveReasoningEffort.displayLabel)",
                       systemImage: "brain")
                     .font(.caption.weight(.medium))
                     .foregroundStyle(Theme.textSecondary)
