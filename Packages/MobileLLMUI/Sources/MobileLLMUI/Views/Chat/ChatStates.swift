@@ -45,8 +45,7 @@ struct NoModelState: View {
         ChatPlaceholder(
             icon: "cpu",
             title: String(localized: "No model loaded", bundle: .main),
-            message: String(localized: "mobileLLM runs entirely on your device — pick a model to download once, then chat "
-                   + "offline with nothing leaving your phone.", bundle: .main),
+            message: String(localized: "mobileLLM runs entirely on your device — pick a model to download once, then chat offline with nothing leaving your phone.", bundle: .main),
             actionTitle: String(localized: "Choose a model", bundle: .main), action: onOpenModels)
     }
 }

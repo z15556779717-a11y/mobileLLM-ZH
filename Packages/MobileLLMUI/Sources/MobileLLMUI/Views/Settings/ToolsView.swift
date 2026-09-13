@@ -108,8 +108,7 @@ struct ToolsView: View {
 
     private var searchFootnote: String {
         webSearchOn
-            ? String(localized: "Web search reads these engines' public results pages directly (no API key), tries them in "
-              + "order, and hands the model the top links. Keep at least one on.", bundle: .main)
+            ? String(localized: "Web search reads these engines' public results pages directly (no API key), tries them in order, and hands the model the top links. Keep at least one on.", bundle: .main)
             : String(localized: "Turn on the Web search tool below to use these engines.", bundle: .main)
     }
 
@@ -309,8 +308,7 @@ struct BuiltInToolRow: Identifiable {
         // in Settings → Behavior → Memory. This row points there rather than implying a toggle is the
         // whole feature — which is exactly how memory used to stay invisible.
         .init(id: "memory", title: String(localized: "Memory", bundle: .main),
-              subtitle: String(localized: "Remember details you share and use them later. See and edit what's saved in "
-                      + "Settings → Memory.", bundle: .main),
+              subtitle: String(localized: "Remember details you share and use them later. See and edit what's saved in Settings → Memory.", bundle: .main),
               icon: "bookmark", toolIDs: [.remember, .recall]),
         .init(id: "calendar", title: String(localized: "Calendar", bundle: .main),
               subtitle: String(localized: "Add events and read what's on your calendar.", bundle: .main),

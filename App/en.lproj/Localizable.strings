@@ -314,7 +314,7 @@
 "Create a reminder for the user" = "Create a reminder for the user";
 /* Create reminders in the Reminders app. */
 "Create reminders in the Reminders app." = "Create reminders in the Reminders app.";
-/* Custom · \(text.replacingOccurrences(of: "\n", with: " ").prefix(60)) */
+/* Custom · \(String(text.replacingOccurrences(of: "\n", with: " ").prefix(60))) */
 "Custom · %@" = "Custom · %@";
 /* Dark */
 "Dark" = "Dark";

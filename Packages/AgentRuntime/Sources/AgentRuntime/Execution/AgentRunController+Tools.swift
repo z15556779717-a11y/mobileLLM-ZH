@@ -188,8 +188,9 @@ extension AgentRunController {
             let repair = try AgentFailure(
                 code: "execution.repeated-tool-call",
                 classification: .transient,
-                safeMessage: String(localized: "Your last tool call already executed in this turn. Do not call any tool "
-                    + "again — answer the user directly.", bundle: .main),
+                safeMessage: String(
+                    localized: "Your last tool call already executed in this turn. Do not call any tool again — answer the user directly.",
+                    bundle: .main),
                 retryAdvice: .never,
                 externalEffect: .confirmedNone,
                 requiredUserAction: .none,

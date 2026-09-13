@@ -147,8 +147,7 @@ struct SkillImportView: View {
         error = nil
         preview = SkillIO.parse(markdown: text)
         if preview == nil {
-            error = String(localized: "That doesn't parse as SKILL.md — it needs `---` frontmatter with a name, then the "
-                  + "instructions.", bundle: .main)
+            error = String(localized: "That doesn't parse as SKILL.md — it needs `---` frontmatter with a name, then the instructions.", bundle: .main)
         }
     }
 

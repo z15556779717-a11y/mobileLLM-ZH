@@ -108,7 +108,7 @@ struct SettingsView: View {
         let text = settings.systemPrompt.trimmingCharacters(in: .whitespacesAndNewlines)
         if text.isEmpty { return String(localized: "Off — no instructions are sent", bundle: .main) }
         if SystemPrompt.isStandard(settings.systemPrompt) { return String(localized: "Standard prompt", bundle: .main) }
-        return String(localized: "Custom · \(text.replacingOccurrences(of: "\n", with: " ").prefix(60))", bundle: .main)
+        return String(localized: "Custom · \(String(text.replacingOccurrences(of: "\n", with: " ").prefix(60)))", bundle: .main)
     }
 
     // MARK: Model
@@ -455,8 +455,7 @@ struct SettingsView: View {
     private var contextFootnote: String {
         if container.chat.isOnlineActive {
             let window = Format.shortCount(OnlineModelIdentity.maximumContextTokens)
-            return String(localized: "Online services use the setting as-is, up to the service window (\(window)); device "
-                + "RAM doesn't bind it. Longer context costs more tokens on the service.", bundle: .main)
+            return String(localized: "Online services use the setting as-is, up to the service window (\(window)); device RAM doesn't bind it. Longer context costs more tokens on the service.", bundle: .main)
         }
         guard let model = contextModel else {
             return String(localized: "How much conversation the model can see at once.", bundle: .main)

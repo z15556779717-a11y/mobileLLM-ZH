@@ -66,11 +66,9 @@ enum SkillGallery {
         var errorDescription: String? {
             switch self {
             case .rateLimited:
-                return String(localized: "Reached GitHub's limit for anonymous browsing (60 requests an hour). "
-                     + "Wait a little and try again, or open the board on GitHub.", bundle: .main)
+                return String(localized: "Reached GitHub's limit for anonymous browsing (60 requests an hour). Wait a little and try again, or open the board on GitHub.", bundle: .main)
             case .unauthorized:
-                return String(localized: "GitHub isn't allowing anonymous access to the board right now. "
-                     + "You can still open it on GitHub.", bundle: .main)
+                return String(localized: "GitHub isn't allowing anonymous access to the board right now. You can still open it on GitHub.", bundle: .main)
             case .http(let code):
                 return String(localized: "GitHub returned an unexpected error (code \(code)). Please try again.", bundle: .main)
             case .network:

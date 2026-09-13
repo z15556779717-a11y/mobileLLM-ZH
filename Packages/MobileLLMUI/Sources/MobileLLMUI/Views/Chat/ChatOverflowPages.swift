@@ -37,8 +37,7 @@ struct FilesPage: View {
         CapabilityEmptyState(
             icon: "folder",
             title: String(localized: "Files", bundle: .main),
-            message: String(localized: "File access is not enabled yet. When the sandbox runtime lands, this page will "
-                + "browse the conversation's workspace and artifacts.", bundle: .main)
+            message: String(localized: "File access is not enabled yet. When the sandbox runtime lands, this page will browse the conversation's workspace and artifacts.", bundle: .main)
         )
         .navigationTitle("Files")
     }
@@ -50,8 +49,7 @@ struct TerminalPage: View {
         CapabilityEmptyState(
             icon: "terminal",
             title: String(localized: "Terminal", bundle: .main),
-            message: String(localized: "The shell terminal is not enabled yet. When the sandbox runtime lands, this page "
-                + "will run commands inside the conversation's sandbox.", bundle: .main)
+            message: String(localized: "The shell terminal is not enabled yet. When the sandbox runtime lands, this page will run commands inside the conversation's sandbox.", bundle: .main)
         )
         .navigationTitle("Terminal")
     }

@@ -202,12 +202,7 @@ struct SkillEditorView: View {
     @State private var isSaving = false
 
     /// A gentle starting skeleton for a brand-new skill — usable as-is, meant to be replaced.
-    private static let template = String(localized: """
-    Act as a <role>.
-    - <the first rule the model should follow>
-    - <the second rule>
-    Keep answers <length / tone>.
-    """, bundle: .main)
+    private static let template = String(localized: "    Act as a <role>.\n    - <the first rule the model should follow>\n    - <the second rule>\n    Keep answers <length / tone>.\n    ", bundle: .main)
 
     init(store: SkillStore, target: SkillEditorTarget) {
         self.store = store

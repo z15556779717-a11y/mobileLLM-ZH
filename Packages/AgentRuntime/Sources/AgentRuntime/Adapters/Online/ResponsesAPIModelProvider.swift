@@ -1335,8 +1335,9 @@ public final class ResponsesAPIModelProvider: AgentModelProvider, @unchecked Sen
         try AgentFailure(
             code: "model.online.empty",
             classification: .permanent,
-            safeMessage: String(localized: "The online model returned no answer text. It may have spent its output "
-                + "budget on service-side reasoning; turn thinking off or raise Max tokens and retry.", bundle: .main),
+            safeMessage: String(
+                localized: "The online model returned no answer text. It may have spent its output budget on service-side reasoning; turn thinking off or raise Max tokens and retry.",
+                bundle: .main),
             retryAdvice: .never,
             externalEffect: .confirmedNone,
             requiredUserAction: .none,

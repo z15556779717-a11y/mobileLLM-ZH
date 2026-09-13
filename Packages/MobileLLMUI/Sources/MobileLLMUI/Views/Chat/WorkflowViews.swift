@@ -94,8 +94,7 @@ struct WorkflowMessageRow: View {
             }
             return parts.joined(separator: " · ")
         case .completed:
-            return String(localized: "Completed · \(record.completedPhaseCount)/\(record.totalPhaseCount) phases · "
-                + "\(record.completedSubagentCount)/\(record.totalSubagentCount) subagents · ", bundle: .main)
+            return String(localized: "Completed · \(record.completedPhaseCount)/\(record.totalPhaseCount) phases · \(record.completedSubagentCount)/\(record.totalSubagentCount) subagents · ", bundle: .main)
                 + Format.shortCount(record.aggregated.inputTokens + record.aggregated.outputTokens)
                 + " tokens · \(Format.shortCount(record.aggregated.toolInvocationCount)) tool calls"
         case .failed:
@@ -125,9 +124,7 @@ struct WorkflowSummaryPage: View {
                 CapabilityEmptyState(
                     icon: "point.3.connected.trianglepath.dotted",
                     title: String(localized: "No workflow is running", bundle: .main),
-                    message: String(localized: "Workflow candidates and running workflows appear here with their "
-                        + "source, status, activity, and controls. The Workflow menu entry enables "
-                        + "itself only while a workflow is active in this conversation.", bundle: .main)
+                    message: String(localized: "Workflow candidates and running workflows appear here with their source, status, activity, and controls. The Workflow menu entry enables itself only while a workflow is active in this conversation.", bundle: .main)
                 )
             } else {
                 List {
