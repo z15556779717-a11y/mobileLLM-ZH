@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 
 import Foundation
+import AgentRuntime
 import LLMCore
 
 /// Small display formatters shared across the chat + models surfaces.
