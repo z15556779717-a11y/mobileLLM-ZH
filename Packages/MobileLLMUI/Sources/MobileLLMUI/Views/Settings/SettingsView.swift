@@ -52,7 +52,7 @@ struct SettingsView: View {
             Button("Erase everything", role: .destructive) { eraseAllAppData() }
             Button("Cancel", role: .cancel) {}
         } message: {
-            Text("Returns mobileLLM to a fresh install. It permanently removes chats and attachments, "
+            Text("Returns Vela to a fresh install. It permanently removes chats and attachments, "
                  + "memory, custom skills, settings, MCP credentials, community-model records, and every "
                  + "downloaded model. Calendar events or reminders already created outside the app are "
                  + "not changed. This can't be undone.")
@@ -569,7 +569,7 @@ struct SettingsView: View {
             do {
                 try await container.eraseAllAppData()
                 storageBytes = 0
-                container.chat.showToast(Toast("All mobileLLM data erased", kind: .success))
+                container.chat.showToast(Toast("All Vela data erased", kind: .success))
             } catch {
                 eraseError = error.localizedDescription
                 storageBytes = await container.conversationStore.storageBytes()

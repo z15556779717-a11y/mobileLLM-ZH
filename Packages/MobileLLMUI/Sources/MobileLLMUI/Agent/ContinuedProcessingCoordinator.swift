@@ -145,7 +145,7 @@ public final class ContinuedProcessingCoordinator {
 
         let request = ContinuedProcessingRequest(
             identifier: identifier(for: conversationID),
-            title: String(localized: "mobileLLM agent run", bundle: .main),
+            title: String(localized: "Vela agent run", bundle: .main),
             subtitle: String(localized: "Finishing your request in the background", bundle: .main),
             requiresGPU: requiresGPUForRun(conversationID)
         )

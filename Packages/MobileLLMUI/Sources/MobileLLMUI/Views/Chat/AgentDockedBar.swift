@@ -110,7 +110,7 @@ struct AgentApprovalDecisionBar: View {
                         )
                     }
                     if approval.isExternalWrite {
-                        Text("This may change data outside mobileLLM.")
+                        Text("This may change data outside Vela.")
                             .font(.caption.weight(.semibold))
                             .foregroundStyle(Theme.danger)
                             .fixedSize(horizontal: false, vertical: true)

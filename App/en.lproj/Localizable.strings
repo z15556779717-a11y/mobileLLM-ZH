@@ -532,8 +532,8 @@
 "Its tools stop being offered to the model. Nothing on the server itself changes." = "Its tools stop being offered to the model. Nothing on the server itself changes.";
 /* KV cache */
 "KV cache" = "KV cache";
-/* Keep mobileLLM open while downloading — it resumes automatically if interrupted. */
-"Keep mobileLLM open while downloading — it resumes automatically if interrupted." = "Keep mobileLLM open while downloading — it resumes automatically if interrupted.";
+/* Keep Vela open while downloading — it resumes automatically if interrupted. */
+"Keep Vela open while downloading — it resumes automatically if interrupted." = "Keep Vela open while downloading — it resumes automatically if interrupted.";
 /* Key stored */
 "Key stored" = "Key stored";
 /* Key stored — paste to replace */
@@ -880,8 +880,8 @@
 "Retrying once with constrained structured output." = "Retrying once with constrained structured output.";
 /* Return to the app to resume */
 "Return to the app to resume" = "Return to the app to resume";
-/* Returns mobileLLM to a fresh install. It permanently removes chats and attachmen */
-"Returns mobileLLM to a fresh install. It permanently removes chats and attachments, memory, custom skills, settings, MCP credentials, community-model records, and every downloaded model. Calendar events or reminders already created outside the app are not changed. This can't be undone." = "Returns mobileLLM to a fresh install. It permanently removes chats and attachments, memory, custom skills, settings, MCP credentials, community-model records, and every downloaded model. Calendar events or reminders already created outside the app are not changed. This can't be undone.";
+/* Returns Vela to a fresh install. It permanently removes chats and attachments, m */
+"Returns Vela to a fresh install. It permanently removes chats and attachments, memory, custom skills, settings, MCP credentials, community-model records, and every downloaded model. Calendar events or reminders already created outside the app are not changed. This can't be undone." = "Returns Vela to a fresh install. It permanently removes chats and attachments, memory, custom skills, settings, MCP credentials, community-model records, and every downloaded model. Calendar events or reminders already created outside the app are not changed. This can't be undone.";
 /* Run backgrounded */
 "Run backgrounded" = "Run backgrounded";
 /* Run needs resume */
@@ -908,8 +908,8 @@
 "Save a lasting fact to the user's on-device memory" = "Save a lasting fact to the user's on-device memory";
 /* Saved */
 "Saved" = "Saved";
-/* Saved by mobileLLM */
-"Saved by mobileLLM" = "Saved by mobileLLM";
+/* Saved by Vela */
+"Saved by Vela" = "Saved by Vela";
 /* Saved to memory */
 "Saved to memory" = "Saved to memory";
 /* Saving to memory… */
@@ -1144,8 +1144,8 @@
 "Thinking…" = "Thinking…";
 /* This local model adapter cannot create durable artifact output directly. */
 "This local model adapter cannot create durable artifact output directly." = "This local model adapter cannot create durable artifact output directly.";
-/* This may change data outside mobileLLM. */
-"This may change data outside mobileLLM." = "This may change data outside mobileLLM.";
+/* This may change data outside Vela. */
+"This may change data outside Vela." = "This may change data outside Vela.";
 /* This model is above the usual memory budget on this device. Use will still attem */
 "This model is above the usual memory budget on this device. Use will still attempt to load it, but the system may interrupt the app." = "This model is above the usual memory budget on this device. Use will still attempt to load it, but the system may interrupt the app.";
 /* This post doesn't include an importable SKILL.md — it may link to one instead. O */
@@ -1208,6 +1208,10 @@
 "Using %@" = "Using %@";
 /* Using \(prettyName)… */
 "Using %@…" = "Using %@…";
+/* Vela agent run */
+"Vela agent run" = "Vela agent run";
+/* Vela runs entirely on your device — pick a model to download once, then chat off */
+"Vela runs entirely on your device — pick a model to download once, then chat offline with nothing leaving your phone." = "Vela runs entirely on your device — pick a model to download once, then chat offline with nothing leaving your phone.";
 /* Waiting */
 "Waiting" = "Waiting";
 /* Waiting for approval */
@@ -1344,8 +1348,8 @@
 "%@ returned %@" = "%@ returned %@";
 /* \(q.displayName), \(fitWord(for: q)) */
 "%@, %@" = "%@, %@";
-/* \(row.title) is turned off for mobileLLM in system Settings. The tool stays sele */
-"%@ is turned off for mobileLLM in system Settings. The tool stays selected here, but the model's calls will fail until you allow access." = "%@ is turned off for mobileLLM in system Settings. The tool stays selected here, but the model's calls will fail until you allow access.";
+/* \(row.title) is turned off for Vela in system Settings. The tool stays selected  */
+"%@ is turned off for Vela in system Settings. The tool stays selected here, but the model's calls will fail until you allow access." = "%@ is turned off for Vela in system Settings. The tool stays selected here, but the model's calls will fail until you allow access.";
 /* \(run.steps.count) action */
 "%lld action" = "%lld action";
 /* \(run.steps.count) actions */
@@ -1396,10 +1400,6 @@
 "dynamic workflow generator did not return source" = "dynamic workflow generator did not return source";
 /* high memory */
 "high memory" = "high memory";
-/* mobileLLM agent run */
-"mobileLLM agent run" = "mobileLLM agent run";
-/* mobileLLM runs entirely on your device — pick a model to download once, then cha */
-"mobileLLM runs entirely on your device — pick a model to download once, then chat offline with nothing leaving your phone." = "mobileLLM runs entirely on your device — pick a model to download once, then chat offline with nothing leaving your phone.";
 /* needs resume */
 "needs resume" = "needs resume";
 /* needs review */

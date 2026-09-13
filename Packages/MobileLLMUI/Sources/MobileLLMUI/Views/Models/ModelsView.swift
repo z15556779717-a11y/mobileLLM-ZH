@@ -568,7 +568,7 @@ struct ModelCard: View {
                  : (download.meter.compactDetail ?? "Downloading… \(Int(download.fraction * 100))%"))
                 .font(.caption2.monospacedDigit()).foregroundStyle(Theme.textTertiary)
                 .lineLimit(1).minimumScaleFactor(0.6)
-            Text("Keep mobileLLM open while downloading — it resumes automatically if interrupted.")
+            Text("Keep Vela open while downloading — it resumes automatically if interrupted.")
                 .font(.caption2).foregroundStyle(Theme.textTertiary)
         }
         // Keep the pause control as its own accessibility element. Combining the entire row hid the

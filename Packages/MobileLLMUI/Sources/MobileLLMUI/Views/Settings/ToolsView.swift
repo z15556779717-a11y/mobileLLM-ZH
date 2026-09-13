@@ -55,7 +55,7 @@ struct ToolsView: View {
             Button("Open Settings") { openSystemSettings(); deniedRow = nil }
             Button("Not now", role: .cancel) { deniedRow = nil }
         } message: { row in
-            Text("\(row.title) is turned off for mobileLLM in system Settings. The tool stays selected "
+            Text("\(row.title) is turned off for Vela in system Settings. The tool stays selected "
                  + "here, but the model's calls will fail until you allow access.")
         }
     }

@@ -172,10 +172,10 @@ struct MemoryView: View {
         .accessibilityHint("Edit this memory")
     }
 
-    /// "Saved by mobileLLM · 2h" / "Added by you · Yesterday" — who wrote a note is what tells you whether
+    /// "Saved by Vela · 2h" / "Added by you · Yesterday" — who wrote a note is what tells you whether
     /// to trust it, and when tells you whether it's still true.
     static func provenance(_ fact: MemoryFact, now: Date = Date()) -> String {
-        let who = fact.source == .user ? String(localized: "Added by you", bundle: .main) : String(localized: "Saved by mobileLLM", bundle: .main)
+        let who = fact.source == .user ? String(localized: "Added by you", bundle: .main) : String(localized: "Saved by Vela", bundle: .main)
         return String(localized: "\(who) · \(Format.relative(fact.createdAt, now: now))", bundle: .main)
     }
 
