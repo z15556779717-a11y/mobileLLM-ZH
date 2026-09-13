@@ -1,0 +1,4 @@
+/* English source strings. The key is the literal used in SwiftUI, exactly as written
+   in the source, so Text("Dismiss") resolves here through Bundle.main. */
+
+"Dismiss" = "Dismiss";

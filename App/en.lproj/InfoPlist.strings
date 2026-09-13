@@ -1,0 +1,9 @@
+/* Permission usage descriptions, English. Mirrors the INFOPLIST_KEY_NS*UsageDescription
+   defaults in project.yml; this file is what a device set to English actually reads. */
+
+"NSMicrophoneUsageDescription" = "Vela uses the microphone so you can dictate messages.";
+"NSSpeechRecognitionUsageDescription" = "Vela uses speech recognition to turn your dictation into text.";
+"NSCameraUsageDescription" = "Vela uses the camera so you can photograph something and ask the model about it.";
+"NSCalendarsFullAccessUsageDescription" = "Vela lets the model add and read calendar events while answering you, and only if you select the calendar tool.";
+"NSRemindersFullAccessUsageDescription" = "Vela lets the model create reminders while answering you, and only if you select the reminders tool.";
+"NSLocationWhenInUseUsageDescription" = "Vela lets the model use your approximate location while answering you, and only if you select the location tool.";

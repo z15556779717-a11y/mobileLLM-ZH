@@ -1,0 +1,4 @@
+/* 简体中文。key 与 Swift 源码中的英文字面量完全一致，因此 Text("Dismiss")
+   会通过 Bundle.main 解析到这里。当前仅含冒烟测试用的一条。 */
+
+"Dismiss" = "关闭";

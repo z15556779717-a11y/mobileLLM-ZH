@@ -61,7 +61,7 @@ targets:
         CURRENT_PROJECT_VERSION: "1"
         # App Store submission: declares no non-exempt encryption, so it skips the export-compliance prompt.
         INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
-        INFOPLIST_KEY_CFBundleDisplayName: mobileLLM
+        INFOPLIST_KEY_CFBundleDisplayName: Vela
         INFOPLIST_KEY_LSApplicationCategoryType: "public.app-category.productivity"
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         # Support all four orientations so the universal iOS target remains compatible with iPad
@@ -69,14 +69,14 @@ targets:
         INFOPLIST_KEY_UISupportedInterfaceOrientations: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
         "INFOPLIST_KEY_UISupportedInterfaceOrientations~ipad": "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
         # Usage strings for the chat workstream's dictation feature (Speech + microphone).
-        INFOPLIST_KEY_NSMicrophoneUsageDescription: "mobileLLM uses the microphone so you can dictate messages."
-        INFOPLIST_KEY_NSSpeechRecognitionUsageDescription: "mobileLLM uses speech recognition to turn your dictation into text."
-        INFOPLIST_KEY_NSCameraUsageDescription: "mobileLLM uses the camera so you can photograph something and ask the model about it."
+        INFOPLIST_KEY_NSMicrophoneUsageDescription: "Vela uses the microphone so you can dictate messages."
+        INFOPLIST_KEY_NSSpeechRecognitionUsageDescription: "Vela uses speech recognition to turn your dictation into text."
+        INFOPLIST_KEY_NSCameraUsageDescription: "Vela uses the camera so you can photograph something and ask the model about it."
         # Tool-suite usage strings (chat Tools menu / Settings → Choose tools). Access is requested when you select
         # the tool — never at launch or merely from the master switch. Plain one-liners naming what it can do.
-        INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription: "mobileLLM lets the model add and read calendar events while answering you, and only if you select the calendar tool."
-        INFOPLIST_KEY_NSRemindersFullAccessUsageDescription: "mobileLLM lets the model create reminders while answering you, and only if you select the reminders tool."
-        INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: "mobileLLM lets the model use your approximate location while answering you, and only if you select the location tool."
+        INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription: "Vela lets the model add and read calendar events while answering you, and only if you select the calendar tool."
+        INFOPLIST_KEY_NSRemindersFullAccessUsageDescription: "Vela lets the model create reminders while answering you, and only if you select the reminders tool."
+        INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: "Vela lets the model use your approximate location while answering you, and only if you select the location tool."
         # iOS 26 continued processing (spec §19.2) lives in App/Info.plist: Xcode's generated-plist
         # path does not emit UIBackgroundModes/BGTaskSchedulerPermittedIdentifiers from build
         # settings, so the two keys ride a real plist that GENERATE_INFOPLIST_FILE merges.

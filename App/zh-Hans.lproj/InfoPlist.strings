@@ -1,0 +1,8 @@
+/* 权限用途说明，简体中文。功能含义与英文原文一致，仅语言不同。 */
+
+"NSMicrophoneUsageDescription" = "Vela 使用麦克风，让你可以口述消息。";
+"NSSpeechRecognitionUsageDescription" = "Vela 使用语音识别，把你的口述转成文字。";
+"NSCameraUsageDescription" = "Vela 使用相机，让你可以拍下东西并就它向模型提问。";
+"NSCalendarsFullAccessUsageDescription" = "只有在你选择日历工具时，Vela 才会让模型在回答你的过程中添加和读取你的日历日程。";
+"NSRemindersFullAccessUsageDescription" = "只有在你选择提醒事项工具时，Vela 才会让模型创建提醒事项。";
+"NSLocationWhenInUseUsageDescription" = "只有在你选择位置工具时，Vela 才会让模型在回答你的过程中使用你的大致位置。";
