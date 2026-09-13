@@ -711,12 +711,21 @@ public final class ChatStore {
         // No local weights are involved, so there is nothing to load or restore.
         if let parts = OnlineModelIdentity.serviceParts(fromConversationModelID: convo.modelID) {
             // Re-arm the exact service the thread used, but only as a *selection*: the service's saved
-            // base URL, model and output budget are the user's configuration and are never rewritten
+            // base URL, model and output budget are the user's configuration and are never overwritten
             // from a conversation. A thread remembers which model answered it, and that remembering is
             // what the request path reads — rewriting the service here would silently undo an edit in
             // Settings the moment an older thread was opened.
-            if settings.onlineServices.contains(where: { $0.id == parts.serviceID }) {
+            if let existing = settings.onlineServices.first(where: { $0.id == parts.serviceID }) {
                 settings.setOnlineServiceEnabled(id: parts.serviceID, enabled: true)
+                let service = settings.onlineServices.first { $0.id == parts.serviceID } ?? existing
+                if (service.modelID ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    // The service has no model of its own, so the thread supplies one. Filling an empty
+                    // field is not the same as overwriting a configured one, and every other field the
+                    // user set on this service — including its output budget — is carried over.
+                    var filled = service
+                    filled.modelID = parts.model
+                    settings.upsertOnlineService(filled)
+                }
             }
             // A deleted service stays deleted: the thread keeps its own model identity and sends fail
             // closed on the missing endpoint rather than silently redirecting the data (spec §20).
