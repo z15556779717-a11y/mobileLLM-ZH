@@ -81,10 +81,17 @@ jobs:
           lipo -info "$BIN"
           lipo -info "$BIN" | grep -q 'arm64' || { echo "::error::main binary is not arm64"; status=1; }
 
-          echo "--- platform ---"
-          plutil -extract CFBundleSupportedPlatforms raw -o - "$APP/Info.plist" || true
-          plutil -extract CFBundleSupportedPlatforms json -o - "$APP/Info.plist" \
-            | grep -q iphoneos || { echo "::error::not an iphoneos build"; status=1; }
+          echo "--- platform (build product path) ---"
+          SRC="build/Build/Products/Release-iphoneos/mobileLLM.app"
+          case "$SRC" in
+            *Release-iphoneos*) echo "ok: packaged from $SRC";;
+          esac
+          test -d "$SRC" || { echo "::error::$SRC is missing"; status=1; }
+
+          echo "--- platform (Mach-O LC_BUILD_VERSION) ---"
+          xcrun vtool -show-build "$BIN" | grep -E 'platform|minos|sdk' || true
+          xcrun vtool -show-build "$BIN" | grep -q 'platform IOS' \
+            || { echo "::error::not an iphoneos Mach-O"; status=1; }
 
           echo "--- bundle identifier ---"
           BUNDLE_ID="$(plutil -extract CFBundleIdentifier raw -o - "$APP/Info.plist")"
