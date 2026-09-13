@@ -133,8 +133,7 @@ struct AgentApprovalDecisionBar: View {
                 }
             }
             Text(approval.isConversationScoped
-                 ? "Authorizes this model for the rest of this conversation."
-                 : "Authorizes only this exact prepared operation.")
+                 ? String(localized: "Authorizes this model for the rest of this conversation.", bundle: .main) : String(localized: "Authorizes only this exact prepared operation.", bundle: .main))
                 .font(.caption2)
                 .foregroundStyle(Theme.textTertiary)
                 .fixedSize(horizontal: false, vertical: true)

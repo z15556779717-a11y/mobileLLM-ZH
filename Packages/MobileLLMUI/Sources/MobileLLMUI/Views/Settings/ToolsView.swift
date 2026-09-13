@@ -55,8 +55,7 @@ struct ToolsView: View {
             Button("Open Settings") { openSystemSettings(); deniedRow = nil }
             Button("Not now", role: .cancel) { deniedRow = nil }
         } message: { row in
-            Text("\(row.title) is turned off for Vela in system Settings. The tool stays selected "
-                 + "here, but the model's calls will fail until you allow access.")
+            Text("\(row.title) is turned off for Vela in system Settings. The tool stays selected here, but the model's calls will fail until you allow access.")
         }
     }
 
@@ -72,9 +71,7 @@ struct ToolsView: View {
                 }
             }
             .tint(Theme.accent)
-            Text("The model decides whether to call an allowed tool. Each call adds another model pass; "
-                 + "network tools such as web search, Wikipedia, and remote MCP also wait for the network, "
-                 + "so they can make a reply noticeably slower.")
+            Text("The model decides whether to call an allowed tool. Each call adds another model pass; network tools such as web search, Wikipedia, and remote MCP also wait for the network, so they can make a reply noticeably slower.")
                 .font(.caption).foregroundStyle(Theme.textTertiary)
                 .fixedSize(horizontal: false, vertical: true)
         }
@@ -231,7 +228,7 @@ struct ToolsView: View {
 
     private func section(_ title: String, icon: String, @ViewBuilder _ content: () -> some View) -> some View {
         VStack(alignment: .leading, spacing: Theme.Space.sm) {
-            Label { Text(title.uppercased()) } icon: { Image(systemName: icon) }
+            Label { Text(title.localizedLabel.uppercased()) } icon: { Image(systemName: icon) }
                 .font(.caption2.weight(.semibold))
                 .foregroundStyle(Theme.textTertiary)
                 .accessibilityAddTraits(.isHeader)

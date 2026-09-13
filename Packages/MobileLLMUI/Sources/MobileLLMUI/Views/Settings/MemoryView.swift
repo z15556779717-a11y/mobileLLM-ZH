@@ -26,10 +26,7 @@ struct MemoryView: View {
     var body: some View {
         List {
             Section {
-                Text("Memory is what the model knows about you between chats. It saves a short note when "
-                     + "you tell it something worth keeping, and the notes that matter to your question "
-                     + "are added to its prompt before it answers. Model-saved notes use English so every "
-                     + "model reads one consistent format. Everything here stays on this device.")
+                Text("Memory is what the model knows about you between chats. It saves a short note when you tell it something worth keeping, and the notes that matter to your question are added to its prompt before it answers. Model-saved notes use English so every model reads one consistent format. Everything here stays on this device.")
                     .font(.caption).foregroundStyle(Theme.textSecondary)
                     .fixedSize(horizontal: false, vertical: true)
                     .listRowBackground(Color.clear)
@@ -41,8 +38,7 @@ struct MemoryView: View {
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Use memory").font(.subheadline).foregroundStyle(Theme.textPrimary)
                         Text(settings.memoryEnabled
-                             ? "Notes that matter to your question are added to the model's prompt."
-                             : "These notes stay saved, but the model isn't shown them, and it won't "
+                             ? String(localized: "Notes that matter to your question are added to the model's prompt.", bundle: .main) : "These notes stay saved, but the model isn't shown them, and it won't "
                                + "take new ones.")
                             .font(.caption).foregroundStyle(Theme.textTertiary)
                             .fixedSize(horizontal: false, vertical: true)
@@ -54,8 +50,7 @@ struct MemoryView: View {
 
             Section {
                 if book.isEmpty {
-                    Text("Nothing saved yet. Tap + to add something you want the model to know about you — "
-                         + "or just tell it in a chat, and it'll note it down itself.")
+                    Text("Nothing saved yet. Tap + to add something you want the model to know about you — or just tell it in a chat, and it'll note it down itself.")
                         .font(.caption).foregroundStyle(Theme.textTertiary)
                         .fixedSize(horizontal: false, vertical: true)
                         .listRowBackground(Color.clear)
@@ -180,7 +175,7 @@ struct MemoryView: View {
     }
 
     private func sectionHeader(_ title: String) -> some View {
-        Text(title.uppercased())
+        Text(title.localizedLabel.uppercased())
             .font(.caption2.weight(.semibold))
             .foregroundStyle(Theme.textTertiary)
             .accessibilityAddTraits(.isHeader)
@@ -246,9 +241,7 @@ struct MemoryEditorView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: Theme.Space.sm) {
-                    Text("Write one short English sentence about you, beginning with “The user ” — the "
-                         + "model reads it as a note it took. It is charged to the context window whenever "
-                         + "it's relevant.")
+                    Text("Write one short English sentence about you, beginning with “The user ” — the model reads it as a note it took. It is charged to the context window whenever it's relevant.")
                         .font(.caption).foregroundStyle(Theme.textTertiary)
                         .fixedSize(horizontal: false, vertical: true)
                     TextEditor(text: $text)

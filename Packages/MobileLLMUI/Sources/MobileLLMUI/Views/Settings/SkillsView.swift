@@ -19,8 +19,7 @@ struct SkillsView: View {
     var body: some View {
         List {
             Section {
-                Text("Skills are reusable instruction packs. Turn one on for a conversation from the "
-                     + "composer's + menu — its instructions guide the model for that thread only.")
+                Text("Skills are reusable instruction packs. Turn one on for a conversation from the composer's + menu — its instructions guide the model for that thread only.")
                     .font(.caption).foregroundStyle(Theme.textSecondary)
                     .listRowBackground(Color.clear)
             }
@@ -110,8 +109,7 @@ struct SkillsView: View {
             }
             Button("Cancel", role: .cancel) { pendingDelete = nil }
         } message: { skill in
-            Text("“\(skill.displayName)” will be removed. Conversations using it fall back to your normal prompt. "
-                 + "This can't be undone.")
+            Text("“\(skill.displayName)” will be removed. Conversations using it fall back to your normal prompt. This can't be undone.")
         }
         .alert("Skill wasn't changed",
                isPresented: Binding(get: { operationError != nil },
@@ -148,7 +146,7 @@ struct SkillsView: View {
     }
 
     private func sectionHeader(_ title: String) -> some View {
-        Text(title.uppercased())
+        Text(title.localizedLabel.uppercased())
             .font(.caption2.weight(.semibold))
             .foregroundStyle(Theme.textTertiary)
             .accessibilityAddTraits(.isHeader)
@@ -361,9 +359,7 @@ struct SkillEditorView: View {
     private var instructionsField: some View {
         VStack(alignment: .leading, spacing: Theme.Space.xs) {
             Text("Instructions").font(.caption.weight(.medium)).foregroundStyle(Theme.textSecondary)
-            Text("Appended to the system prompt while this skill is active. Keep it short and imperative — "
-                 + "it's charged to the context window on every turn, and small models follow a few sharp "
-                 + "rules better than many soft ones.")
+            Text("Appended to the system prompt while this skill is active. Keep it short and imperative — it's charged to the context window on every turn, and small models follow a few sharp rules better than many soft ones.")
                 .font(.caption).foregroundStyle(Theme.textTertiary)
                 .fixedSize(horizontal: false, vertical: true)
             TextEditor(text: $instructions)

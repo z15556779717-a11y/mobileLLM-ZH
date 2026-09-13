@@ -324,7 +324,10 @@ public enum Modality: String, Sendable, Hashable, Codable, CaseIterable {
 
     public var label: String {
         switch self {
-        case .text: "Text"; case .vision: "Vision"; case .audio: "Audio"; case .video: "Video"
+        case .text: String(localized: "Text", bundle: .main)
+        case .vision: String(localized: "Vision", bundle: .main)
+        case .audio: String(localized: "Audio", bundle: .main)
+        case .video: String(localized: "Video", bundle: .main)
         }
     }
     public var icon: String {

@@ -132,8 +132,7 @@ struct ModelsView: View {
         return VStack(alignment: .leading, spacing: Theme.Space.sm) {
             Label("Get started", systemImage: "sparkles")
                 .font(.headline).foregroundStyle(Theme.textPrimary)
-            Text("Download \(model.displayName) to start chatting on-device. Everything runs locally — "
-                 + "no account, and nothing leaves your device.")
+            Text("Download \(model.displayName) to start chatting on-device. Everything runs locally — no account, and nothing leaves your device.")
                 .font(.subheadline).foregroundStyle(Theme.textSecondary)
                 .fixedSize(horizontal: false, vertical: true)
             Button { models.download(variant) } label: {
@@ -197,7 +196,7 @@ struct ModelsView: View {
         VStack(spacing: Theme.Space.sm) {
             Image(systemName: filter == .installed ? "square.and.arrow.down" : "line.3.horizontal.decrease.circle")
                 .font(.largeTitle).foregroundStyle(Theme.textTertiary)
-            Text(filter == .installed ? "No models downloaded yet" : "Nothing matches this filter")
+            Text(filter == .installed ? String(localized: "No models downloaded yet", bundle: .main) : String(localized: "Nothing matches this filter", bundle: .main))
                 .font(.subheadline).foregroundStyle(Theme.textSecondary)
         }
         .frame(maxWidth: .infinity)
@@ -339,7 +338,7 @@ struct ModelCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: Theme.Space.sm) {
             header
-            Text("\(model.publisher) · \(model.summary)")
+            Text("\(model.publisher) · \(model.displaySummary)")
                 .font(.caption).foregroundStyle(Theme.textSecondary).lineLimit(3)
             HStack(spacing: Theme.Space.xs) {
                 Text(model.family.displayName)
@@ -353,8 +352,7 @@ struct ModelCard: View {
             if !model.architecture.extraModalities.isEmpty { modalityRow }
             engineAndQuant
             if hasElevatedMemoryRisk && !isActive {
-                Text("This model is above the usual memory budget on this device. Use will still attempt "
-                     + "to load it, but the system may interrupt the app.")
+                Text("This model is above the usual memory budget on this device. Use will still attempt to load it, but the system may interrupt the app.")
                     .font(.caption2).foregroundStyle(Theme.fitAmber).lineLimit(3)
             }
             actionArea
@@ -427,8 +425,7 @@ struct ModelCard: View {
                 Text("·").foregroundStyle(Theme.textTertiary)
                 // An OS-provided model has no download: "Zero KB" would be a technically-true absurdity,
                 // so say what's actually true instead.
-                Text(variant.isSystemProvided ? "Built into the system"
-                                              : Format.bytes(variant.totalOnDiskBytes))
+                Text(variant.isSystemProvided ? String(localized: "Built into the system", bundle: .main) : Format.bytes(variant.totalOnDiskBytes))
                     .font(.caption.monospacedDigit()).foregroundStyle(Theme.textPrimary)
                 Spacer()
             }
@@ -438,7 +435,7 @@ struct ModelCard: View {
 
     private func matrixRow<Content: View>(label: String, @ViewBuilder _ content: () -> Content) -> some View {
         HStack(alignment: .center, spacing: Theme.Space.sm) {
-            Text(label.uppercased())
+            Text(label.localizedLabel.uppercased())
                 .font(.caption2.weight(.bold)).tracking(0.5).foregroundStyle(Theme.textTertiary)
                 .lineLimit(1).minimumScaleFactor(0.7)   // never hyphenate ("PRECI-SION") — shrink instead
                 .fixedSize(horizontal: false, vertical: true)
@@ -564,8 +561,7 @@ struct ModelCard: View {
                 }
             }
             Text(download.isPausing
-                 ? "Finishing the current file write safely…"
-                 : (download.meter.compactDetail ?? "Downloading… \(Int(download.fraction * 100))%"))
+                 ? String(localized: "Finishing the current file write safely…", bundle: .main) : (download.meter.compactDetail ?? "Downloading… \(Int(download.fraction * 100))%"))
                 .font(.caption2.monospacedDigit()).foregroundStyle(Theme.textTertiary)
                 .lineLimit(1).minimumScaleFactor(0.6)
             Text("Keep Vela open while downloading — it resumes automatically if interrupted.")

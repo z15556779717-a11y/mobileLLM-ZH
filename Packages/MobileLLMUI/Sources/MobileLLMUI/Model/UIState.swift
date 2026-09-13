@@ -97,7 +97,7 @@ public enum ThinkingDisplayMode: String, CaseIterable, Codable, Sendable {
 
     public var label: String {
         switch self {
-        case .autoCollapse: "Auto-collapse"
+        case .autoCollapse: String(localized: "Auto-collapse", bundle: .main)
         case .alwaysExpand: String(localized: "Always show", bundle: .main)
         case .hidden: String(localized: "Hidden", bundle: .main)
         }

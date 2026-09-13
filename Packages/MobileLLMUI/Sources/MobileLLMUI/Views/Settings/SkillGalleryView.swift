@@ -24,8 +24,7 @@ struct SkillGalleryView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: Theme.Space.md) {
-                Text("Skills shared by the community on GitHub Discussions. Tap one to preview it, then "
-                     + "install with a tap — it joins your custom skills like any other.")
+                Text("Skills shared by the community on GitHub Discussions. Tap one to preview it, then install with a tap — it joins your custom skills like any other.")
                     .font(.caption).foregroundStyle(Theme.textSecondary)
                 content
                 footer

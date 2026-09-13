@@ -102,9 +102,7 @@ struct MCPServersView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: Theme.Space.md) {
-                Text("Model Context Protocol servers extend the model with tools you host or subscribe to. "
-                     + "They're contacted only while a chat is generating with tool access on and that "
-                     + "server selected.")
+                Text("Model Context Protocol servers extend the model with tools you host or subscribe to. They're contacted only while a chat is generating with tool access on and that server selected.")
                     .font(.caption).foregroundStyle(Theme.textSecondary)
 
                 if settings.mcpServers.isEmpty {
@@ -115,8 +113,7 @@ struct MCPServersView: View {
                             .buttonStyle(.plain)
                     }
                     Text(activeToolCount == 1
-                         ? "\(activeToolCount) tool available to the model."
-                         : "\(activeToolCount) tools available to the model.")
+                         ? String(localized: "\(activeToolCount) tool available to the model.", bundle: .main) : String(localized: "\(activeToolCount) tools available to the model.", bundle: .main))
                         .font(.caption).foregroundStyle(Theme.textTertiary).padding(.horizontal, 2)
                 }
 
@@ -378,8 +375,7 @@ struct MCPServerDetailView: View {
                     Text("\(tools.count - server.disabledTools.count) of \(tools.count) on")
                         .font(.caption2.monospacedDigit()).foregroundStyle(Theme.textTertiary)
                 }
-                Text("Mute the ones you don't need. Small models choose badly from a long list — "
-                     + "fewer, sharper tools beat more.")
+                Text("Mute the ones you don't need. Small models choose badly from a long list — fewer, sharper tools beat more.")
                     .font(.caption).foregroundStyle(Theme.textTertiary)
                 ForEach(tools, id: \.name) { tool in
                     Divider().background(Theme.hairline)

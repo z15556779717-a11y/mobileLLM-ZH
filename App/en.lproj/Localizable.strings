@@ -28,6 +28,10 @@
 "(%@)" = "(%@)";
 /* , or an MCP server you've enabled. */
 ", or an MCP server you've enabled." = ", or an MCP server you've enabled.";
+/* 4-bit */
+"4-bit" = "4-bit";
+/* 8-bit */
+"8-bit" = "8-bit";
 /* A bounded tool attempt started. */
 "A bounded tool attempt started." = "A bounded tool attempt started.";
 /* A child agent was cancelled before producing a result. */
@@ -44,6 +48,8 @@
 "API key" = "API key";
 /* Abandon */
 "Abandon" = "Abandon";
+/* About */
+"About" = "About";
 /* Accept: \(phase.acceptanceCriteria) */
 "Accept: %@" = "Accept: %@";
 /* Action */
@@ -90,8 +96,12 @@
 "Add to Project" = "Add to Project";
 /* Added by you */
 "Added by you" = "Added by you";
+/* Advanced */
+"Advanced" = "Advanced";
 /* Agent \(call.ordinal) */
 "Agent %lld" = "Agent %lld";
+/* Agent calls */
+"Agent calls" = "Agent calls";
 /* Agent runtime unavailable */
 "Agent runtime unavailable" = "Agent runtime unavailable";
 /* Agent runtime unavailable. Restart the app to try again. */
@@ -118,8 +128,12 @@
 "Answer in three sentences or fewer." = "Answer in three sentences or fewer.";
 /* Answered */
 "Answered" = "Answered";
+/* Appearance */
+"Appearance" = "Appearance";
 /* Appended to the system prompt while this skill is active. Keep it short and impe */
 "Appended to the system prompt while this skill is active. Keep it short and imperative — it's charged to the context window on every turn, and small models follow a few sharp rules better than many soft ones." = "Appended to the system prompt while this skill is active. Keep it short and imperative — it's charged to the context window on every turn, and small models follow a few sharp rules better than many soft ones.";
+/* Approval */
+"Approval" = "Approval";
 /* Approval needed */
 "Approval needed" = "Approval needed";
 /* Approval needed: \(displayName) */
@@ -160,6 +174,8 @@
 "Attached image" = "Attached image";
 /* Attempt \(call.attempt) · \(call.status.label) */
 "Attempt %lld · %@" = "Attempt %lld · %@";
+/* Audio */
+"Audio" = "Audio";
 /* Authorizes only this exact prepared operation. */
 "Authorizes only this exact prepared operation." = "Authorizes only this exact prepared operation.";
 /* Authorizes this model for the rest of this conversation. */
@@ -172,6 +188,8 @@
 "Auto-approve everything inside the run ceiling" = "Auto-approve everything inside the run ceiling";
 /* Auto-approve in-app/reads and online model; ask for writes and dangerous actions */
 "Auto-approve in-app/reads and online model; ask for writes and dangerous actions" = "Auto-approve in-app/reads and online model; ask for writes and dangerous actions";
+/* Auto-collapse */
+"Auto-collapse" = "Auto-collapse";
 /* Background GPU processing is not supported on this device. */
 "Background GPU processing is not supported on this device." = "Background GPU processing is not supported on this device.";
 /* Background continuation was cancelled. */
@@ -184,16 +202,24 @@
 "Backgrounded — resume to continue" = "Backgrounded — resume to continue";
 /* Be the first — post one in Discussions → Skills. */
 "Be the first — post one in Discussions → Skills." = "Be the first — post one in Discussions → Skills.";
+/* Bearer token saved to Keychain */
+"Bearer token saved to Keychain" = "Bearer token saved to Keychain";
+/* Behavior */
+"Behavior" = "Behavior";
 /* Browse Community Skills… */
 "Browse Community Skills…" = "Browse Community Skills…";
 /* Browsing */
 "Browsing " = "Browsing ";
 /* Built into the system */
 "Built into the system" = "Built into the system";
+/* Built-in */
+"Built-in" = "Built-in";
 /* Built-in skill — read-only. Duplicate it to make an editable copy. */
 "Built-in skill — read-only. Duplicate it to make an editable copy." = "Built-in skill — read-only. Duplicate it to make an editable copy.";
 /* Built-in skill, opens read-only */
 "Built-in skill, opens read-only" = "Built-in skill, opens read-only";
+/* Built-in tools */
+"Built-in tools" = "Built-in tools";
 /* Calculator */
 "Calculator" = "Calculator";
 /* Calendar */
@@ -266,6 +292,10 @@
 "Connecting tools…" = "Connecting tools…";
 /* Connecting… */
 "Connecting…" = "Connecting…";
+/* Connections */
+"Connections" = "Connections";
+/* Context */
+"Context" = "Context";
 /* Context length */
 "Context length" = "Context length";
 /* Context length couldn't be verified — assuming \(Format.shortCount(model.archite */
@@ -340,6 +370,8 @@
 "Create a reminder for the user" = "Create a reminder for the user";
 /* Create reminders in the Reminders app. */
 "Create reminders in the Reminders app." = "Create reminders in the Reminders app.";
+/* Custom */
+"Custom" = "Custom";
 /* Custom · \(String(text.replacingOccurrences(of: "\n", with: " ").prefix(60))) */
 "Custom · %@" = "Custom · %@";
 /* Dark */
@@ -380,6 +412,12 @@
 "Denied" = "Denied";
 /* Denied or stopped */
 "Denied or stopped" = "Denied or stopped";
+/* Dense 1.7B with tied word embeddings — the lightest, snappiest option. */
+"Dense 1.7B with tied word embeddings — the lightest, snappiest option." = "Dense 1.7B with tied word embeddings — the lightest, snappiest option.";
+/* Dense 4B with tied word embeddings — small, fast, green everywhere. */
+"Dense 4B with tied word embeddings — small, fast, green everywhere." = "Dense 4B with tied word embeddings — small, fast, green everywhere.";
+/* Dense 8B — the on-device hero: green on every device, the safe iPhone default. */
+"Dense 8B — the on-device hero: green on every device, the safe iPhone default." = "Dense 8B — the on-device hero: green on every device, the safe iPhone default.";
 /* Deny */
 "Deny" = "Deny";
 /* Destination */
@@ -510,6 +548,8 @@
 "Full" = "Full";
 /* Full (unquantized) */
 "Full (unquantized)" = "Full (unquantized)";
+/* Gemma 4 12B — the Mac-comfortable Google model, broad multilingual coverage. */
+"Gemma 4 12B — the Mac-comfortable Google model, broad multilingual coverage." = "Gemma 4 12B — the Mac-comfortable Google model, broad multilingual coverage.";
 /* Generating candidate */
 "Generating candidate" = "Generating candidate";
 /* Generation stats */
@@ -526,12 +566,16 @@
 "GitHub returned an unexpected error (code %lld). Please try again." = "GitHub returned an unexpected error (code %lld). Please try again.";
 /* GitHub's response couldn't be read. Please try again. */
 "GitHub's response couldn't be read. Please try again." = "GitHub's response couldn't be read. Please try again.";
+/* Google's newest edge model — multilingual, compact. Non-thinking. Gemma chat for */
+"Google's newest edge model — multilingual, compact. Non-thinking. Gemma chat format." = "Google's newest edge model — multilingual, compact. Non-thinking. Gemma chat format.";
 /* Hidden */
 "Hidden" = "Hidden";
 /* High memory · may fail */
 "High memory · may fail" = "High memory · may fail";
 /* How much conversation the model can see at once. */
 "How much conversation the model can see at once." = "How much conversation the model can see at once.";
+/* Hybrid Gated-DeltaNet 27B. Near-constant memory as context grows — 16 full-atten */
+"Hybrid Gated-DeltaNet 27B. Near-constant memory as context grows — 16 full-attention layers grow the KV cache, 48 linear layers hold fixed state." = "Hybrid Gated-DeltaNet 27B. Near-constant memory as context grows — 16 full-attention layers grow the KV cache, 48 linear layers hold fixed state.";
 /* Import SKILL.md… */
 "Import SKILL.md…" = "Import SKILL.md…";
 /* Import skill */
@@ -558,6 +602,8 @@
 "It succeeded" = "It succeeded";
 /* Its tools stop being offered to the model. Nothing on the server itself changes. */
 "Its tools stop being offered to the model. Nothing on the server itself changes." = "Its tools stop being offered to the model. Nothing on the server itself changes.";
+/* JavaScript source */
+"JavaScript source" = "JavaScript source";
 /* KV cache */
 "KV cache" = "KV cache";
 /* Keep Vela open while downloading — it resumes automatically if interrupted. */
@@ -606,6 +652,8 @@
 "Match your system, or pin to Light or Dark." = "Match your system, or pin to Light or Dark.";
 /* Max output tokens must be a non-negative integer (0 = unknown). */
 "Max output tokens must be a non-negative integer (0 = unknown)." = "Max output tokens must be a non-negative integer (0 = unknown).";
+/* Max tokens */
+"Max tokens" = "Max tokens";
 /* Memory */
 "Memory" = "Memory";
 /* Memory cannot be empty. */
@@ -658,6 +706,10 @@
 "New skill" = "New skill";
 /* New tag */
 "New tag" = "New tag";
+/* Newest open Qwen (2026). Flagship-class Chinese; a big-Mac model — 16 GB at Q4_K */
+"Newest open Qwen (2026). Flagship-class Chinese; a big-Mac model — 16 GB at Q4_K_M." = "Newest open Qwen (2026). Flagship-class Chinese; a big-Mac model — 16 GB at Q4_K_M.";
+/* Newest small Qwen, strong Chinese + reasoning. Same hybrid arch as Bonsai — the  */
+"Newest small Qwen, strong Chinese + reasoning. Same hybrid arch as Bonsai — the seamless iPhone upgrade. ChatML, thinking on by default." = "Newest small Qwen, strong Chinese + reasoning. Same hybrid arch as Bonsai — the seamless iPhone upgrade. ChatML, thinking on by default.";
 /* No Wikipedia article found for "\(query)". */
 "No Wikipedia article found for \"%@\"." = "No Wikipedia article found for \"%@\".";
 /* No background tasks */
@@ -712,6 +764,8 @@
 "Not tested yet" = "Not tested yet";
 /* Notes that matter to your question are added to the model's prompt. */
 "Notes that matter to your question are added to the model's prompt." = "Notes that matter to your question are added to the model's prompt.";
+/* Nothing is sent to a server. (Turning on Tools lets the model reach the web — se */
+"Nothing is sent to a server. (Turning on Tools lets the model reach the web — search, a webpage reader, Wikipedia — or an MCP server you configure, and lets tools you enable touch your calendar, reminders, or location, but only when it invokes that tool.)" = "Nothing is sent to a server. (Turning on Tools lets the model reach the web — search, a webpage reader, Wikipedia — or an MCP server you configure, and lets tools you enable touch your calendar, reminders, or location, but only when it invokes that tool.)";
 /* Nothing matches this filter */
 "Nothing matches this filter" = "Nothing matches this filter";
 /* Nothing matches “\(query)”. */
@@ -722,6 +776,8 @@
 "Nothing saved yet. Tap + to add something you want the model to know about you — or just tell it in a chat, and it'll note it down itself." = "Nothing saved yet. Tap + to add something you want the model to know about you — or just tell it in a chat, and it'll note it down itself.";
 /* Nothing to show. */
 "Nothing to show." = "Nothing to show.";
+/* OK */
+"OK" = "OK";
 /* Off */
 "Off" = "Off";
 /* Off keeps the server configured but skips it — no connection, no tools. */
@@ -738,6 +794,8 @@
 "On GitHub" = "On GitHub";
 /* On device */
 "On device" = "On device";
+/* On-device */
+"On-device" = "On-device";
 /* On-device models */
 "On-device models" = "On-device models";
 /* One line on when to use it */
@@ -834,6 +892,8 @@
 "Proofreader" = "Proofreader";
 /* Question for you */
 "Question for you" = "Question for you";
+/* R1 reasoning distilled onto Qwen3-8B — the strongest small reasoner. Mac model. */
+"R1 reasoning distilled onto Qwen3-8B — the strongest small reasoner. Mac model." = "R1 reasoning distilled onto Qwen3-8B — the strongest small reasoner. Mac model.";
 /* Reached GitHub's limit for anonymous browsing (60 requests an hour). Wait a litt */
 "Reached GitHub's limit for anonymous browsing (60 requests an hour). Wait a little and try again, or open the board on GitHub." = "Reached GitHub's limit for anonymous browsing (60 requests an hour). Wait a little and try again, or open the board on GitHub.";
 /* Reaching GitHub… */
@@ -880,6 +940,8 @@
 "Rename chat" = "Rename chat";
 /* Rename tag */
 "Rename tag" = "Rename tag";
+/* Repetition penalty */
+"Repetition penalty" = "Repetition penalty";
 /* Reply below */
 "Reply below" = "Reply below";
 /* Researcher */
@@ -932,8 +994,12 @@
 "Runs great" = "Runs great";
 /* Runs here */
 "Runs here" = "Runs here";
+/* Runtime activity */
+"Runtime activity" = "Runtime activity";
 /* SHA-256 verification failed for \(file). The downloaded bytes were discarded; ta */
 "SHA-256 verification failed for %@. The downloaded bytes were discarded; tap download again to retry." = "SHA-256 verification failed for %@. The downloaded bytes were discarded; tap download again to retry.";
+/* Sampling */
+"Sampling" = "Sampling";
 /* Save */
 "Save" = "Save";
 /* Save a lasting fact to the user's on-device memory */
@@ -952,6 +1018,8 @@
 "Search Hugging Face — Qwen, Gemma, Llama…" = "Search Hugging Face — Qwen, Gemma, Llama…";
 /* Search chats */
 "Search chats" = "Search chats";
+/* Search engines */
+"Search engines" = "Search engines";
 /* Search models — name, publisher… */
 "Search models — name, publisher…" = "Search models — name, publisher…";
 /* Search the live web. Uses the network and adds another model pass. */
@@ -1052,6 +1120,10 @@
 "Tags" = "Tags";
 /* Take Photo */
 "Take Photo" = "Take Photo";
+/* Temperature */
+"Temperature" = "Temperature";
+/* Tencent's small dense chat model — strong Chinese, native iPhone size. Own chat  */
+"Tencent's small dense chat model — strong Chinese, native iPhone size. Own chat format." = "Tencent's small dense chat model — strong Chinese, native iPhone size. Own chat format.";
 /* Terminal */
 "Terminal" = "Terminal";
 /* Terminated */
@@ -1060,22 +1132,32 @@
 "Test" = "Test";
 /* Test connection */
 "Test connection" = "Test connection";
+/* Text */
+"Text" = "Text";
+/* That URL is already configured. */
+"That URL is already configured." = "That URL is already configured.";
 /* That doesn't parse as SKILL.md — it needs `---` frontmatter with a name, then th */
 "That doesn't parse as SKILL.md — it needs `---` frontmatter with a name, then the instructions." = "That doesn't parse as SKILL.md — it needs `---` frontmatter with a name, then the instructions.";
 /* The MCP server did not confirm the tool call; the result is uncertain. */
 "The MCP server did not confirm the tool call; the result is uncertain." = "The MCP server did not confirm the tool call; the result is uncertain.";
 /* The MCP tool stopped before producing a result. */
 "The MCP tool stopped before producing a result." = "The MCP tool stopped before producing a result.";
+/* The Mac-comfortable Qwen3.5: top-tier Chinese + reasoning, hybrid arch keeps KV  */
+"The Mac-comfortable Qwen3.5: top-tier Chinese + reasoning, hybrid arch keeps KV small." = "The Mac-comfortable Qwen3.5: top-tier Chinese + reasoning, hybrid arch keeps KV small.";
 /* The agent needs an answer */
 "The agent needs an answer" = "The agent needs an answer";
 /* The built-in calculator, clock and Wikipedia lookup work without one. */
 "The built-in calculator, clock and Wikipedia lookup work without one." = "The built-in calculator, clock and Wikipedia lookup work without one.";
+/* The calendar, reminders, and location tools read or write that system data only  */
+"The calendar, reminders, and location tools read or write that system data only when the model calls them, each asks the system for permission when selected, and only if you select it in Choose tools." = "The calendar, reminders, and location tools read or write that system data only when the model calls them, each asks the system for permission when selected, and only if you select it in Choose tools.";
 /* The cancelled external operation has no stable outcome. */
 "The cancelled external operation has no stable outcome." = "The cancelled external operation has no stable outcome.";
 /* The external operation was confirmed not to have succeeded. */
 "The external operation was confirmed not to have succeeded." = "The external operation was confirmed not to have succeeded.";
 /* The external operation was confirmed successful. */
 "The external operation was confirmed successful." = "The external operation was confirmed successful.";
+/* The flagship Gemma 4 edge model — stronger, still on-device. Non-thinking. */
+"The flagship Gemma 4 edge model — stronger, still on-device. Non-thinking." = "The flagship Gemma 4 edge model — stronger, still on-device. Non-thinking.";
 /* The initiating run did not reserve workflow delegation authority. */
 "The initiating run did not reserve workflow delegation authority." = "The initiating run did not reserve workflow delegation authority.";
 /* The interrupted external operation has no stable outcome. */
@@ -1096,6 +1178,8 @@
 "The local tool stopped before producing a result." = "The local tool stopped before producing a result.";
 /* The memory store couldn't be written. */
 "The memory store couldn't be written." = "The memory store couldn't be written.";
+/* The model built into the operating system. Nothing to download and no memory cos */
+"The model built into the operating system. Nothing to download and no memory cost — it runs outside the app. Available only where Apple Intelligence is on." = "The model built into the operating system. Nothing to download and no memory cost — it runs outside the app. Available only where Apple Intelligence is on.";
 /* The model could not be loaded. */
 "The model could not be loaded." = "The model could not be loaded.";
 /* The model decides whether to call an allowed tool. Each call adds another model  */
@@ -1204,8 +1288,14 @@
 "Tool access" = "Tool access";
 /* Tools */
 "Tools" = "Tools";
+/* Tools are on: when the model uses a web tool it sends that query or its argument */
+"Tools are on: when the model uses a web tool it sends that query or its arguments to that endpoint — a search engine, a page you link, or Wikipedia" = "Tools are on: when the model uses a web tool it sends that query or its arguments to that endpoint — a search engine, a page you link, or Wikipedia";
 /* Tools off. */
 "Tools off." = "Tools off.";
+/* Top-k */
+"Top-k" = "Top-k";
+/* Top-p */
+"Top-p" = "Top-p";
 /* Translate between Chinese and English — nothing else. */
 "Translate between Chinese and English — nothing else." = "Translate between Chinese and English — nothing else.";
 /* Translate the full fact into English. Proper names may stay unchanged. */
@@ -1248,6 +1338,12 @@
 "Vela agent run" = "Vela agent run";
 /* Vela runs entirely on your device — pick a model to download once, then chat off */
 "Vela runs entirely on your device — pick a model to download once, then chat offline with nothing leaving your phone." = "Vela runs entirely on your device — pick a model to download once, then chat offline with nothing leaving your phone.";
+/* Version */
+"Version" = "Version";
+/* Video */
+"Video" = "Video";
+/* Vision */
+"Vision" = "Vision";
 /* Waiting */
 "Waiting" = "Waiting";
 /* Waiting for approval */
@@ -1448,6 +1544,8 @@
 "needs review" = "needs review";
 /* online model */
 "online model" = "online model";
+/* paused */
+"paused" = "paused";
 /* runs great */
 "runs great" = "runs great";
 /* service default */

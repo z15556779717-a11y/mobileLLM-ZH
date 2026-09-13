@@ -292,8 +292,7 @@ struct ProjectTagsSheet: View {
                     Text(tag)
                         .foregroundStyle(Theme.textPrimary)
                     Text(chat.projectTagCount(tag) == 1
-                        ? "\(chat.projectTagCount(tag)) chat"
-                        : "\(chat.projectTagCount(tag)) chats")
+                        ? String(localized: "\(chat.projectTagCount(tag)) chat", bundle: .main) : String(localized: "\(chat.projectTagCount(tag)) chats", bundle: .main))
                         .font(.caption2)
                         .foregroundStyle(Theme.textTertiary)
                 }

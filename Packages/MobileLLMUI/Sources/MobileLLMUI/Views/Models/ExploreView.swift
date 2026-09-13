@@ -162,8 +162,7 @@ struct ExploreView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: Theme.Space.md) {
-                    Text("Community model from \(model.publisher). It loads from its own chat template — "
-                         + "sizes are estimates and behavior isn't hand-verified.")
+                    Text("Community model from \(model.publisher). It loads from its own chat template — sizes are estimates and behavior isn't hand-verified.")
                         .font(.caption).foregroundStyle(Theme.textSecondary)
                     if unresolvedContext.contains(model.id) {
                         Label("Context length couldn't be verified — assuming \(Format.shortCount(model.architecture.nativeContext)).",

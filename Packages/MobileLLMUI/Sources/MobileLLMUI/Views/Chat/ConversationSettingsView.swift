@@ -47,7 +47,7 @@ struct ConversationSettingsView: View {
     }
 
     private func sectionTitle(_ text: String) -> some View {
-        Text(text.uppercased())
+        Text(text.localizedLabel.uppercased())
             .font(.caption2.weight(.semibold))
             .foregroundStyle(Theme.textTertiary)
     }
@@ -83,8 +83,7 @@ struct ConversationSettingsView: View {
                     .foregroundStyle(Theme.accent)
                 }
             }
-            Text("Effort applies to services that expose a reasoning-effort knob; local engines treat it "
-                 + "as advisory. Medium is the default.")
+            Text("Effort applies to services that expose a reasoning-effort knob; local engines treat it as advisory. Medium is the default.")
                 .font(.caption).foregroundStyle(Theme.textTertiary)
         }
         .padding(Theme.Space.md)
@@ -119,8 +118,7 @@ struct ConversationSettingsView: View {
                 }
                 .accessibilityIdentifier("approval.reset-default")
             }
-            Text("A conversation without an override follows the product default — currently Safe "
-                 + "preset.")
+            Text("A conversation without an override follows the product default — currently Safe preset.")
                 .font(.caption).foregroundStyle(Theme.textTertiary)
         }
         .padding(Theme.Space.md)
@@ -140,7 +138,7 @@ struct ConversationSettingsView: View {
                 Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                     .foregroundStyle(Theme.accent)
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(title).font(.subheadline).foregroundStyle(Theme.textPrimary)
+                    Text(title.localizedLabel).font(.subheadline).foregroundStyle(Theme.textPrimary)
                     Text(detail).font(.caption).foregroundStyle(Theme.textTertiary)
                 }
                 Spacer()
@@ -268,7 +266,7 @@ struct ConversationSettingsView: View {
         label: @escaping (Value) -> String = { String(describing: $0) }
     ) -> some View {
         HStack {
-            Text(title).font(.subheadline).foregroundStyle(Theme.textSecondary)
+            Text(title.localizedLabel).font(.subheadline).foregroundStyle(Theme.textSecondary)
             Spacer()
             Menu {
                 Button { set(nil) } label: {
@@ -314,7 +312,7 @@ struct ConversationSettingsView: View {
         HStack(spacing: Theme.Space.sm) {
             Image(systemName: systemImage).foregroundStyle(Theme.textTertiary).frame(width: 22)
             VStack(alignment: .leading, spacing: 2) {
-                Text(title).font(.subheadline).foregroundStyle(Theme.textSecondary)
+                Text(title.localizedLabel).font(.subheadline).foregroundStyle(Theme.textSecondary)
                 Text(detail).font(.caption).foregroundStyle(Theme.textTertiary)
             }
             Spacer()

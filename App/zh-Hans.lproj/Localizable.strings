@@ -28,6 +28,10 @@
 "(%@)" = "（%@）";
 /* , or an MCP server you've enabled. */
 ", or an MCP server you've enabled." = "，或你已启用的 MCP 服务器。";
+/* 4-bit */
+"4-bit" = "4 位";
+/* 8-bit */
+"8-bit" = "8 位";
 /* A bounded tool attempt started. */
 "A bounded tool attempt started." = "已开始一次有时限的工具尝试。";
 /* A child agent was cancelled before producing a result. */
@@ -44,6 +48,8 @@
 "API key" = "API 密钥";
 /* Abandon */
 "Abandon" = "放弃";
+/* About */
+"About" = "关于";
 /* Accept: \(phase.acceptanceCriteria) */
 "Accept: %@" = "验收：%@";
 /* Action */
@@ -90,8 +96,12 @@
 "Add to Project" = "添加到项目";
 /* Added by you */
 "Added by you" = "由你添加";
+/* Advanced */
+"Advanced" = "高级设置";
 /* Agent \(call.ordinal) */
 "Agent %lld" = "智能体 %lld";
+/* Agent calls */
+"Agent calls" = "Agent 调用";
 /* Agent runtime unavailable */
 "Agent runtime unavailable" = "智能体运行时不可用";
 /* Agent runtime unavailable. Restart the app to try again. */
@@ -118,8 +128,12 @@
 "Answer in three sentences or fewer." = "用三句话或更少作答。";
 /* Answered */
 "Answered" = "已回答";
+/* Appearance */
+"Appearance" = "外观";
 /* Appended to the system prompt while this skill is active. Keep it short and impe */
 "Appended to the system prompt while this skill is active. Keep it short and imperative — it's charged to the context window on every turn, and small models follow a few sharp rules better than many soft ones." = "此技能激活时会附加到系统提示。请保持简短并使用祈使句 — 它会在每一轮计入上下文窗口，而且小模型更擅长遵循少量明确的规则，而不是大量含糊的规则。";
+/* Approval */
+"Approval" = "审批";
 /* Approval needed */
 "Approval needed" = "需要批准";
 /* Approval needed: \(displayName) */
@@ -160,6 +174,8 @@
 "Attached image" = "已附加图片";
 /* Attempt \(call.attempt) · \(call.status.label) */
 "Attempt %lld · %@" = "第 %lld 次 · %@";
+/* Audio */
+"Audio" = "音频";
 /* Authorizes only this exact prepared operation. */
 "Authorizes only this exact prepared operation." = "仅授权这一项已准备的具体操作。";
 /* Authorizes this model for the rest of this conversation. */
@@ -172,6 +188,8 @@
 "Auto-approve everything inside the run ceiling" = "在运行上限内自动批准一切";
 /* Auto-approve in-app/reads and online model; ask for writes and dangerous actions */
 "Auto-approve in-app/reads and online model; ask for writes and dangerous actions" = "自动批准应用内操作/读取和在线模型；写入和危险操作仍会询问";
+/* Auto-collapse */
+"Auto-collapse" = "自动折叠";
 /* Background GPU processing is not supported on this device. */
 "Background GPU processing is not supported on this device." = "此设备不支持后台 GPU 处理。";
 /* Background continuation was cancelled. */
@@ -184,16 +202,24 @@
 "Backgrounded — resume to continue" = "已转入后台 — 继续以恢复";
 /* Be the first — post one in Discussions → Skills. */
 "Be the first — post one in Discussions → Skills." = "成为第一个 — 在 Discussions → Skills 中发布一个。";
+/* Bearer token saved to Keychain */
+"Bearer token saved to Keychain" = "Bearer token 已存入钥匙串";
+/* Behavior */
+"Behavior" = "行为";
 /* Browse Community Skills… */
 "Browse Community Skills…" = "浏览社区技能…";
 /* Browsing */
 "Browsing " = "正在浏览 ";
 /* Built into the system */
 "Built into the system" = "系统内置";
+/* Built-in */
+"Built-in" = "内置";
 /* Built-in skill — read-only. Duplicate it to make an editable copy. */
 "Built-in skill — read-only. Duplicate it to make an editable copy." = "内置技能 — 只读。复制它即可创建可编辑的副本。";
 /* Built-in skill, opens read-only */
 "Built-in skill, opens read-only" = "内置技能，以只读方式打开";
+/* Built-in tools */
+"Built-in tools" = "内置工具";
 /* Calculator */
 "Calculator" = "计算器";
 /* Calendar */
@@ -266,6 +292,10 @@
 "Connecting tools…" = "正在连接工具…";
 /* Connecting… */
 "Connecting…" = "正在连接…";
+/* Connections */
+"Connections" = "连接";
+/* Context */
+"Context" = "上下文";
 /* Context length */
 "Context length" = "上下文长度";
 /* Context length couldn't be verified — assuming \(Format.shortCount(model.archite */
@@ -340,6 +370,8 @@
 "Create a reminder for the user" = "为用户创建提醒";
 /* Create reminders in the Reminders app. */
 "Create reminders in the Reminders app." = "在“提醒事项”应用中创建提醒。";
+/* Custom */
+"Custom" = "自定义";
 /* Custom · \(String(text.replacingOccurrences(of: "\n", with: " ").prefix(60))) */
 "Custom · %@" = "自定义 · %@";
 /* Dark */
@@ -380,6 +412,12 @@
 "Denied" = "已拒绝";
 /* Denied or stopped */
 "Denied or stopped" = "已拒绝或已停止";
+/* Dense 1.7B with tied word embeddings — the lightest, snappiest option. */
+"Dense 1.7B with tied word embeddings — the lightest, snappiest option." = "稠密 1.7B，词嵌入绑定——最轻、最流畅的选择。";
+/* Dense 4B with tied word embeddings — small, fast, green everywhere. */
+"Dense 4B with tied word embeddings — small, fast, green everywhere." = "稠密 4B，词嵌入绑定——体积小、速度快，处处绿灯。";
+/* Dense 8B — the on-device hero: green on every device, the safe iPhone default. */
+"Dense 8B — the on-device hero: green on every device, the safe iPhone default." = "稠密 8B——设备端主力：在所有设备上都是绿灯，iPhone 上稳妥的默认选择。";
 /* Deny */
 "Deny" = "拒绝";
 /* Destination */
@@ -510,6 +548,8 @@
 "Full" = "完整";
 /* Full (unquantized) */
 "Full (unquantized)" = "完整（未量化）";
+/* Gemma 4 12B — the Mac-comfortable Google model, broad multilingual coverage. */
+"Gemma 4 12B — the Mac-comfortable Google model, broad multilingual coverage." = "Gemma 4 12B——适合 Mac 的 Google 模型，多语言覆盖广。";
 /* Generating candidate */
 "Generating candidate" = "正在生成候选";
 /* Generation stats */
@@ -526,12 +566,16 @@
 "GitHub returned an unexpected error (code %lld). Please try again." = "GitHub 返回了意外错误（代码 %lld）。请重试。";
 /* GitHub's response couldn't be read. Please try again. */
 "GitHub's response couldn't be read. Please try again." = "无法解析 GitHub 的响应。请重试。";
+/* Google's newest edge model — multilingual, compact. Non-thinking. Gemma chat for */
+"Google's newest edge model — multilingual, compact. Non-thinking. Gemma chat format." = "Google 最新的端侧模型——多语言、体积紧凑。非思考模式。Gemma 对话格式。";
 /* Hidden */
 "Hidden" = "隐藏";
 /* High memory · may fail */
 "High memory · may fail" = "占用内存高 · 可能失败";
 /* How much conversation the model can see at once. */
 "How much conversation the model can see at once." = "模型一次能看到多少对话内容。";
+/* Hybrid Gated-DeltaNet 27B. Near-constant memory as context grows — 16 full-atten */
+"Hybrid Gated-DeltaNet 27B. Near-constant memory as context grows — 16 full-attention layers grow the KV cache, 48 linear layers hold fixed state." = "混合 Gated-DeltaNet 27B。上下文增长时内存几乎恒定——16 层全注意力会增长 KV 缓存，48 层线性层保持固定状态。";
 /* Import SKILL.md… */
 "Import SKILL.md…" = "导入 SKILL.md…";
 /* Import skill */
@@ -558,6 +602,8 @@
 "It succeeded" = "成功了";
 /* Its tools stop being offered to the model. Nothing on the server itself changes. */
 "Its tools stop being offered to the model. Nothing on the server itself changes." = "其工具将不再提供给模型。服务器本身不会有任何改变。";
+/* JavaScript source */
+"JavaScript source" = "JavaScript 源码";
 /* KV cache */
 "KV cache" = "KV 缓存";
 /* Keep Vela open while downloading — it resumes automatically if interrupted. */
@@ -606,6 +652,8 @@
 "Match your system, or pin to Light or Dark." = "跟随系统，或固定为浅色 / 深色。";
 /* Max output tokens must be a non-negative integer (0 = unknown). */
 "Max output tokens must be a non-negative integer (0 = unknown)." = "最大输出 token 数必须是非负整数（0 表示未知）。";
+/* Max tokens */
+"Max tokens" = "最大 Token 数";
 /* Memory */
 "Memory" = "记忆";
 /* Memory cannot be empty. */
@@ -658,6 +706,10 @@
 "New skill" = "新建技能";
 /* New tag */
 "New tag" = "新建标签";
+/* Newest open Qwen (2026). Flagship-class Chinese; a big-Mac model — 16 GB at Q4_K */
+"Newest open Qwen (2026). Flagship-class Chinese; a big-Mac model — 16 GB at Q4_K_M." = "最新的开源 Qwen（2026）。旗舰级中文能力；属于大内存 Mac 的模型——Q4_K_M 下需 16 GB。";
+/* Newest small Qwen, strong Chinese + reasoning. Same hybrid arch as Bonsai — the  */
+"Newest small Qwen, strong Chinese + reasoning. Same hybrid arch as Bonsai — the seamless iPhone upgrade. ChatML, thinking on by default." = "最新的小型 Qwen，中文与推理能力都很强。与 Bonsai 同为混合架构——升级到 iPhone 毫无障碍。ChatML，默认开启思考。";
 /* No Wikipedia article found for "\(query)". */
 "No Wikipedia article found for \"%@\"." = "没有找到关于“%@”的 Wikipedia 条目。";
 /* No background tasks */
@@ -712,6 +764,8 @@
 "Not tested yet" = "尚未测试";
 /* Notes that matter to your question are added to the model's prompt. */
 "Notes that matter to your question are added to the model's prompt." = "与你的问题相关的笔记会加入模型的提示。";
+/* Nothing is sent to a server. (Turning on Tools lets the model reach the web — se */
+"Nothing is sent to a server. (Turning on Tools lets the model reach the web — search, a webpage reader, Wikipedia — or an MCP server you configure, and lets tools you enable touch your calendar, reminders, or location, but only when it invokes that tool.)" = "不会向任何服务器发送数据。（开启工具后，模型可以访问网络——搜索、网页阅读、维基百科，或你配置的 MCP 服务器；也可以让你启用的工具读取你的日历、提醒事项或位置，但只在它真正调用该工具时才会发生。）";
 /* Nothing matches this filter */
 "Nothing matches this filter" = "没有符合此筛选条件的内容";
 /* Nothing matches “\(query)”. */
@@ -722,6 +776,8 @@
 "Nothing saved yet. Tap + to add something you want the model to know about you — or just tell it in a chat, and it'll note it down itself." = "还没有保存任何内容。点按 + 添加你希望模型了解的信息 — 或者直接在对话里告诉它，它会自己记下来。";
 /* Nothing to show. */
 "Nothing to show." = "没有可显示的内容。";
+/* OK */
+"OK" = "好";
 /* Off */
 "Off" = "关闭";
 /* Off keeps the server configured but skips it — no connection, no tools. */
@@ -738,6 +794,8 @@
 "On GitHub" = "在 GitHub 上";
 /* On device */
 "On device" = "本地";
+/* On-device */
+"On-device" = "设备端";
 /* On-device models */
 "On-device models" = "本地模型";
 /* One line on when to use it */
@@ -834,6 +892,8 @@
 "Proofreader" = "校对";
 /* Question for you */
 "Question for you" = "向你提问";
+/* R1 reasoning distilled onto Qwen3-8B — the strongest small reasoner. Mac model. */
+"R1 reasoning distilled onto Qwen3-8B — the strongest small reasoner. Mac model." = "把 R1 的推理能力蒸馏到 Qwen3-8B——最强的小型推理模型。适合 Mac。";
 /* Reached GitHub's limit for anonymous browsing (60 requests an hour). Wait a litt */
 "Reached GitHub's limit for anonymous browsing (60 requests an hour). Wait a little and try again, or open the board on GitHub." = "已达到 GitHub 匿名浏览的上限（每小时 60 次请求）。请稍等片刻再试，或在 GitHub 上打开讨论板。";
 /* Reaching GitHub… */
@@ -880,6 +940,8 @@
 "Rename chat" = "重命名对话";
 /* Rename tag */
 "Rename tag" = "重命名标签";
+/* Repetition penalty */
+"Repetition penalty" = "重复惩罚";
 /* Reply below */
 "Reply below" = "在下方回复";
 /* Researcher */
@@ -932,8 +994,12 @@
 "Runs great" = "运行流畅";
 /* Runs here */
 "Runs here" = "可在此运行";
+/* Runtime activity */
+"Runtime activity" = "运行时活动";
 /* SHA-256 verification failed for \(file). The downloaded bytes were discarded; ta */
 "SHA-256 verification failed for %@. The downloaded bytes were discarded; tap download again to retry." = "%@ 的 SHA-256 校验失败。已下载的数据已丢弃；请点按下载重试。";
+/* Sampling */
+"Sampling" = "采样";
 /* Save */
 "Save" = "保存";
 /* Save a lasting fact to the user's on-device memory */
@@ -952,6 +1018,8 @@
 "Search Hugging Face — Qwen, Gemma, Llama…" = "搜索 Hugging Face — Qwen、Gemma、Llama…";
 /* Search chats */
 "Search chats" = "搜索对话";
+/* Search engines */
+"Search engines" = "搜索引擎";
 /* Search models — name, publisher… */
 "Search models — name, publisher…" = "搜索模型 — 名称、发布者…";
 /* Search the live web. Uses the network and adds another model pass. */
@@ -1052,6 +1120,10 @@
 "Tags" = "标签";
 /* Take Photo */
 "Take Photo" = "拍照";
+/* Temperature */
+"Temperature" = "温度";
+/* Tencent's small dense chat model — strong Chinese, native iPhone size. Own chat  */
+"Tencent's small dense chat model — strong Chinese, native iPhone size. Own chat format." = "腾讯的小型稠密对话模型——中文能力强，体量适合 iPhone。使用自有的对话格式。";
 /* Terminal */
 "Terminal" = "终端";
 /* Terminated */
@@ -1060,22 +1132,32 @@
 "Test" = "测试";
 /* Test connection */
 "Test connection" = "测试连接";
+/* Text */
+"Text" = "文本";
+/* That URL is already configured. */
+"That URL is already configured." = "该 URL 已配置。";
 /* That doesn't parse as SKILL.md — it needs `---` frontmatter with a name, then th */
 "That doesn't parse as SKILL.md — it needs `---` frontmatter with a name, then the instructions." = "这无法解析为 SKILL.md — 它需要带有名称的 `---` frontmatter，然后是说明。";
 /* The MCP server did not confirm the tool call; the result is uncertain. */
 "The MCP server did not confirm the tool call; the result is uncertain." = "MCP 服务器未确认工具调用；结果不确定。";
 /* The MCP tool stopped before producing a result. */
 "The MCP tool stopped before producing a result." = "MCP 工具在产生结果之前停止了。";
+/* The Mac-comfortable Qwen3.5: top-tier Chinese + reasoning, hybrid arch keeps KV  */
+"The Mac-comfortable Qwen3.5: top-tier Chinese + reasoning, hybrid arch keeps KV small." = "适合 Mac 的 Qwen3.5：中文与推理一流，混合架构让 KV 保持小巧。";
 /* The agent needs an answer */
 "The agent needs an answer" = "智能体需要你的回答";
 /* The built-in calculator, clock and Wikipedia lookup work without one. */
 "The built-in calculator, clock and Wikipedia lookup work without one." = "内置的计算器、时钟和 Wikipedia 查询无需服务器即可使用。";
+/* The calendar, reminders, and location tools read or write that system data only  */
+"The calendar, reminders, and location tools read or write that system data only when the model calls them, each asks the system for permission when selected, and only if you select it in Choose tools." = "日历、提醒事项和位置工具只在模型调用它们时读写这些系统数据，选中时都会向系统请求权限，并且只有你在“选择工具”中勾选后才会生效。";
 /* The cancelled external operation has no stable outcome. */
 "The cancelled external operation has no stable outcome." = "被取消的外部操作没有确定的结果。";
 /* The external operation was confirmed not to have succeeded. */
 "The external operation was confirmed not to have succeeded." = "已确认该外部操作未成功。";
 /* The external operation was confirmed successful. */
 "The external operation was confirmed successful." = "已确认该外部操作成功。";
+/* The flagship Gemma 4 edge model — stronger, still on-device. Non-thinking. */
+"The flagship Gemma 4 edge model — stronger, still on-device. Non-thinking." = "Gemma 4 旗舰端侧模型——更强，且仍在设备上运行。非思考模式。";
 /* The initiating run did not reserve workflow delegation authority. */
 "The initiating run did not reserve workflow delegation authority." = "发起运行未预留工作流委派权限。";
 /* The interrupted external operation has no stable outcome. */
@@ -1096,6 +1178,8 @@
 "The local tool stopped before producing a result." = "本地工具在产生结果之前停止了。";
 /* The memory store couldn't be written. */
 "The memory store couldn't be written." = "无法写入记忆存储。";
+/* The model built into the operating system. Nothing to download and no memory cos */
+"The model built into the operating system. Nothing to download and no memory cost — it runs outside the app. Available only where Apple Intelligence is on." = "系统内置的模型。无需下载，也不占内存——它在 App 之外运行。仅在开启 Apple Intelligence 的地方可用。";
 /* The model could not be loaded. */
 "The model could not be loaded." = "无法加载模型。";
 /* The model decides whether to call an allowed tool. Each call adds another model  */
@@ -1204,8 +1288,14 @@
 "Tool access" = "工具访问";
 /* Tools */
 "Tools" = "工具";
+/* Tools are on: when the model uses a web tool it sends that query or its argument */
+"Tools are on: when the model uses a web tool it sends that query or its arguments to that endpoint — a search engine, a page you link, or Wikipedia" = "工具已开启：模型使用网络工具时，会把查询内容或参数发送到对应端点——搜索引擎、你链接的网页，或维基百科";
 /* Tools off. */
 "Tools off." = "工具已关闭。";
+/* Top-k */
+"Top-k" = "Top-k";
+/* Top-p */
+"Top-p" = "Top-p";
 /* Translate between Chinese and English — nothing else. */
 "Translate between Chinese and English — nothing else." = "在中英文之间翻译 — 仅此而已。";
 /* Translate the full fact into English. Proper names may stay unchanged. */
@@ -1248,6 +1338,12 @@
 "Vela agent run" = "Vela 智能体运行";
 /* Vela runs entirely on your device — pick a model to download once, then chat off */
 "Vela runs entirely on your device — pick a model to download once, then chat offline with nothing leaving your phone." = "Vela 完全在你的设备上运行 — 选一个模型下载一次，之后即可离线对话，数据不会离开你的手机。";
+/* Version */
+"Version" = "版本";
+/* Video */
+"Video" = "视频";
+/* Vision */
+"Vision" = "视觉";
 /* Waiting */
 "Waiting" = "等待中";
 /* Waiting for approval */
@@ -1323,9 +1419,9 @@
 /* \(activeSkill.emoji) \(activeSkill.displayName) · skill active */
 "%@ %@ · skill active" = "%@ %@ · 技能已激活";
 /* \(activeToolCount) tool available to the model. */
-"%lld tool available to the model." = "%lld 个工具可供模型使用。";
+"%lld tool available to the model." = "模型可用 %lld 个工具。";
 /* \(activeToolCount) tools available to the model. */
-"%lld tools available to the model." = "%lld 个工具可供模型使用。";
+"%lld tools available to the model." = "模型可用 %lld 个工具。";
 /* \(all.count) configured */
 "%lld configured" = "已配置 %lld 个";
 /* \(approved ? "Approve" : "Deny") \(approval.toolName) */
@@ -1448,6 +1544,8 @@
 "needs review" = "需要查看";
 /* online model */
 "online model" = "在线模型";
+/* paused */
+"paused" = "已暂停";
 /* runs great */
 "runs great" = "运行流畅";
 /* service default */

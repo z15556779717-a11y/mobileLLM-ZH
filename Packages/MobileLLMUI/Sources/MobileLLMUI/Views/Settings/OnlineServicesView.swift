@@ -16,10 +16,7 @@ struct OnlineServicesView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: Theme.Space.md) {
-                Text("Each service is an OpenAI-compatible Responses API endpoint. The key for each "
-                     + "service lives in the device Keychain only — never synced, backed up, or "
-                     + "committed. Sending to any service is data egress and asks for approval once "
-                     + "per conversation.")
+                Text("Each service is an OpenAI-compatible Responses API endpoint. The key for each service lives in the device Keychain only — never synced, backed up, or committed. Sending to any service is data egress and asks for approval once per conversation.")
                     .font(.caption).foregroundStyle(Theme.textSecondary)
 
                 if settings.onlineServices.isEmpty {
@@ -156,8 +153,7 @@ private struct OnlineServiceEditorView: View {
                         .textInputAutocapitalization(.never)
                         #endif
                         .accessibilityLabel("API key")
-                    Text(stored ? "Stored in the device Keychain. Leave empty to keep it."
-                                : "Stored in the device Keychain only.")
+                    Text(stored ? String(localized: "Stored in the device Keychain. Leave empty to keep it.", bundle: .main) : String(localized: "Stored in the device Keychain only.", bundle: .main))
                         .font(.caption).foregroundStyle(Theme.textTertiary)
                 }
 

@@ -172,7 +172,7 @@ struct ConversationListView: View {
                         Circle()
                             .fill(Theme.fitAmber)
                             .frame(width: 7, height: 7)
-                        Text(recoverable.state == .paused ? "paused" : "needs resume")
+                        Text(recoverable.state == .paused ? String(localized: "paused", bundle: .main) : String(localized: "needs resume", bundle: .main))
                             .font(.caption2.weight(.medium))
                             .foregroundStyle(Theme.textSecondary)
                     }

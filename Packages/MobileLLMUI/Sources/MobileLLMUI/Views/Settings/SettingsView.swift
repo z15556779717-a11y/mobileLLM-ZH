@@ -45,17 +45,13 @@ struct SettingsView: View {
             Button("Delete all chats", role: .destructive) { deleteAllChats() }
             Button("Cancel", role: .cancel) {}
         } message: {
-            Text("Removes every conversation and image attachment on this device. Models, memory, skills, "
-                 + "settings, and MCP credentials are kept. This can't be undone.")
+            Text("Removes every conversation and image attachment on this device. Models, memory, skills, settings, and MCP credentials are kept. This can't be undone.")
         }
         .alert("Erase all app data?", isPresented: $confirmEraseAll) {
             Button("Erase everything", role: .destructive) { eraseAllAppData() }
             Button("Cancel", role: .cancel) {}
         } message: {
-            Text("Returns Vela to a fresh install. It permanently removes chats and attachments, "
-                 + "memory, custom skills, settings, MCP credentials, community-model records, and every "
-                 + "downloaded model. Calendar events or reminders already created outside the app are "
-                 + "not changed. This can't be undone.")
+            Text("Returns Vela to a fresh install. It permanently removes chats and attachments, memory, custom skills, settings, MCP credentials, community-model records, and every downloaded model. Calendar events or reminders already created outside the app are not changed. This can't be undone.")
         }
         .alert("Some data wasn't erased",
                isPresented: Binding(get: { eraseError != nil },
@@ -155,9 +151,7 @@ struct SettingsView: View {
             Toggle(isOn: $settings.toolsEnabled) {
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Allow selected tools").font(.subheadline).foregroundStyle(Theme.textPrimary)
-                    Text("Only tools selected below are exposed to the model. The model decides whether "
-                         + "to call one; every call adds another model pass, and network tools such as web "
-                         + "search, Wikipedia, and remote MCP also wait for the network.")
+                    Text("Only tools selected below are exposed to the model. The model decides whether to call one; every call adds another model pass, and network tools such as web search, Wikipedia, and remote MCP also wait for the network.")
                         .font(.caption).foregroundStyle(Theme.textTertiary)
                 }
             }
@@ -178,10 +172,7 @@ struct SettingsView: View {
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Continue work in background (iOS 26)")
                         .font(.subheadline).foregroundStyle(Theme.textPrimary)
-                    Text("When available, an active finite run may keep processing after you leave "
-                         + "the app, with progress shown by the system. Ordinary chat is never "
-                         + "submitted unless you turn this on, and a rejected submission pauses "
-                         + "the run until you resume it in the foreground.")
+                    Text("When available, an active finite run may keep processing after you leave the app, with progress shown by the system. Ordinary chat is never submitted unless you turn this on, and a rejected submission pauses the run until you resume it in the foreground.")
                         .font(.caption).foregroundStyle(Theme.textTertiary)
                 }
             }
@@ -292,8 +283,7 @@ struct SettingsView: View {
             .buttonStyle(.plain)
             .accessibilityLabel("Online services")
             .accessibilityValue("\(settings.onlineServices.count) services")
-            Text("Add one or more OpenAI-compatible services. Each key lives in the device Keychain "
-                 + "only — never synced, backed up, or committed. Sends use the active service.")
+            Text("Add one or more OpenAI-compatible services. Each key lives in the device Keychain only — never synced, backed up, or committed. Sends use the active service.")
                 .font(.caption).foregroundStyle(Theme.textTertiary)
         }
     }
@@ -354,7 +344,8 @@ struct SettingsView: View {
                             Button("\(value)") { settings.onlineMaxTokens = value }
                         }
                     } label: {
-                        Text(settings.onlineMaxTokens == 0 ? "Auto" : "\(settings.onlineMaxTokens)")
+                        Text(settings.onlineMaxTokens == 0 ? String(localized: "Auto", bundle: .main)
+                                 : "\(settings.onlineMaxTokens)")
                             .font(.subheadline).foregroundStyle(Theme.accent)
                     }
                     .fixedSize()
@@ -375,13 +366,13 @@ struct SettingsView: View {
                             Button("4-bit") { settings.kvBits = 4 }
                             Button("8-bit") { settings.kvBits = 8 }
                         } label: {
-                            Text(settings.kvBits == 0 ? "Full" : "\(settings.kvBits)-bit")
+                            Text(settings.kvBits == 0 ? String(localized: "Full", bundle: .main)
+                                 : "\(settings.kvBits)-bit")
                                 .font(.subheadline).foregroundStyle(Theme.accent)
                         }
                         .fixedSize()
                     }
-                    Text("4-bit KV keeps context memory low with little quality cost — the main memory lever. "
-                         + "It's active on both engines; a change takes effect from your next message.")
+                    Text("4-bit KV keeps context memory low with little quality cost — the main memory lever. It's active on both engines; a change takes effect from your next message.")
                         .font(.caption).foregroundStyle(Theme.textTertiary)
                 }
                 .padding(.top, Theme.Space.xs)
@@ -516,17 +507,12 @@ struct SettingsView: View {
     private var privacyBlurb: String {
         let base = String(localized: "Your chats, prompts, and the models stay on this device — there's no account and no telemetry.", bundle: .main)
         guard settings.toolsEnabled else {
-            return base + " Nothing is sent to a server. (Turning on Tools lets the model reach the web — "
-                 + "search, a webpage reader, Wikipedia — or an MCP server you configure, and lets tools you "
-                 + "enable touch your calendar, reminders, or location, but only when it invokes that tool.)"
+            return base + " " + String(localized: "Nothing is sent to a server. (Turning on Tools lets the model reach the web — search, a webpage reader, Wikipedia — or an MCP server you configure, and lets tools you enable touch your calendar, reminders, or location, but only when it invokes that tool.)", bundle: .main)
         }
         let hasMCP = settings.mcpServers.contains(where: \.isEnabled)
-        return base + " Tools are on: when the model uses a web tool it sends that query or its arguments to "
-             + "that endpoint — a search engine, a page you link, or Wikipedia"
+        return base + " " + String(localized: "Tools are on: when the model uses a web tool it sends that query or its arguments to that endpoint — a search engine, a page you link, or Wikipedia", bundle: .main)
              + (hasMCP ? String(localized: ", or an MCP server you've enabled.", bundle: .main) : String(localized: " (and any MCP server you add).", bundle: .main))
-             + " The calendar, reminders, and location tools read or write that system data only when the "
-             + "model calls them, each asks the system for permission when selected, and only if you select "
-             + "it in Choose tools."
+             + " " + String(localized: "The calendar, reminders, and location tools read or write that system data only when the model calls them, each asks the system for permission when selected, and only if you select it in Choose tools.", bundle: .main)
     }
 
     // MARK: About
@@ -535,10 +521,7 @@ struct SettingsView: View {
         section("About", icon: "info.circle") {
             row("Version", appVersion)
             row("Engine", "Pure Swift · MLX + llama.cpp")
-            Text("A private, open-source runner for open-weight language models — everything runs on your "
-                 + "device by default, with no account. The optional Tools feature can reach Wikipedia or "
-                 + "MCP servers you configure, only when the model calls them. Each model's provider and "
-                 + "license are shown on its card in Models.")
+            Text("A private, open-source runner for open-weight language models — everything runs on your device by default, with no account. The optional Tools feature can reach Wikipedia or MCP servers you configure, only when the model calls them. Each model's provider and license are shown on its card in Models.")
                 .font(.caption).foregroundStyle(Theme.textTertiary)
         }
     }
@@ -592,7 +575,7 @@ struct SettingsView: View {
     // MARK: Builders
 
     private func sectionLabel(_ title: String, icon: String) -> some View {
-        Label { Text(title.uppercased()) } icon: { Image(systemName: icon) }
+        Label { Text(title.localizedLabel.uppercased()) } icon: { Image(systemName: icon) }
             .font(.caption2.weight(.semibold))
             .foregroundStyle(Theme.textTertiary)
             .accessibilityAddTraits(.isHeader)
@@ -609,7 +592,7 @@ struct SettingsView: View {
 
     private func row(_ key: String, _ value: String) -> some View {
         HStack(alignment: .firstTextBaseline, spacing: Theme.Space.md) {
-            Text(key).font(.subheadline).foregroundStyle(Theme.textSecondary)
+            Text(key.localizedLabel).font(.subheadline).foregroundStyle(Theme.textSecondary)
             Spacer(minLength: Theme.Space.md)
             Text(value).font(.subheadline).foregroundStyle(Theme.textPrimary)
                 .multilineTextAlignment(.trailing).textSelection(.enabled)
@@ -622,7 +605,7 @@ struct SettingsView: View {
                            step: Double, format: String) -> some View {
         VStack(alignment: .leading, spacing: 2) {
             HStack {
-                Text(title).font(.subheadline).foregroundStyle(Theme.textSecondary)
+                Text(title.localizedLabel).font(.subheadline).foregroundStyle(Theme.textSecondary)
                 Spacer()
                 Text(String(format: format, value.wrappedValue))
                     .font(.caption.monospacedDigit()).foregroundStyle(Theme.textPrimary)
@@ -636,7 +619,7 @@ struct SettingsView: View {
     private func stepperRow(_ title: String, value: Binding<Int>, range: ClosedRange<Int>, step: Int) -> some View {
         Stepper(value: value, in: range, step: step) {
             HStack {
-                Text(title).font(.subheadline).foregroundStyle(Theme.textSecondary)
+                Text(title.localizedLabel).font(.subheadline).foregroundStyle(Theme.textSecondary)
                 Spacer()
                 Text("\(value.wrappedValue)").font(.caption.monospacedDigit()).foregroundStyle(Theme.textPrimary)
             }
@@ -673,8 +656,7 @@ struct SystemPromptEditor: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: Theme.Space.md) {
-                Text("Prepended to every chat. Keep it short — it's charged to the context window on "
-                     + "every turn, and small models follow three sharp rules better than ten soft ones.")
+                Text("Prepended to every chat. Keep it short — it's charged to the context window on every turn, and small models follow three sharp rules better than ten soft ones.")
                     .font(.caption).foregroundStyle(Theme.textSecondary)
                 TextEditor(text: $settings.systemPrompt)
                     .font(.callout)

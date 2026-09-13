@@ -16,7 +16,7 @@ struct WorkflowMessageRow: View {
                 .foregroundStyle(statusColor)
                 .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 2) {
-                Text(record.title.isEmpty ? "Workflow" : "workflow: \(record.title)")
+                Text(record.title.isEmpty ? String(localized: "Workflow", bundle: .main) : String(localized: "workflow: \(record.title)", bundle: .main))
                     .font(.subheadline.weight(.medium))
                     .foregroundStyle(Theme.textPrimary)
                     .lineLimit(2)

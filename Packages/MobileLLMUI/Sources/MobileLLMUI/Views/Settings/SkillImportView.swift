@@ -25,8 +25,7 @@ struct SkillImportView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: Theme.Space.md) {
-                Text("Compatible with AI Edge Gallery community skills (SKILL.md). Paste a skill's "
-                     + "webhost or repo link, or the markdown itself.")
+                Text("Compatible with AI Edge Gallery community skills (SKILL.md). Paste a skill's webhost or repo link, or the markdown itself.")
                     .font(.caption).foregroundStyle(Theme.textSecondary)
                 Segmented(selection: $source, options: Source.allCases) { $0.label }
                     .frame(maxWidth: 240)

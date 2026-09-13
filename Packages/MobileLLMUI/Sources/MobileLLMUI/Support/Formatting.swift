@@ -109,3 +109,28 @@ enum Format {
         return String(localized: "\(secs)s", bundle: .main)
     }
 }
+
+extension String {
+    /// The text the UI shows for a value that arrived as a plain `String`.
+    ///
+    /// SwiftUI only localizes what it can see: `Text("Save")` builds a `LocalizedStringKey`, but
+    /// `Text(someString)` renders verbatim. The shared rows in Settings — `section`, `row`,
+    /// `sliderRow`, `stepperRow` — take their title as a `String` and are called with literals, so
+    /// the lookup has to happen here instead. Anything that is not a key in the string table (a
+    /// version number, a model name, a user's own words) comes back unchanged.
+    var localizedLabel: String {
+        Bundle.main.localizedString(forKey: self, value: self, table: nil)
+    }
+}
+
+extension LLMModel {
+    /// The text the UI shows for `summary`.
+    ///
+    /// The stored summary is catalog metadata: it describes the weights and is kept verbatim so
+    /// the catalog stays canonical. The card reads this instead, which looks the summary up as a
+    /// localization key and falls back to the stored value — what a community model gets, since
+    /// its summary comes from the Hub rather than from us.
+    var displaySummary: String {
+        summary.localizedLabel
+    }
+}
