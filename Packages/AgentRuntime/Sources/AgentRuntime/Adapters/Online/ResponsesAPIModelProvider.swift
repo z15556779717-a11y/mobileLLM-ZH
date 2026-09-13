@@ -1039,7 +1039,7 @@ public final class ResponsesAPIModelProvider: AgentModelProvider, @unchecked Sen
         // The Chat Completions shape carries the system prompt as a message, so the locale
         // instruction rides in that message's text rather than becoming a field of its own — the
         // wire shape DeepSeek already accepts stays exactly as it was.
-        var payload = messages.map { message in
+        var payload: [JSONValue] = messages.map { message -> JSONValue in
             let role: String = switch message.role {
             case .system: "system"
             case .user: "user"
