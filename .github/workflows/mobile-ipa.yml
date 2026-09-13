@@ -5,7 +5,8 @@ name: mobileLLM unsigned IPA
 #
 # Tag-only trigger: push `mobile-ipa-*` to run. The llama.cpp XCFramework is built from source at the
 # commit pinned in scripts/build-llama-xcframework.sh (~15-25 min), so this is deliberately not a
-# per-commit workflow.
+# per-commit workflow. That XCFramework is cached (see the cache-key comment below) so repeat runs
+# skip the verbose build entirely; DerivedData is never cached.
 
 on:
   push:
@@ -24,15 +25,50 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Show toolchain
+        id: toolchain
         run: |
           xcodebuild -version
           swift --version
+          # The Xcode major version is part of the XCFramework cache key: a new toolchain can change
+          # how llama.cpp's Metal shaders and archives are produced, so a cached slice from an older
+          # Xcode must not be reused silently.
+          echo "xcode_major=$(xcodebuild -version | head -1 | awk '{print $2}' | cut -d. -f1)" >> "$GITHUB_OUTPUT"
 
       - name: Install build tooling
         run: brew install xcodegen cmake
 
+      - name: Restore the vendored llama.cpp XCFramework
+        id: llama-cache
+        uses: actions/cache@v4
+        with:
+          path: Packages/LLMEngineLlama/Vendor/llama.xcframework
+          # Every input that can change the produced framework is in the key: runner OS + arch (the
+          # slices are host-produced), the Xcode major version, and the contents of the build script
+          # (which pins the llama.cpp commit) and the package manifest (which names the binary target
+          # the framework must satisfy). Any edit to either file changes the key and forces a rebuild.
+          key: llama-xcframework-${{ runner.os }}-${{ runner.arch }}-xcode${{ steps.toolchain.outputs.xcode_major }}-${{ hashFiles('scripts/build-llama-xcframework.sh', 'Packages/LLMEngineLlama/Package.swift') }}
+
+      - name: Confirm the restored XCFramework is usable
+        id: llama-cache-check
+        run: |
+          XCF="Packages/LLMEngineLlama/Vendor/llama.xcframework"
+          if [ "${{ steps.llama-cache.outputs.cache-hit }}" = "true" ] && [ -f "$XCF/Info.plist" ]; then
+            echo "usable=true" >> "$GITHUB_OUTPUT"
+            echo "cache HIT — reusing $XCF"
+          else
+            echo "usable=false" >> "$GITHUB_OUTPUT"
+            echo "cache MISS — the XCFramework will be built from source"
+          fi
+
       - name: Build the vendored llama.cpp XCFramework
+        if: steps.llama-cache-check.outputs.usable != 'true'
         run: ./scripts/build-llama-xcframework.sh
+
+      - name: Cache summary
+        run: |
+          echo "key            = llama-xcframework-${{ runner.os }}-${{ runner.arch }}-xcode${{ steps.toolchain.outputs.xcode_major }}-${{ hashFiles('scripts/build-llama-xcframework.sh', 'Packages/LLMEngineLlama/Package.swift') }}"
+          echo "cache-hit      = ${{ steps.llama-cache.outputs.cache-hit }}"
+          echo "xcframework    = $(du -sh Packages/LLMEngineLlama/Vendor/llama.xcframework 2>/dev/null | cut -f1)"
 
       - name: Provide the signing xcconfig base configuration
         # project.yml registers Signing.xcconfig as the Debug/Release base config, but the file is
