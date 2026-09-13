@@ -1,0 +1,130 @@
+name: mobileLLM unsigned IPA
+
+# Produces an UNSIGNED iphoneos/arm64 Release .app packaged as mobileLLM.ipa, for re-signing with
+# Windows AltServer. No Apple Developer certificate is used or required.
+#
+# Tag-only trigger: push `mobile-ipa-*` to run. The llama.cpp XCFramework is built from source at the
+# commit pinned in scripts/build-llama-xcframework.sh (~15-25 min), so this is deliberately not a
+# per-commit workflow.
+
+on:
+  push:
+    tags: ["mobile-ipa-*"]
+
+permissions:
+  contents: read
+
+jobs:
+  unsigned-ipa:
+    name: unsigned iphoneos arm64 IPA
+    runs-on: macos-26
+    timeout-minutes: 90
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Show toolchain
+        run: |
+          xcodebuild -version
+          swift --version
+
+      - name: Install build tooling
+        run: brew install xcodegen cmake
+
+      - name: Build the vendored llama.cpp XCFramework
+        run: ./scripts/build-llama-xcframework.sh
+
+      - name: Provide the signing xcconfig base configuration
+        # project.yml registers Signing.xcconfig as the Debug/Release base config, but the file is
+        # gitignored. The template only carries an empty DEVELOPMENT_TEAM — no credentials — and
+        # nothing is signed here anyway; it exists so xcodegen does not emit a missing base config.
+        run: cp Signing.xcconfig.example Signing.xcconfig
+
+      - name: Generate the Xcode project
+        run: xcodegen generate
+
+      - name: Build the app (Release, iphoneos, arm64, unsigned)
+        run: |
+          xcodebuild -project mobileLLM.xcodeproj -scheme mobileLLM \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -skipMacroValidation \
+            -derivedDataPath build \
+            MTL_COMPILER_FLAGS='$(inherited) -Wno-c++17-extensions -Wno-c++20-extensions' \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            build
+
+      - name: Package Payload/mobileLLM.app into mobileLLM.ipa
+        run: |
+          APP="build/Build/Products/Release-iphoneos/mobileLLM.app"
+          test -d "$APP"
+          rm -rf Payload mobileLLM.ipa
+          mkdir -p Payload
+          cp -R "$APP" Payload/
+          zip -qry mobileLLM.ipa Payload
+
+      - name: Verify the IPA is unsigned, arm64 and correctly identified
+        run: |
+          set -euo pipefail
+          APP="Payload/mobileLLM.app"
+          BIN="$APP/mobileLLM"
+          status=0
+
+          echo "--- bundle layout ---"
+          ls -1 "$APP"
+          echo "--- nested Frameworks ---"
+          ls -1 "$APP/Frameworks" 2>/dev/null || echo "(no Frameworks directory)"
+
+          echo "--- main binary architectures ---"
+          lipo -info "$BIN"
+          lipo -info "$BIN" | grep -q 'arm64' || { echo "::error::main binary is not arm64"; status=1; }
+
+          echo "--- platform ---"
+          plutil -extract CFBundleSupportedPlatforms raw -o - "$APP/Info.plist" || true
+          plutil -extract CFBundleSupportedPlatforms json -o - "$APP/Info.plist" \
+            | grep -q iphoneos || { echo "::error::not an iphoneos build"; status=1; }
+
+          echo "--- bundle identifier ---"
+          BUNDLE_ID="$(plutil -extract CFBundleIdentifier raw -o - "$APP/Info.plist")"
+          echo "CFBundleIdentifier = $BUNDLE_ID"
+          [ "$BUNDLE_ID" = "wang.wangdongdong.mobileLLM" ] \
+            || { echo "::error::unexpected bundle id $BUNDLE_ID"; status=1; }
+
+          echo "--- signature artifacts (must be absent) ---"
+          if [ -e "$APP/_CodeSignature" ]; then
+            echo "::error::$APP/_CodeSignature is present — the app is signed"
+            status=1
+          else
+            echo "ok: no _CodeSignature in the app bundle"
+          fi
+          if [ -e "$APP/embedded.mobileprovision" ]; then
+            echo "::error::$APP/embedded.mobileprovision is present"
+            status=1
+          else
+            echo "ok: no embedded.mobileprovision"
+          fi
+          if find Payload -name '_CodeSignature' -o -name 'embedded.mobileprovision' | grep -q .; then
+            echo "::error::a nested bundle is signed:"
+            find Payload \( -name '_CodeSignature' -o -name 'embedded.mobileprovision' \)
+            status=1
+          else
+            echo "ok: no nested signature artifacts anywhere in Payload/"
+          fi
+
+          echo "--- codesign verdict (informational) ---"
+          codesign -dv "$BIN" 2>&1 || echo "(binary carries no signature)"
+
+          echo "--- ipa ---"
+          du -h mobileLLM.ipa
+
+          exit "$status"
+
+      - name: Upload the unsigned IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobileLLM-unsigned-ipa
+          path: mobileLLM.ipa
+          if-no-files-found: error
+          retention-days: 30
